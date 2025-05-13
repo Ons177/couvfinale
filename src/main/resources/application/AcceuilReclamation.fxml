@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.control.ScrollPane?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1366.0" styleClass="bg" stylesheets="@../styles/AccueilRec.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AcceuilReclamation">
+    <children>
+        <VBox layoutX="14.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="250.0" styleClass="dash__side-bar">
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <children>
+                <ImageView fitHeight="108.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" translateX="30.0" translateY="-15.0">
+                    <image>
+                        <!-- You can set your logo image here if needed -->
+                    </image>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                </ImageView>
+                <VBox maxWidth="-Infinity" minHeight="-Infinity" prefHeight="349.0" prefWidth="250.0" translateY="1.0">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0" styleClass="nav-links">
+                            <children>
+                                <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" translateX="-5.0">
+                                    <HBox.margin>
+                                        <Insets right="4.0" />
+                                    </HBox.margin>
+                                    <image>
+                                        <Image url="@../images/more.png" />
+                                    </image>
+                                </ImageView>
+                                <Label prefHeight="50.0" prefWidth="166.0" text="Réclamations" />
+                            </children>
+                            <padding>
+                                <Insets left="20.0" />
+                            </padding>
+                            <VBox.margin>
+                                <Insets top="10.0" />
+                            </VBox.margin>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+        <HBox alignment="CENTER_RIGHT" layoutX="260.0" prefHeight="78.0" prefWidth="1115.0">
+            <children>
+                <ImageView fitHeight="39.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <!-- You can set your image here if needed -->
+                    </image>
+                    <HBox.margin>
+                        <Insets right="10.0" />
+                    </HBox.margin>
+                </ImageView>
+                <Label text="Client" />
+                <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" styleClass="nav-icon">
+                    <HBox.margin>
+                        <Insets right="16.0" />
+                    </HBox.margin>
+                    <children>
+                        <ImageView fitHeight="26.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true" translateX="-5.0">
+                            <image>
+                                <Image url="@../images/logout.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </HBox>
+            </children>
+        </HBox>
+        <Pane layoutX="266.0" layoutY="78.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="661.0" prefWidth="1084.0" styleClass="dash__container-card">
+            <children>
+                <HBox alignment="CENTER_LEFT" prefHeight="68.0" prefWidth="1084.0" spacing="20.0">
+                    <children>
+                        <Label styleClass="title-label" text="Vos réclamations traitées">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets left="20.0" />
+                            </HBox.margin>
+                        </Label>
+                        <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Button fx:id="AfficherMesRecAccueil" mnemonicParsing="false" onAction="#OnAfficherMesRecAccueil" prefHeight="40.0" prefWidth="347.0" styleClass="button-blue" text="Afficher mes réclamations en attente">
+                                    <HBox.margin>
+                                        <Insets right="15.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <Button fx:id="AjouterRecAccueil" mnemonicParsing="false" onAction="#OnAjouterRecAccueil" prefHeight="40.0" prefWidth="252.0" styleClass="button-blue" text="Ajouter une réclamation">
+                                    <HBox.margin>
+                                        <Insets right="20.0" />
+                                    </HBox.margin>
+                                </Button>
+                            </children>
+                        </HBox>
+                    </children>
+                </HBox>
+                <ScrollPane fitToWidth="true" fitToHeight="true" layoutX="20.0" layoutY="100.0" prefWidth="1040.0" prefHeight="540.0" styleClass="product-card-scrollPane">
+                    <content>
+                        <FlowPane fx:id="cardsContainer" layoutX="20.0" layoutY="100.0" prefWidth="1040.0" prefHeight="540.0" hgap="20" vgap="20" />
+                    </content>
+                </ScrollPane>
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>

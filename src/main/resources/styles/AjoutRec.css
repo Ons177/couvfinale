@@ -1,0 +1,77 @@
+/* Label styles */
+.label-blue {
+    -fx-text-fill: #1e88e5;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.title-label {
+    -fx-text-fill: #1e88e5;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+/* Button styles */
+.button-blue {
+    -fx-background-color: #1e88e5;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+}
+
+.button-blue:hover {
+    -fx-background-color: #1565c0;
+}
+
+.button-red {
+    -fx-background-color: #e53935;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+}
+
+.button-red:hover {
+    -fx-background-color: #c62828;
+}
+
+/* Form control styles */
+.combo-box {
+    -fx-background-color: white;
+    -fx-border-color: #1e88e5;
+    -fx-border-radius: 3;
+}
+
+.date-picker {
+    -fx-background-color: white;
+    -fx-border-color: #1e88e5;
+    -fx-border-radius: 3;
+}
+
+.text-area {
+    -fx-background-color: white;
+    -fx-border-color: #1e88e5;
+    -fx-border-radius: 3;
+}
+
+/* Card hover effect */
+AnchorPane:hover {
+    -fx-effect: dropshadow(gaussian, #4CAF50, 16, 0.3, 0, 4);
+    -fx-background-color: #f9f9f9;
+    -fx-cursor: hand;
+}
+
+/* Afficher réponse button hover effect */
+#voirReponseBtn:hover {
+    -fx-background-color: #1976D2;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, #1976D2, 8, 0.2, 0, 2);
+    -fx-cursor: hand;
+}
+
+#voirReponseBtn:pressed {
+    -fx-background-color: #0d47a1;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, #0d47a1, 8, 0.2, 0, 2);
+}

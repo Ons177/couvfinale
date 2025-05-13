@@ -1,0 +1,89 @@
+package Controllers;
+
+import entities.Reclamation;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
+import javafx.stage.Stage;
+import services.ServiceReclamation;
+
+import java.io.IOException;
+import java.util.Comparator;
+import java.util.List;
+
+public class AccueilReponseAdmin {
+
+    @FXML
+    private Button AffichRepAccueil;
+    @FXML
+    private FlowPane cardsContainer;
+
+    @FXML
+    void OnAffichRepAccueil(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/AfficherMesReponses.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) AffichRepAccueil.getScene().getWindow();
+            stage.setScene(scene);
+            stage.setTitle("Mes Réponses");
+            stage.show();
+        } catch (IOException e) {
+            System.err.println("Error loading AfficherMesReponses.fxml: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void initialize() {
+        ServiceReclamation service = new ServiceReclamation();
+        try {
+            List<Reclamation> all = service.recuperer();
+
+            // Sort the list by priority: Haute (0), Moyenne (1), Basse (2)
+            all.sort(Comparator.comparingInt(r -> getPriorityValue(r.getPriorite())));
+
+            for (Reclamation rec : all) {
+                if ("en attente".equals(rec.getStatut())) {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/ReclamationAdminCard.fxml"));
+                    AnchorPane card = loader.load();
+                    ReclamationAdminCardController cardController = loader.getController();
+                    cardController.setData(rec);
+                    cardController.voirReclamationBtn.setOnAction(e -> openDetail(rec));
+                    cardsContainer.getChildren().add(card);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private int getPriorityValue(String priority) {
+        switch (priority.toLowerCase()) {
+            case "haute": return 0;
+            case "moyenne": return 1;
+            case "basse": return 2;
+            default: return 3; // unknown priorities go last
+        }
+    }
+
+    private void openDetail(Reclamation rec) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/DetailReclamationsAdmin.fxml"));
+            Parent root = loader.load();
+            DetailReclamationsAdmin controller = loader.getController();
+            controller.setReclamation(rec);
+            Stage stage = (Stage) cardsContainer.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Détail Réclamation");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}

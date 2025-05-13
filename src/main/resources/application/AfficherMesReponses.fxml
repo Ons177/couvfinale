@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1366.0" styleClass="bg" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AfficherMesReponses">
+   <children>
+      <VBox layoutX="14.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="250.0" styleClass="dash__side-bar">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <children>
+            <ImageView fitHeight="108.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" translateX="30.0" translateY="-15.0">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </ImageView>
+            <VBox maxWidth="-Infinity" minHeight="-Infinity" prefHeight="349.0" prefWidth="250.0" translateY="1.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0" styleClass="nav-links">
+                     <children>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" translateX="-5.0">
+                           <HBox.margin>
+                              <Insets right="4.0" />
+                           </HBox.margin>
+                           <image>
+                              <Image url="@../images/more.png" />
+                           </image>
+                        </ImageView>
+                        <Label prefHeight="50.0" prefWidth="166.0" text="Réponses" />
+                     </children>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER_RIGHT" layoutX="260.0" prefHeight="78.0" prefWidth="1115.0">
+         <children>
+            <ImageView fitHeight="39.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </ImageView>
+            <Label text="Admin" />
+            <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" styleClass="nav-icon">
+               <HBox.margin>
+                  <Insets right="16.0" />
+               </HBox.margin>
+               <children>
+                  <ImageView fitHeight="26.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true" translateX="-5.0">
+                     <image>
+                        <Image url="@../images/logout.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <Pane layoutX="266.0" layoutY="78.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="661.0" prefWidth="1084.0" styleClass="dash__container-card">
+         <children>
+            <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="20.0" layoutY="100.0" prefHeight="540.0" prefWidth="1040.0" styleClass="product-card-scrollPane">
+               <content>
+                  <FlowPane fx:id="cardsContainer" hgap="20" layoutX="20.0" layoutY="100.0" prefHeight="540.0" prefWidth="1040.0" vgap="20" />
+               </content>
+            </ScrollPane>
+            <HBox alignment="BOTTOM_RIGHT" layoutX="464.0" layoutY="550.0" prefHeight="100.0" prefWidth="530.0" spacing="20.0">
+               <children>
+                  <Button fx:id="AnnulerAffichRep" mnemonicParsing="false" onAction="#OnAnnulerAffichRep" prefHeight="50.0" prefWidth="150.0" styleClass="button-red" text="Annuler" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" right="10.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="22.0" prefHeight="80.0" prefWidth="500.0">
+               <children>
+                  <Label prefHeight="66.0" prefWidth="407.0" styleClass="title-label" text="Vos réponses" />
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+   </children>
+   <stylesheets>
+      <URL value="@../styles/AjoutRec.css" />
+      <URL value="@../styles/AccueilRec.css" />
+   </stylesheets>
+</AnchorPane>

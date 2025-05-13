@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1366.0" styleClass="bg" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ModifierReponse">
+   <children>
+      <VBox layoutX="14.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="250.0" styleClass="dash__side-bar">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <children>
+            <ImageView fitHeight="108.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" translateX="30.0" translateY="-15.0">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </ImageView>
+            <VBox maxWidth="-Infinity" minHeight="-Infinity" prefHeight="349.0" prefWidth="250.0" translateY="1.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0" styleClass="nav-links">
+                     <children>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" translateX="-5.0">
+                           <HBox.margin>
+                              <Insets right="4.0" />
+                           </HBox.margin>
+                           <image>
+                              <Image url="@../images/more.png" />
+                           </image>
+                        </ImageView>
+                        <Label prefHeight="50.0" prefWidth="166.0" text="Réponses" />
+                     </children>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER_RIGHT" layoutX="260.0" prefHeight="78.0" prefWidth="1115.0">
+         <children>
+            <ImageView fitHeight="39.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </ImageView>
+            <Label text="Admin" />
+            <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" styleClass="nav-icon">
+               <HBox.margin>
+                  <Insets right="16.0" />
+               </HBox.margin>
+               <children>
+                  <ImageView fitHeight="26.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true" translateX="-5.0">
+                     <image>
+                        <Image url="@../images/logout.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <Pane layoutX="266.0" layoutY="78.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="661.0" prefWidth="1084.0" styleClass="dash__container-card">
+         <children>
+            <VBox layoutX="64.0" layoutY="85.0" prefWidth="700.0" spacing="18">
+               <children>
+                  <HBox spacing="10">
+                     <children>
+                        <Label styleClass="label-blue" text="Nom :" />
+                        <Label fx:id="NomUser" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                     </children>
+                  </HBox>
+                  <HBox spacing="10">
+                     <children>
+                        <Label styleClass="label-blue" text="Prénom :" />
+                        <Label fx:id="PrenomUser" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                     </children>
+                  </HBox>
+                  <HBox spacing="10">
+                     <children>
+                        <Label styleClass="label-blue" text="Type :" />
+                        <Label fx:id="TypeRecDetail" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                     </children>
+                  </HBox>
+                  <HBox spacing="10">
+                     <children>
+                        <Label styleClass="label-blue" text="Description :" />
+                        <Label fx:id="DescRecDetail" prefWidth="500" style="-fx-font-size: 15px;" wrapText="true" />
+                     </children>
+                  </HBox>
+                  <HBox spacing="10">
+                     <children>
+                        <Label styleClass="label-blue" text="Date :" />
+                        <Label fx:id="DateRecDetail" style="-fx-font-size: 15px;" />
+                     </children>
+                  </HBox>
+                  <HBox spacing="10">
+                     <children>
+                        <Label styleClass="label-blue" text="Priorité :" />
+                        <Label fx:id="PrioriteRecDetail" style="-fx-font-size: 15px;" />
+                     </children>
+                  </HBox>
+                  <HBox spacing="10">
+                     <children>
+                        <Label styleClass="label-blue" text="Statut :" />
+                        <Label fx:id="StatutRecDetail" style="-fx-font-size: 15px;" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <HBox alignment="CENTER" layoutX="22.0" prefHeight="80.0" prefWidth="500.0">
+               <children>
+                  <Label prefHeight="66.0" prefWidth="407.0" styleClass="title-label" text="Détails réclamation" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="65.0" layoutY="387.0" prefHeight="80.0" prefWidth="414.0">
+               <children>
+                  <Label prefHeight="66.0" prefWidth="407.0" styleClass="title-label" text="Modifier votre réponse" />
+               </children>
+            </HBox>
+            <VBox layoutX="64.0" layoutY="411.0" prefWidth="647.0" spacing="16.0" />
+            <HBox alignment="BOTTOM_RIGHT" layoutX="506.0" layoutY="547.0" prefHeight="86.0" prefWidth="530.0" spacing="20.0">
+               <children>
+                  <Button fx:id="AnnulerModifReponse" mnemonicParsing="false" onAction="#OnAnnulerModifReponse" prefHeight="50.0" prefWidth="150.0" styleClass="button-red" text="Annuler" />
+                  <Button fx:id="ModifierReponse" mnemonicParsing="false" onAction="#OnModifierReponse" prefHeight="50.0" prefWidth="150.0" styleClass="button-blue" text="Modifier" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" right="10.0" />
+               </padding>
+            </HBox>
+            <HBox layoutX="62.0" layoutY="467.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="22.0" prefWidth="172.0" styleClass="label-blue" text="Contenu : " />
+                  <TextArea fx:id="Contenu" prefHeight="80.0" prefWidth="468.0" promptText="écrire le contenu de réponse" styleClass="text-area">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextArea>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+   </children>
+   <stylesheets>
+      <URL value="@../styles/AjoutRec.css" />
+      <URL value="@../styles/AccueilRec.css" />
+   </stylesheets>
+</AnchorPane>

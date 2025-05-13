@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ReclamationCardController" prefWidth="300" prefHeight="220" style="-fx-background-color: #fff; -fx-background-radius: 16; -fx-border-radius: 16; -fx-border-color: #e0e0e0; -fx-effect: dropshadow(gaussian, #b0b0b0, 8, 0.2, 0, 2);">
+    <children>
+        <VBox alignment="TOP_LEFT" spacing="8" layoutX="20" layoutY="18" prefWidth="260" >
+            <children>
+                <Label text="Type" style="-fx-font-size: 12px; -fx-text-fill: #888;" />
+                <Label fx:id="typeLabel" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #222;" />
+                <Label text="Date" style="-fx-font-size: 12px; -fx-text-fill: #888;" />
+                <Label fx:id="dateLabel" style="-fx-font-size: 14px; -fx-text-fill: #555;" />
+                <Label text="Description" style="-fx-font-size: 12px; -fx-text-fill: #888;" />
+                <Label fx:id="descLabel" wrapText="true" prefWidth="240" style="-fx-font-size: 15px; -fx-text-fill: #333;" />
+            </children>
+        </VBox>
+        <Button fx:id="voirReponseBtn" text="Afficher réponse" layoutX="80" layoutY="180" prefWidth="140" prefHeight="32"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-background-radius: 16; -fx-font-weight: bold; -fx-effect: dropshadow(gaussian, #b0b0b0, 4, 0.2, 0, 1);" />
+    </children>
+</AnchorPane>
