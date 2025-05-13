@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="20" styleClass="reservation-container" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AjouterReservationController">
+    <Label styleClass="title-label" text="Ajouter une Réservation" />
+    <Label fx:id="trajetLabel" styleClass="trajet-label" />
+    <Label fx:id="errorLabel" styleClass="error-label" visible="false" />
+
+    <stylesheets>
+        <URL value="@AjouterReservation.css" />
+    </stylesheets>
+    <VBox spacing="15" styleClass="form-container">
+        <Label styleClass="form-label" text="Nom Passager:" />
+        <TextField fx:id="nomField" promptText="Enter nom" styleClass="form-field" />
+        <Label styleClass="form-label" text="Prénom Passager:" />
+        <TextField fx:id="prenomField" promptText="Enter prénom" styleClass="form-field" />
+        <Label styleClass="form-label" text="Email:" />
+        <TextField fx:id="emailField" promptText="Enter email" styleClass="form-field" />
+        <Label styleClass="form-label" text="Téléphone:" />
+        <TextField fx:id="telephoneField" promptText="Enter téléphone" styleClass="form-field" />
+        <Label styleClass="form-label" text="Nombre de Places:" />
+        <TextField fx:id="nombrePlacesField" promptText="Enter nombre de places" styleClass="form-field" />
+        <Button fx:id="reserverButton" onAction="#ajouterReservation" styleClass="reserver-button" text="Réserver" />
+    </VBox>
+
+</VBox>

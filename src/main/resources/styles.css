@@ -1,0 +1,151 @@
+/* Background for the entire scene */
+.bg {
+    -fx-background-color: linear-gradient(to bottom, rgba(68, 137, 209, 0.99), #043873);
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+}
+
+/* Main viewport */
+.viewport {
+    -fx-background-color: transparent;
+}
+
+/* FlowPane container for cards */
+.dash__container-card {
+    -fx-background-color: #e0e7ff;
+    -fx-background-radius: 30px;
+    -fx-border-radius: 30px;
+    -fx-padding: 20;
+    -fx-hgap: 30;
+    -fx-vgap: 30;
+}
+
+/* ScrollPane styling */
+.product-card-scrollPane {
+    -fx-background-color: transparent;
+    -fx-background-radius: 30px;
+    -fx-border-radius: 30px;
+}
+
+.product-card-scrollPane > .viewport {
+    -fx-background-color: transparent;
+    -fx-background-radius: 30px;
+}
+
+.product-card-scrollPane > .scroll-bar:vertical,
+.product-card-scrollPane > .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+    -fx-background-radius: 8;
+}
+
+.product-card-scrollPane > .scroll-bar:vertical > .thumb,
+.product-card-scrollPane > .scroll-bar:horizontal > .thumb {
+    -fx-background-color: #60a5fa;
+    -fx-background-radius: 8;
+}
+
+/* Top navigation buttons */
+.btn-mon-compte {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: #143c67;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.btn-mon-compte:hover {
+    -fx-underline: true;
+    -fx-text-fill: #0f2e4d;
+}
+
+/* Action buttons (publier un trajet, voir les trajets, etc.) */
+.button {
+    -fx-background-color: #245580;
+    -fx-text-fill: #fff;
+    -fx-font-size: 16px;
+    -fx-padding: 12px 25px;
+    -fx-background-radius: 8;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 8, 0, 0, 4);
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #0095b6;
+}
+
+/* Card styling */
+.trajet-card {
+    -fx-background-color: white;
+    -fx-background-radius: 16;
+    -fx-padding: 15;
+    -fx-pref-width: 300;
+    -fx-max-width: 300;
+    -fx-pref-height: 500;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);
+    -fx-transition: all 0.3s ease;
+}
+
+.trajet-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 15, 0, 0, 3);
+    -fx-scale-y: 1.02;
+    -fx-scale-x: 1.02;
+}
+
+/* Info labels inside cards */
+.info-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #64748b;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* Card title */
+.trajet-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e40af;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* ScrollPane inside cards */
+.card-scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+.card-scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.card-scroll-pane > .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-background-radius: 8;
+}
+
+.card-scroll-pane > .scroll-bar:vertical > .thumb {
+    -fx-background-color: #94a3b8;
+    -fx-background-radius: 8;
+}
+
+/* Buttons inside cards */
+.card-button {
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-padding: 8 16;
+    -fx-cursor: hand;
+}
+
+.card-button:hover {
+    -fx-opacity: 0.9;
+}
+
+.reserver-button {
+    -fx-background-color: #2ecc71;
+}
+
+.consulter-map-button {
+    -fx-background-color: #3498db;
+}

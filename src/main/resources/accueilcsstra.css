@@ -1,0 +1,262 @@
+/* Background for the entire scene */
+.bg {
+    -fx-background-color: linear-gradient(to bottom, rgba(68, 137, 209, 0.99), #043873);
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+}
+
+/* Main viewport */
+.viewport {
+    -fx-background-color: transparent;
+}
+
+/* FlowPane container for cards */
+.dash__container-card {
+    -fx-background-color: #e0e7ff;
+    -fx-background-radius: 30px;
+    -fx-border-radius: 30px;
+    -fx-padding: 20;
+    -fx-hgap: 30;
+    -fx-vgap: 30;
+    -fx-alignment: center;
+}
+
+/* ScrollPane styling for the card container */
+.product-card-scrollPane {
+    -fx-background-color: transparent;
+    -fx-background-radius: 30px;
+    -fx-border-radius: 30px;
+}
+
+.product-card-scrollPane > .viewport {
+    -fx-background-color: transparent;
+    -fx-background-radius: 30px;
+}
+
+.product-card-scrollPane > .scroll-bar:vertical,
+.product-card-scrollPane > .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+    -fx-background-radius: 8;
+}
+
+.product-card-scrollPane > .scroll-bar:vertical > .thumb,
+.product-card-scrollPane > .scroll-bar:horizontal > .thumb {
+    -fx-background-color: #60a5fa;
+    -fx-background-radius: 8;
+}
+
+/* Top navigation buttons */
+.btn-mon-compte {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: #f9fafb;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.btn-mon-compte:hover {
+    -fx-underline: true;
+    -fx-text-fill: #e0e7ff;
+}
+
+/* Action buttons (publier un trajet, voir les trajets, etc.) */
+.button {
+    -fx-background-color: #245580;
+    -fx-text-fill: #fff;
+    -fx-font-size: 16px;
+    -fx-padding: 12px 25px;
+    -fx-background-radius: 8;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 8, 0, 0, 4);
+    -fx-cursor: hand;
+    -fx-transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    -fx-background-color: #0095b6;
+}
+
+/* Card styling */
+.trajet-card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 16px;
+    -fx-padding: 0;
+    -fx-pref-width: 300px;
+    -fx-max-width: 300px;
+    -fx-min-height: 350px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 10, 0, 0, 3);
+    -fx-transition: all 0.3s ease;
+}
+
+.trajet-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 15, 0, 0, 5);
+    -fx-scale-y: 1.02;
+    -fx-scale-x: 1.02;
+}
+
+/* Title banner for cards */
+.title-banner {
+    -fx-background-color: linear-gradient(to bottom, rgba(68, 137, 209, 0.99), #043873);
+    -fx-padding: 15px;
+    -fx-alignment: center;
+    -fx-background-radius: 16px 16px 0 0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 8, 0.2, 0, 3);
+}
+
+/* Card title */
+.trajet-title {
+    -fx-font-family: "Poppins", "Segoe UI", sans-serif;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-letter-spacing: 1px;
+    -fx-alignment: center;
+}
+
+/* Info box inside cards */
+.info-box {
+    -fx-padding: 15px;
+}
+
+/* Info labels inside cards */
+.info-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #64748b;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* ScrollPane inside cards */
+.card-scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+.card-scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.card-scroll-pane > .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-background-radius: 8;
+}
+
+.card-scroll-pane > .scroll-bar:vertical > .thumb {
+    -fx-background-color: #94a3b8;
+    -fx-background-radius: 8;
+}
+
+/* Buttons inside cards */
+.card-button {
+    -fx-font-size: 14px;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 8px;
+    -fx-padding: 8px 16px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0, 0, 2);
+}
+
+.card-button:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 8, 0, 0, 3);
+    -fx-scale-y: 1.05;
+    -fx-scale-x: 1.05;
+}
+
+.reserver-button {
+    -fx-background-color: #2ecc71;
+}
+
+.reserver-button:hover {
+    -fx-background-color: #27ae60;
+}
+
+.consulter-map-button {
+    -fx-background-color: #3498db;
+}
+
+.consulter-map-button:hover {
+    -fx-background-color: #2980b9;
+}
+
+/* Button container */
+.button-container {
+    -fx-alignment: center;
+    -fx-spacing: 10px;
+    -fx-padding: 10px 0;
+}
+
+/* Sold out label */
+.sold-out-label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #e74c3c;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-alignment: center;
+    -fx-padding: 20px;
+}
+
+/* Filter container (HBox for ComboBox and TextField) */
+.filter-container {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-padding: 10px;
+    -fx-spacing: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 8, 0, 0, 3);
+    -fx-alignment: center-left;
+}
+
+/* Filter ComboBox */
+.filter-combo-box {
+    -fx-pref-height: 35px;
+    -fx-pref-width: 200px;
+    -fx-font-size: 14px;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #94a3b8;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+/* Focused state for ComboBox */
+.filter-combo-box:focused {
+    -fx-border-color: #60a5fa;
+    -fx-border-width: 2px;
+}
+
+/* Search TextField */
+.search-field {
+    -fx-pref-height: 35px;
+    -fx-pref-width: 300px;
+    -fx-font-size: 14px;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #94a3b8;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+}
+
+/* Focused state for TextField */
+.search-field:focused {
+    -fx-border-color: #60a5fa;
+    -fx-border-width: 2px;
+}
+
+/* Hover effect for TextField */
+.search-field:hover {
+    -fx-border-color: #60a5fa;
+}
+
+/* No results label */
+.no-results-label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #64748b;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-alignment: center;
+    -fx-padding: 20px;
+}

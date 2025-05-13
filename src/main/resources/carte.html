@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Carte Trajet</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        #map {
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+        }
+
+        #infoBox {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            width: 250px;
+            font-size: 14px;
+            z-index: 1000;
+        }
+
+        #infoBox h3 {
+            margin-top: 0;
+            font-size: 16px;
+            color: #333;
+        }
+
+        #infoBox p {
+            margin: 6px 0;
+        }
+
+        .leaflet-routing-container {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+<div id="map">
+    <div id="infoBox">Chargement du trajet...</div>
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+<script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.min.js"></script>
+
+<script>
+    async function getCoords(city) {
+        const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(city)}`);
+        const data = await response.json();
+        if (data.length > 0) {
+            return [parseFloat(data[0].lat), parseFloat(data[0].lon)];
+        } else {
+            alert("Ville non trouvée : " + city);
+            throw new Error("Ville non trouvée");
+        }
+    }
+
+    async function initMap() {
+        const params = new URLSearchParams(window.location.search);
+        const villeDepart = params.get("depart") || "Tunis";
+        const villeArrivee = params.get("arrivee") || "Sousse";
+
+        const departCoords = await getCoords(villeDepart);
+        const arriveeCoords = await getCoords(villeArrivee);
+
+        const map = L.map('map').setView(departCoords, 7);
+
+        const osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        const satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri'
+        });
+
+        const baseMaps = {
+            "Plan": osmLayer,
+            "Satellite": satelliteLayer
+        };
+        L.control.layers(baseMaps).addTo(map);
+
+        L.Control.geocoder().addTo(map);
+
+        L.marker(departCoords).addTo(map).bindPopup("Départ : " + villeDepart);
+        L.marker(arriveeCoords).addTo(map).bindPopup("Arrivée : " + villeArrivee);
+
+        const routeControl = L.Routing.control({
+            waypoints: [
+                L.latLng(departCoords),
+                L.latLng(arriveeCoords)
+            ],
+            routeWhileDragging: false,
+            addWaypoints: false,
+            draggableWaypoints: false,
+            createMarker: () => null
+        }).addTo(map);
+
+        routeControl.on('routesfound', function (e) {
+            const route = e.routes[0];
+            const distanceKm = (route.summary.totalDistance / 1000).toFixed(2);
+            const durationMin = Math.round(route.summary.totalTime / 60);
+            const infoBox = document.getElementById('infoBox');
+
+            infoBox.innerHTML = `
+        <h3>Détails du Trajet</h3>
+        <p><strong>De :</strong> ${villeDepart}</p>
+        <p><strong>À :</strong> ${villeArrivee}</p>
+        <p><strong>Distance :</strong> ${distanceKm} km</p>
+        <p><strong>Durée :</strong> ${Math.floor(durationMin / 60)}h ${durationMin % 60}min</p>
+      `;
+        });
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(pos => {
+                const userCoords = [pos.coords.latitude, pos.coords.longitude];
+                L.marker(userCoords).addTo(map).bindPopup("Vous êtes ici").openPopup();
+            });
+        }
+    }
+
+    initMap();
+</script>
+
+</body>
+</html>

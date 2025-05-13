@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="reservationItem" maxWidth="380" minHeight="300" prefWidth="380" spacing="15" styleClass="evenement-item" xmlns="http://javafx.com/javafx/21.0.2" xmlns:fx="http://javafx.com/fxml/1">
+
+    <VBox spacing="10" styleClass="info-container">
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label styleClass="info-label" text="Nom:" />
+            <Label fx:id="nomLabel" styleClass="info-value" wrapText="true" />
+        </HBox>
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label styleClass="info-label" text="Prénom:" />
+            <Label fx:id="prenomLabel" styleClass="info-value" wrapText="true" />
+        </HBox>
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label styleClass="info-label" text="Email:" />
+            <Label fx:id="emailLabel" styleClass="info-value" wrapText="true" />
+        </HBox>
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label styleClass="info-label" text="Téléphone:" />
+            <Label fx:id="telephoneLabel" styleClass="info-value" wrapText="true" />
+        </HBox>
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label styleClass="info-label" text="Places:" />
+            <Label fx:id="placesLabel" styleClass="info-value" wrapText="true" />
+        </HBox>
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label fx:id="dateLabel" styleClass="info-value" wrapText="true" />
+            <Label styleClass="info-label" text="Trajet:" />
+        </HBox>
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label fx:id="trajetLabel" styleClass="info-value" wrapText="true" />
+        </HBox>
+    </VBox>
+
+    <HBox fx:id="actionsContainer" alignment="CENTER" spacing="10" styleClass="actions-container">
+        <Button fx:id="modifierButton" styleClass="action-button, edit-button" text="Modifier" />
+        <Button fx:id="supprimerButton" styleClass="action-button, delete-button" text="Supprimer" />
+    </HBox>
+
+    <stylesheets>
+        <URL value="@styles.css" />
+    </stylesheets>
+</VBox>
