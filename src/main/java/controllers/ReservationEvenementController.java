@@ -2,6 +2,7 @@ package controllers;
 
 import entities.Evenement;
 import entities.ReservationEvenement;
+import entities.Utilisateur;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -87,12 +88,12 @@ public class ReservationEvenementController {
                 showAlert("Erreur", "Le nombre de places doit être supérieur à 0.", Alert.AlertType.ERROR);
                 return;
             }
-
+            Utilisateur user = UserSession.getCurrentUser();
             double prix = Double.parseDouble(prixLabel.getText().replace(" €", ""));
 
             ReservationEvenement reservation = new ReservationEvenement();
             reservation.setIdEvenement(selectedEvent.getIdEvenement());
-            reservation.setIdUtilisateur(1); // Remplacez par l'utilisateur connecté
+            reservation.setIdUtilisateur(user.getId_utilisateur()); // Remplacez par l'utilisateur connecté
             reservation.setNbPlaces(nbPlaces);
             reservation.setDateReservation(LocalDate.now());
             reservation.setStatut("en attente");

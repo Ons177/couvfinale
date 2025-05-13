@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class MyDatabase {
-    private final String URL = "jdbc:mysql://localhost:3306/evenement";
+    private final String URL = "jdbc:mysql://localhost:3306/covoiturage";
     private final String USER = "root";
     private final String PASSWORD = "";
     private Connection connection;
@@ -16,10 +16,10 @@ public class MyDatabase {
             // Load the MySQL JDBC driver
             Class.forName("com.mysql.cj.jdbc.Driver");
             System.out.println("MySQL JDBC Driver loaded successfully");
-            
+
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
             System.out.println("✅ Connexion à la base de données réussie !");
-            
+
             // Test the connection
             if (connection != null && !connection.isClosed()) {
                 System.out.println("Connection is valid and open");
@@ -55,4 +55,3 @@ public class MyDatabase {
         return connection;
     }
 }
-

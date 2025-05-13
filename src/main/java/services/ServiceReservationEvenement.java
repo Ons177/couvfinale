@@ -15,7 +15,7 @@ public class ServiceReservationEvenement {
     }
 
     public void reserver(ReservationEvenement r) throws SQLException {
-        String sql = "INSERT INTO reservationevenement(id_evenement, id_utilisateur, nb_places, date_reservation, statut, prix) " +
+        String sql = "INSERT INTO reservationevenement(id_evenement, id_utilisateur, nb_places, date_reservation, statut_reservation, prix) " +
                 "VALUES (?, ?, ?, ?, ?, ?)";
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setInt(1, r.getIdEvenement());

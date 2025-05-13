@@ -8,7 +8,7 @@ public class ReservationEvenement {
     private int idUtilisateur;
     private int nbPlaces;
     private LocalDate dateReservation;
-    private String statut;
+    private String statut_reservation;
     private double prix;
 
     public ReservationEvenement() {
@@ -19,7 +19,7 @@ public class ReservationEvenement {
         this.idUtilisateur = idUtilisateur;
         this.nbPlaces = nbPlaces;
         this.dateReservation = dateReservation;
-        this.statut = statut;
+        this.statut_reservation = statut;
         this.prix = prix;
     }
 
@@ -29,7 +29,7 @@ public class ReservationEvenement {
         this.idUtilisateur = idUtilisateur;
         this.nbPlaces = nbPlaces;
         this.dateReservation = dateReservation;
-        this.statut = statut;
+        this.statut_reservation = statut;
         this.prix = prix;
     }
 
@@ -40,7 +40,7 @@ public class ReservationEvenement {
     public int getIdUtilisateur() { return idUtilisateur; }
     public int getNbPlaces() { return nbPlaces; }
     public LocalDate getDateReservation() { return dateReservation; }
-    public String getStatut() { return statut; }
+    public String getStatut() { return statut_reservation; }
     public double getPrix() { return prix; }
 
     // Setters
@@ -49,7 +49,7 @@ public class ReservationEvenement {
     public void setIdUtilisateur(int idUtilisateur) { this.idUtilisateur = idUtilisateur; }
     public void setNbPlaces(int nbPlaces) { this.nbPlaces = nbPlaces; }
     public void setDateReservation(LocalDate dateReservation) { this.dateReservation = dateReservation; }
-    public void setStatut(String statut) { this.statut = statut; }
+    public void setStatut(String statut) { this.statut_reservation = statut; }
     public void setPrix(double prix) { this.prix = prix; }
 
     @Override
@@ -60,7 +60,7 @@ public class ReservationEvenement {
                 ", idUtilisateur=" + idUtilisateur +
                 ", nbPlaces=" + nbPlaces +
                 ", dateReservation=" + dateReservation +
-                ", statut='" + statut + '\'' +
+                ", statut='" + statut_reservation + '\'' +
                 ", prix=" + prix +
                 '}';
     }

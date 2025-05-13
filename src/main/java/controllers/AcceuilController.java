@@ -15,6 +15,7 @@ import services.ServiceEvenement;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -156,7 +157,24 @@ public class AcceuilController {
         alert.setContentText(contenu);
         alert.showAndWait();
     }
+    @FXML
+    private void seDeconnecter(ActionEvent event) {
+        try {
+            // Charger la vue Login.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/Login.fxml"));
+            Parent root = loader.load();
 
+            // Créer une nouvelle scène pour le login
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+
+            // Appliquer la nouvelle scène à la fenêtre
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
    /* @FXML
     private void allerAjouterEvenement(ActionEvent event) {
         try {

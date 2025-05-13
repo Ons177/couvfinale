@@ -1,6 +1,7 @@
 package controllers;
 
 import entities.Evenement;
+import entities.Utilisateur;
 import services.ServiceEvenement;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -35,8 +36,7 @@ public class AjouterEvenementController {
     @FXML
     private TextField heureField; // format attendu : HH:mm
 
-    @FXML
-    private TextField idCreateurField;
+
 
     @FXML
     private TextField typeEvenementField;
@@ -56,7 +56,6 @@ public class AjouterEvenementController {
         dateDebutPicker.setValue(event.getDateDebut());
         dateFinPicker.setValue(event.getDateFin());
         heureField.setText(event.getHeure().toLocalTime().toString());
-        idCreateurField.setText(String.valueOf(event.getIdCreateur()));
         typeEvenementField.setText(event.getTypeEvenement());
     }
 
@@ -67,6 +66,8 @@ public class AjouterEvenementController {
         if (scene != null) {
             scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
         }
+        Utilisateur user = UserSession.getCurrentUser();
+        System.out.println(user.getNom());
     }
 
     @FXML
@@ -79,7 +80,7 @@ public class AjouterEvenementController {
             LocalDateTime dateHeure = LocalDateTime.of(dateDebut, heure);
 
             ServiceEvenement service = new ServiceEvenement();
-
+            Utilisateur user = UserSession.getCurrentUser();
             if (eventToModify != null) {
                 // Update existing event
                 eventToModify.setTitre(titreField.getText());
@@ -88,7 +89,7 @@ public class AjouterEvenementController {
                 eventToModify.setDateDebut(dateDebut);
                 eventToModify.setDateFin(dateFinPicker.getValue());
                 eventToModify.setHeure(dateHeure);
-                eventToModify.setIdCreateur(Integer.parseInt(idCreateurField.getText()));
+                eventToModify.setIdCreateur(user.getId_utilisateur());
                 eventToModify.setTypeEvenement(typeEvenementField.getText());
 
                 service.modifier(eventToModify);
@@ -103,7 +104,7 @@ public class AjouterEvenementController {
                         dateDebut,
                         dateFinPicker.getValue(),
                         dateHeure,
-                        Integer.parseInt(idCreateurField.getText()),
+                        user.getId_utilisateur(),
                         typeEvenementField.getText()
                 );
 

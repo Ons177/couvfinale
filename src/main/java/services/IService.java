@@ -11,4 +11,8 @@ public interface IService<T> {
     void supprimer(T var1) throws SQLException;
 
     List<T> recuperer() throws SQLException;
+
+
+    // Not used
+    boolean getAll();
 }

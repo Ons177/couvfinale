@@ -15,7 +15,7 @@
     <top>
         <HBox alignment="TOP_RIGHT" style="-fx-padding: 20 20 0 0;">
             <Button text="Client" styleClass="add-button" />
-            <Button text="Déconnexion"  styleClass="logout-button"/>
+            <Button text="Déconnexion" onAction="#seDeconnecter" styleClass="logout-button"/>
         </HBox>
     </top>
 

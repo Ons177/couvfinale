@@ -37,7 +37,6 @@
             <DatePicker fx:id="dateDebutPicker" promptText="Date début" />
             <DatePicker fx:id="dateFinPicker" promptText="Date fin" />
             <TextField fx:id="heureField" promptText="Heure (ex: 14:00:00)" />
-            <TextField fx:id="idCreateurField" promptText="ID Créateur (int)" />
             <TextField fx:id="typeEvenementField" promptText="Type d'événement" />
         </VBox>
         <HBox spacing="10" alignment="CENTER_RIGHT">

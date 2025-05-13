@@ -8,7 +8,8 @@
 <BorderPane xmlns="http://javafx.com/javafx/"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="controllers.AccueilAdminController"
-            prefWidth="1000" prefHeight="600">
+            prefWidth="1000" prefHeight="600"
+            stylesheets="/css/style.css"       >
 
     <!-- Sidebar à gauche -->
     <left>

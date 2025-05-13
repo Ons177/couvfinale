@@ -1,6 +1,7 @@
 package controllers;
 
 import entities.Evenement;
+import entities.Utilisateur;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -26,6 +27,7 @@ public class AccueilConducteurController {
     @FXML
     public void initialize() {
         loadEvents();
+        Utilisateur user =UserSession.getCurrentUser();
     }
 
     private void loadEvents() {

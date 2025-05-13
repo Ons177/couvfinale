@@ -89,7 +89,7 @@ public class ModifierEvenementController {
             showAlert("Succès", "Événement modifié avec succès !", Alert.AlertType.INFORMATION);
 
             // Return to Acceuil with refreshed list
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Accueil.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AccueilConducteur.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
@@ -116,7 +116,7 @@ public class ModifierEvenementController {
     @FXML
     private void retourAccueil(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Accueil.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AccueilConducteur.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
