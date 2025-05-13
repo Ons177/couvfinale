@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.AcceuilController"
+            styleClass="main-background"
+            stylesheets="/css/style.css">
+
+    <!-- Top Bar with Client Button -->
+    <top>
+        <HBox alignment="TOP_RIGHT" style="-fx-padding: 20 20 0 0;">
+            <Button text="Client" styleClass="add-button" />
+            <Button text="Déconnexion"  styleClass="logout-button"/>
+        </HBox>
+    </top>
+
+    <!-- Left Sidebar -->
+    <left>
+        <VBox styleClass="sidebar" prefWidth="300" alignment="CENTER" spacing="20">
+            <VBox styleClass="sidebar-welcome" alignment="CENTER" spacing="15">
+                <ImageView fitWidth="180" fitHeight="180" preserveRatio="true">
+                    <image>
+                        <Image url="@/images/smartrides.png"/>
+                    </image>
+                </ImageView>
+                <Label wrapText="true" maxWidth="220"
+                       text="Voir les événements en un clic, ou créez le vôtre dès maintenant !"
+                       styleClass="sidebar-desc"/>
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- Main Content -->
+    <center>
+        <VBox style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 30;" alignment="TOP_CENTER" spacing="20">
+
+            <!-- Barre de recherche -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="🔍 Rechercher:"/>
+                <TextField fx:id="searchField" promptText="Titre de l'événement..." prefWidth="300"/>
+            </HBox>
+
+            <!-- Liste des événements -->
+            <ScrollPane fitToWidth="true" styleClass="scroll-pane">
+                <FlowPane fx:id="eventsList" hgap="20" vgap="20" styleClass="events-flow">
+                    <!-- Events will be added here dynamically -->
+                </FlowPane>
+            </ScrollPane>
+        </VBox>
+    </center>
+
+</BorderPane>

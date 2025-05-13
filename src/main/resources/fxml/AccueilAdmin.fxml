@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.AccueilAdminController"
+            prefWidth="1000" prefHeight="600">
+
+    <!-- Sidebar à gauche -->
+    <left>
+        <VBox styleClass="sidebar" prefWidth="280" alignment="CENTER" spacing="20" BorderPane.alignment="CENTER">
+            <VBox styleClass="sidebar-welcome" alignment="CENTER" spacing="15">
+                <ImageView fitWidth="180" fitHeight="180" preserveRatio="true">
+                    <image>
+                        <Image url="@/images/smartrides.png"/>
+                    </image>
+                </ImageView>
+                <Label wrapText="true" maxWidth="220"
+                       text="Voir les événements en un clic, ou créez le vôtre dès maintenant !"
+                       styleClass="sidebar-desc"/>
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- Contenu principal au centre -->
+    <center>
+        <VBox spacing="15">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <Label text="Espace Administrateur - Gestion des Événements"
+                   style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+
+            <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+                <FlowPane fx:id="flowPaneEvents" hgap="20" vgap="20">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    <!-- Les cartes d'événements seront ajoutées dynamiquement ici -->
+                </FlowPane>
+            </ScrollPane>
+
+            <HBox spacing="10">
+                <Button text="Déconnexion" styleClass="btn-primary"/>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane styleClass="main-background" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ConsulterReservationController">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 20;">
+            <Button fx:id="retourAccueil" onAction="#retourAccueil" styleClass="back-button" text="Retour" />
+            <Label styleClass="title-label" text="Liste des Réservations" />
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-padding: 20;">
+            <VBox fx:id="reservationsList" spacing="15">
+            <children>
+                <TableView fx:id="tableReservation" prefHeight="400" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colEvent" text="Événement" prefWidth="100" />
+                        <TableColumn fx:id="colUser" text="Utilisateur" prefWidth="100" />
+                        <TableColumn fx:id="colPlaces" text="Places" prefWidth="75" />
+                        <TableColumn fx:id="colDate" text="Date Réservation" prefWidth="125" />
+                        <TableColumn fx:id="colStatut" text="Statut" prefWidth="100" />
+                        <TableColumn fx:id="colPrix" text="Prix" prefWidth="75" />
+                        <TableColumn fx:id="colActions" text="Actions" prefWidth="200" />
+                    </columns>
+                </TableView>
+            </children></VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>
