@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefWidth="700" prefHeight="550"
+            stylesheets="@style.css"
+            styleClass="bg"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="Controllers.ModifyProfileController">
+
+    <!-- Centre : formulaire de modification -->
+    <center>
+        <VBox alignment="CENTER_LEFT" spacing="15" maxWidth="450"
+              style="-fx-background-color: rgba(255,255,255,0.95); -fx-background-radius: 10;"
+              BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="30" right="30" bottom="30" left="30"/>
+            </padding>
+
+            <Text text="Modifier le profil"
+                  style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-fill: #0d47a1;" />
+
+            <Label style="-fx-text-fill: #0d47a1;" text="Nom:" />
+            <TextField fx:id="nomField" />
+
+            <Label style="-fx-text-fill: #0d47a1;" text="Prénom:" />
+            <TextField fx:id="prenomField" />
+
+            <Label style="-fx-text-fill: #0d47a1;" text="Email:" />
+            <TextField fx:id="emailField" />
+
+            <Label style="-fx-text-fill: #0d47a1;" text="Téléphone:" />
+            <TextField fx:id="telField" />
+
+            <Label style="-fx-text-fill: #0d47a1;" text="Date de naissance:" />
+            <DatePicker fx:id="naissancePicker" />
+
+            <Label style="-fx-text-fill: #0d47a1;" text="Rôle:" />
+            <TextField fx:id="roleField" editable="false" />
+
+            <HBox spacing="15" alignment="CENTER">
+                <Button fx:id="saveButton"
+                        text="Enregistrer"
+                        onAction="#onSaveButtonClick"
+                        style="-fx-background-color: #0d47a1; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 8 16;" />
+                <Button fx:id="cancelButton"
+                        text="Annuler"
+                        onAction="#onCancelButtonClick"
+                        style="-fx-background-color: #999; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 8 16;" />
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>
+
+
+
+

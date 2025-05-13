@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="600" prefWidth="1000" styleClass="bg" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController">
+
+    <right>
+        <HBox alignment="CENTER_RIGHT">
+            <VBox alignment="CENTER" prefHeight="682.0" prefWidth="784.0">
+                <padding>
+                    <Insets bottom="40" top="40" />
+                </padding>
+
+                <VBox alignment="CENTER" maxWidth="799.0" prefHeight="477.0" prefWidth="618.0" spacing="20" style="-fx-background-color: rgba(255,255,255,0.95); -fx-background-radius: 10;">
+                    <padding>
+                        <Insets bottom="20" left="20" right="20" top="20" />
+                    </padding>
+
+                    <Text style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: #0d47a1;" text="SmartRides" />
+
+                    <Label fx:id="errorLabel" style="-fx-text-fill: red; -fx-font-size: 14px;" text="" visible="false" />
+
+                    <!-- Formulaire de connexion -->
+                    <VBox fx:id="loginForm" prefHeight="154.0" prefWidth="526.0" spacing="10">
+                        <Label style="-fx-text-fill: #0d47a1;" text="Email" />
+                        <TextField fx:id="emailField" promptText="Entrez votre email" />
+
+                        <Label style="-fx-text-fill: #0d47a1;" text="Mot de passe" />
+                        <PasswordField fx:id="passwordField" promptText="Entrez votre mot de passe" />
+
+                        <Button fx:id="forgotPasswordButton" onAction="#handleForgotPassword" style="-fx-background-color: transparent; -fx-text-fill: #0d47a1; -fx-underline: true; -fx-font-size: 12px; -fx-alignment: CENTER_LEFT;" text="Mot de passe oublié ?" />
+                    </VBox>
+
+                    <!-- Formulaire de réinitialisation -->
+                    <VBox fx:id="resetPasswordForm" spacing="10" visible="false">
+                        <Label style="-fx-text-fill: #0d47a1;" text="Entrez votre email" />
+                        <TextField fx:id="resetEmailField" promptText="Entrez votre email Gmail" />
+
+                        <Button fx:id="sendResetLinkButton" onAction="#handleSendResetLink" style="-fx-background-color: #0d47a1; -fx-text-fill: white; -fx-font-weight: bold;" text="Envoyer le lien de réinitialisation" />
+
+                        <Button onAction="#handleCancelResetPassword" style="-fx-background-color: transparent; -fx-text-fill: #0d47a1; -fx-underline: true;" text="Annuler" />
+                    </VBox>
+
+                    <HBox alignment="CENTER" spacing="10">
+                        <Button onAction="#handleLogin" style="-fx-background-color: #0d47a1; -fx-text-fill: white; -fx-font-weight: bold;" text="Se connecter" />
+                        <Button onAction="#handleSignup" style="-fx-background-color: transparent; -fx-text-fill: #0d47a1; -fx-underline: true;" text="Je n'ai pas de compte" />
+                    </HBox>
+                </VBox>
+            </VBox>
+
+            <!-- Espace entre le formulaire et le bord droit -->
+            <Region prefWidth="30" />
+        </HBox>
+    </right>
+
+    <left>
+        <!-- Image à gauche remplissant toute la hauteur et la largeur -->
+        <VBox prefHeight="578.0" prefWidth="542.0" styleClass="bg" BorderPane.alignment="CENTER">
+            <Text style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-fill: white; -fx-padding: 20; -fx-alignment: CENTER;" text="Connectez-vous pour accéder à nos services de SmartRides" wrappingWidth="562.800048828125">
+            <font>
+               <Font name="Britannic Bold" size="24.0" />
+            </font></Text>
+         <ImageView fitHeight="539.0" fitWidth="669.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../Images/smart.png" />
+            </image>
+         </ImageView>
+        </VBox>
+    </left>
+
+</BorderPane>

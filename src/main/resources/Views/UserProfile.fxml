@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="500" prefWidth="600" styleClass="bg" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.UserProfileController">
+
+    <!-- Haut : bouton déconnexion -->
+    <top>
+        <HBox alignment="TOP_LEFT" prefHeight="61.0" prefWidth="600.0" spacing="10" styleClass="bg">
+            <padding>
+                <Insets left="10" top="10" />
+            </padding>
+
+        </HBox>
+    </top>
+
+    <!-- Centre -->
+    <center>
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="394.0" prefWidth="610.0" vbarPolicy="ALWAYS">
+            <content>
+                <StackPane alignment="CENTER" styleClass="bg">
+                    <VBox alignment="CENTER" maxWidth="400" spacing="15" style="-fx-background-color: rgba(255,255,255,0.95); -fx-background-radius: 10;">
+                        <padding>
+                            <Insets bottom="30" left="30" right="30" top="30" />
+                        </padding>
+
+                        <Text style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-fill: #0d47a1;" text="Profil Utilisateur" />
+
+                        <!-- Infos utilisateur -->
+                        <Label style="-fx-text-fill: #0d47a1;" text="Nom:" />
+                        <TextField fx:id="nomField" editable="false" />
+
+                        <Label style="-fx-text-fill: #0d47a1;" text="Prénom:" />
+                        <TextField fx:id="prenomField" editable="false" />
+
+                        <Label style="-fx-text-fill: #0d47a1;" text="Email:" />
+                        <TextField fx:id="emailField" editable="false" />
+
+                        <Label style="-fx-text-fill: #0d47a1;" text="Téléphone:" />
+                        <TextField fx:id="telField" editable="false" />
+
+                        <Label style="-fx-text-fill: #0d47a1;" text="Date de naissance:" />
+                        <TextField fx:id="naissanceField" editable="false" />
+
+                        <Label style="-fx-text-fill: #0d47a1;" text="Rôle:" />
+                        <TextField fx:id="roleField" editable="false" />
+
+                        <Button fx:id="modifyButton" onAction="#onModifyButtonClick" style="-fx-background-color: #0d47a1; -fx-text-fill: white; -fx-font-weight: bold;" text="Modifier les informations" />
+
+                        <!-- Séparateur -->
+                        <Separator style="-fx-padding: 15;" />
+
+                        <!-- Section véhicule -->
+                        <VBox fx:id="vehicleSection" spacing="15">
+                            <Button fx:id="addVehicleButton" onAction="#onAddVehicleButtonClick" style="-fx-background-color: #0d47a1; -fx-text-fill: white; -fx-font-weight: bold;" text="Ajouter un véhicule" visible="true" />
+
+                            <!-- StackPane contenant les deux panneaux -->
+                            <StackPane>
+
+                                <!-- Formulaire ajout véhicule -->
+                                <VBox fx:id="addVehiclePanel" spacing="8" style="-fx-background-color: rgba(255, 255, 255, 0.8); -fx-background-radius: 10; -fx-padding: 20;" visible="false">
+                                    <Text style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-fill: #0d47a1;" text="Ajouter un véhicule" />
+
+                                    <Label style="-fx-text-fill: #0d47a1;" text="Marque:" />
+                                    <TextField fx:id="marqueField" />
+
+                                    <Label style="-fx-text-fill: #0d47a1;" text="Modèle:" />
+                                    <TextField fx:id="modeleField" />
+
+                                    <Label style="-fx-text-fill: #0d47a1;" text="Couleur:" />
+                                    <TextField fx:id="couleurField" />
+
+                                    <Label style="-fx-text-fill: #0d47a1;" text="Matricule:" />
+                                    <TextField fx:id="matriculeField" />
+
+                                    <Label id="nbrePlacesSpinner" style="-fx-text-fill: #0d47a1;" text="Nombre de places:" />
+                                    <Spinner fx:id="placesSpinner" />
+
+                                    <Button fx:id="submitVehicleButton" onAction="#onSubmitVehicleButtonClick" style="-fx-background-color: #0d47a1; -fx-text-fill: white;" text="Ajouter le véhicule" />
+                                </VBox>
+
+                                <!-- Infos véhicule existant -->
+                                <VBox fx:id="vehicleInfoPanel" spacing="8" style="-fx-background-color: rgba(255,255,255,0.8); -fx-background-radius: 10; -fx-padding: 20;" visible="false">
+                                    <Text style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-fill: #0d47a1;" text="Votre véhicule" />
+
+                                    <Label style="-fx-text-fill: #0d47a1;" text="Marque:" />
+                                    <Label fx:id="marqueLabel" />
+                                    <TextField fx:id="marqueFieldd" visible="false" />
+
+                                    <Label style="-fx-text-fill: #0d47a1;" text="Modèle:" />
+                                    <Label fx:id="modeleLabel" />
+                                    <TextField fx:id="modeleFieldd" visible="false" />
+
+                                    <Label style="-fx-text-fill: #0d47a1;" text="Couleur:" />
+                                    <Label fx:id="couleurLabel" />
+                                    <TextField fx:id="couleurFieldd" visible="false" />
+
+                                    <Label style="-fx-text-fill: #0d47a1;" text="Matricule:" />
+                                    <Label fx:id="matriculeLabel" />
+                                    <TextField fx:id="matriculeFieldd" visible="false" />
+
+                                    <Label style="-fx-text-fill: #0d47a1;" text="Nombre de places:" />
+                                    <Label fx:id="placesLabel" />
+                                    <Spinner fx:id="placesSpinnerr" visible="false" />
+
+                                    <Button fx:id="modifyVehicleButton" onAction="#handleModifyVehicle" style="-fx-background-color: #0d47a1; -fx-text-fill: white; -fx-font-weight: bold;" text="Modifier" />
+
+                                    <Button fx:id="saveVehicleButton" onAction="#handleSaveVehicle" style="-fx-background-color: #0d47a1; -fx-text-fill: white; -fx-font-weight: bold;" text="Enregistrer" visible="false" />
+
+                                    <Button fx:id="deleteVehicleButton" onAction="#handleDeleteVehicle" style="-fx-background-color: #0d47a1; -fx-text-fill: white; -fx-font-weight: bold;" text="Supprimer" />
+
+                                </VBox>
+
+                            </StackPane>
+                        </VBox>
+                    </VBox>
+                </StackPane>
+            </content>
+        </ScrollPane>
+    </center>
+</BorderPane>
