@@ -9,12 +9,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import services.resannoservice;
 
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class ajouterreservationcontrolleur {
 
@@ -23,6 +25,9 @@ public class ajouterreservationcontrolleur {
 
     @FXML
     private DatePicker datefinr;
+
+    @FXML
+    private Label prixresa;
 
     private Anonce anonce;
     Utilisateur currentuser = UserSession.getCurrentUser();
@@ -101,6 +106,9 @@ public class ajouterreservationcontrolleur {
         }
 
     }
+
+
+
 
 }
 

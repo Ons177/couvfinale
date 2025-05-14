@@ -1,56 +1,114 @@
-/* Carte HBox */
+/* HBox styling for reservation card */
 .card-hbox {
-    -fx-background-color: #ffffff;
-    -fx-padding: 15px;
-    -fx-spacing: 20px;
-    -fx-border-radius: 10px;
-    -fx-background-radius: 10px;
-    -fx-border-color: #000000; /* Ajouter une bordure noire */
-    -fx-border-width: 2; /* Ajuster l'épaisseur de la bordure si nécessaire */
-    -fx-border-insets: 0; /* Assurer qu'il n'y a pas de décalage */
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 10, 0, 0, 4);
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #60A5FA; /* Bright blue border */
+    -fx-border-width: 1px;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-padding: 10px;
+    -fx-spacing: 10px; /* Balanced spacing */
+    -fx-pref-width: 1600px; /* Enlarged to maximize space */
+    -fx-max-width: 1600px; /* Prevent overflow */
+    -fx-alignment: CENTER_LEFT; /* Align content left */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 1);
 }
 
+/* Label styling for reservation info */
 .label-info {
-    -fx-font-size: 13px;
-    -fx-text-fill: #555555;
+    -fx-font-family: "Lora"; /* Artistic serif font */
+    -fx-font-size: 14px;
+    -fx-text-fill: #1E40AF; /* Sapphire blue */
+    -fx-font-weight: 400;
+    -fx-padding: 6px;
+    -fx-pref-width: 200px; /* Increased width */
+    -fx-max-width: 220px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-wrap-text: true; /* Enable text wrapping */
+    -fx-translate-x: 0; /* Override any FXML translateX */
 }
 
-/* Bouton Modifier (Bleu) */
+/* Specific label adjustments */
+#titresitem {
+    -fx-pref-width: 250px; /* Wider for titles */
+    -fx-max-width: 270px;
+}
+
+#dritemres, #ddresitem, #dfresitem, #stresitem {
+    -fx-pref-width: 200px; /* Increased for dates/status */
+    -fx-max-width: 220px;
+}
+
+/* Button styling for Modifier */
 .button-modifier {
-    -fx-background-color: #007acc;
-    -fx-text-fill: white;
-    -fx-background-radius: 5px;
-    -fx-padding: 6px 12px;
+    -fx-background-color: #1E40AF; /* Sapphire blue */
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: "Playfair Display";
     -fx-font-size: 13px;
+    -fx-font-weight: 600;
+    -fx-background-radius: 5px;
+    -fx-padding: 10px 16px; /* Larger padding */
     -fx-cursor: hand;
-}
-.button-modifier:hover {
-    -fx-background-color: #005fa3;
+    -fx-border-color: #60A5FA;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-translate-x: 0; /* Override FXML translateX */
+    -fx-pref-width: 120px; /* Enlarged */
 }
 
-/* Bouton Supprimer (Rouge) */
+/* Button styling for Annuler */
 .button-supprimer {
-    -fx-background-color: #cc0000;
-    -fx-text-fill: white;
-    -fx-background-radius: 5px;
-    -fx-padding: 6px 12px;
+    -fx-background-color: #DC2626; /* Red for cancel */
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: "Playfair Display";
     -fx-font-size: 13px;
+    -fx-font-weight: 600;
+    -fx-background-radius: 5px;
+    -fx-padding: 10px 16px;
     -fx-cursor: hand;
-}
-.button-supprimer:hover {
-    -fx-background-color: #990000;
+    -fx-border-color: #F87171;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-translate-x: 0;
+    -fx-pref-width: 120px;
 }
 
-/* Bouton Voir Détails (Transparent, souligné) */
+/* Button styling for Voir details */
 .button-details {
-    -fx-background-color: transparent;
-    -fx-text-fill: #007acc;
-    -fx-underline: true;
+    -fx-background-color: #FFFFFF; /* White background */
+    -fx-text-fill: #1E40AF; /* Sapphire blue text */
+    -fx-font-family: "Playfair Display";
     -fx-font-size: 13px;
+    -fx-font-weight: 600;
+    -fx-background-radius: 5px;
+    -fx-padding: 10px 16px;
     -fx-cursor: hand;
-    -fx-padding: 6px 12px;
+    -fx-border-color: #60A5FA;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-translate-x: 0;
+    -fx-pref-width: 120px;
 }
+
+.button-modifier:hover {
+    -fx-background-color: #3B82F6; /* Lighter blue */
+}
+
+.button-supprimer:hover {
+    -fx-background-color: #F87171; /* Lighter red */
+}
+
 .button-details:hover {
-    -fx-text-fill: #005fa3;
+    -fx-background-color: #E6EDFF; /* Light blue */
+}
+
+.button-modifier:pressed {
+    -fx-background-color: #1D4ED8; /* Darker blue */
+}
+
+.button-supprimer:pressed {
+    -fx-background-color: #B91C1C; /* Darker red */
+}
+
+.button-details:pressed {
+    -fx-background-color: #BFDBFE; /* Slightly darker blue */
 }

@@ -1,84 +1,111 @@
-/* Style général de la fenêtre */
-.root {
-    -fx-background-color: #f4f6f8;
-    -fx-padding: 40px;
-    -fx-font-family: "Segoe UI", sans-serif;
+/* Root styles for the AnchorPane */
+AnchorPane {
+    -fx-background-color: #F5F7FA; /* Light gray-blue background for elegance */
 }
 
-/* Titre principal */
-.label-title {
-    -fx-font-size: 20px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #c1e2ff;
-    -fx-padding: 0 0 20px 0;
-}
+/* Title banner styling */
 .title-banner {
-    -fx-background-color: linear-gradient(to right, #6992ac, #95b5d6); /* Bleu moyen et lumineux */
-    -fx-padding: 30px;
-    -fx-alignment: center;
-    -fx-background-radius: 20px; /* Arrondit les coins */
-
-}
-
-/* Labels des champs */
-.label {
-    -fx-font-size: 14px;
-    -fx-text-fill: #2d4051;
-    -fx-padding: 10px 0 5px 0;
+    -fx-font-family: "Arial";
+    -fx-font-size: 28px;
     -fx-font-weight: bold;
-
+    -fx-text-fill: #1E3A8A; /* Dark blue for title */
+    -fx-alignment: center;
+    -fx-padding: 10px;
+    -fx-background-color: transparent;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2);
 }
 
-/* Champs de date */
+/* Label title styling */
+.label-title {
+    -fx-font-size: 24px;
+    -fx-text-fill: #1E3A8A; /* Consistent dark blue */
+}
+
+/* VBox container styling */
+.vboxcotainer {
+    -fx-background-color: #FFFFFF; /* White background for the form area */
+    -fx-border-color: #CBD5E1; /* Light blue-gray border */
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 20px;
+    -fx-spacing: 15px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 8, 0, 0, 3);
+}
+
+/* Label styling for form fields */
+Label {
+    -fx-font-family: "Arial";
+    -fx-font-size: 16px;
+    -fx-text-fill: #2D4B73; /* Slightly lighter dark blue for labels */
+    -fx-font-weight: bold;
+}
+
+/* DatePicker styling */
 .date-picker {
-    -fx-pref-width: 250px;
-    -fx-padding: 5px;
+    -fx-pref-height: 36px;
+    -fx-pref-width: 289px;
+    -fx-background-color: #F1F5F9; /* Light blue-gray input background */
+    -fx-border-color: #CBD5E1;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
     -fx-background-radius: 5px;
-    -fx-border-color: #bdc3c7;
+    -fx-font-size: 14px;
+    -fx-text-fill: #1E3A8A;
+}
+
+.date-picker .text-field {
+    -fx-background-color: #F1F5F9;
+    -fx-text-fill: #1E3A8A;
+    -fx-font-family: "Arial";
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: #1E3A8A; /* Dark blue arrow button */
+    -fx-background-radius: 5px;
+}
+
+.date-picker .arrow {
+    -fx-background-color: #FFFFFF; /* White arrow */
+}
+
+/* Price label styling */
+#prixresa {
+    -fx-font-size: 18px;
+    -fx-text-fill: #1E3A8A;
+    -fx-font-weight: bold;
+    -fx-background-color: #E2E8F0; /* Light blue-gray background */
+    -fx-padding: 10px;
     -fx-border-radius: 5px;
 }
 
-/* Bouton principal */
-.button {
-    -fx-background-color: #3498db;
-    -fx-text-fill: white;
+/* Button styling */
+Button {
+    -fx-background-color: #1E3A8A; /* Dark blue button */
+    -fx-text-fill: #FFFFFF; /* White text */
+    -fx-font-family: "Arial";
+    -fx-font-size: 14px;
     -fx-font-weight: bold;
     -fx-background-radius: 8px;
     -fx-padding: 10px 20px;
     -fx-cursor: hand;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 4, 0.2, 0, 2);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2);
 }
 
-/* Bouton de retour */
-.button-return {
-    -fx-background-color: #ecf0f1;
-    -fx-text-fill: #2c3e50;
-    -fx-font-weight: normal;
-    -fx-background-radius: 8px;
-    -fx-padding: 10px 20px;
-    -fx-cursor: hand;
+Button:hover {
+    -fx-background-color: #3B82F6; /* Lighter blue on hover */
 }
 
-/* Bouton hover */
-.button:hover {
-    -fx-background-color: #2980b9;
+Button:pressed {
+    -fx-background-color: #1D4ED8; /* Slightly darker blue when pressed */
 }
 
-.button-return:hover {
-    -fx-background-color: #d0d7de;
+/* ImageView styling */
+ImageView {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);
 }
-.vboxcotainer {
-    -fx-background-color: #638ba3;
-    -fx-background-radius: 15px;
-    -fx-padding: 10px;
-}
-.text-field, .text-area, .date-picker, .spinner {
-    -fx-background-color: #ffffff;
-    -fx-border-color: #dfe6e9;
-    -fx-border-radius: 10;
-    -fx-background-radius: 10;
-    -fx-padding: 12px;
-    -fx-font-size: 16px;
-    -fx-pref-width: 350;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 8, 0, 0, 5);
+
+/* Specific styling for buttons with ImageViews to align properly */
+Button#retouraccra, Button#confirmerres {
+    -fx-graphic-text-gap: 10px; /* Space between text and icon */
 }

@@ -31,11 +31,11 @@ public class ResanonceItemController {
     private Resanonce reservation;
     public void setData(Resanonce reservation) {
         this.reservation = reservation;
-        titresitem.setText("Annonce réservée : " + reservation.getAnonce().getTitre());
-        dritemres.setText("Date réservation : " + reservation.getDateReservationa().toString());
-        ddresitem.setText("Date début : " + reservation.getDateDebuta().toString());
-        dfresitem.setText("Date fin : " + reservation.getDateFina().toString());
-        stresitem.setText("Statut : " + reservation.getStatutano());
+        titresitem.setText("Annonce réservée:" + reservation.getAnonce().getTitre());
+        dritemres.setText("Reservée le:" + reservation.getDateReservationa().toString());
+        ddresitem.setText("De:" + reservation.getDateDebuta().toString());
+        dfresitem.setText("à:" + reservation.getDateFina().toString());
+        stresitem.setText("Statut:" + reservation.getStatutano());
     }
 
     @FXML

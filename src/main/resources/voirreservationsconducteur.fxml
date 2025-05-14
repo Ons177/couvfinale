@@ -6,11 +6,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane prefHeight="889.0" prefWidth="1592.0" styleClass="bg" stylesheets="@Styles/mesrescss.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.voirreservationsconducteur">
+<AnchorPane prefHeight="889.0" prefWidth="1592.0" styleClass="bg" stylesheets="@Styles/csslesrescond.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.voirreservationsconducteur">
     <children>
         <VBox layoutY="26.0" prefHeight="800.0" prefWidth="1606.0" styleClass="viewport">
             <children>
-                <Label alignment="CENTER" prefHeight="35.0" prefWidth="887.0" text="Toutes les demandes de réservation reçues pour vos annonces de location" textAlignment="CENTER" textFill="#f6f8ff" translateX="350.0" underline="true">
+                <Label alignment="CENTER" prefHeight="59.0" prefWidth="1010.0" text="Toutes les demandes de réservation reçues pour vos annonces de location" textAlignment="CENTER" textFill="#f6f8ff" translateX="350.0" underline="true">
                     <font>
                         <Font name="System Bold" size="24.0" />
                     </font>

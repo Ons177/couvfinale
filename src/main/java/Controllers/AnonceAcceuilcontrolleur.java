@@ -97,7 +97,8 @@ public class AnonceAcceuilcontrolleur implements Initializable {
             case "Voir mes annonces":
                 afficherMesAnonces();
                 break;
-
+            case "Voir les annonces":
+                afficherMesAnonces();
         }
     }
 
@@ -207,7 +208,7 @@ public class AnonceAcceuilcontrolleur implements Initializable {
             }
             if ("passager".equals(role)) {
                 afficherAnoncesDansFlowPane(resultats, "/AnonceItem.fxml");
-            } else if ("conducteur".equals(role)) {
+            } else {
                 afficherAnoncesDansFlowPane(resultats, "/Useranonceitem.fxml");
             }
         } catch (SQLException e) {
