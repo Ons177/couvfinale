@@ -1,4 +1,4 @@
-package Controllers;
+package controllers;
 
 import entities.Reservation;
 import entities.Trajet;
@@ -71,6 +71,19 @@ public class AjouterReservationController {
         // Fetch user and populate fields
         populateUserFields();
     }
+
+    /*private void populateUserFields() {
+        Utilisateur user = UserSession.getCurrentUser();
+        if (user != null) {
+            nomField.setText(user.getNom() != null ? user.getNom() : "");
+            prenomField.setText(user.getPrenom() != null ? user.getPrenom() : "");
+            emailField.setText(user.getEmail() != null ? user.getEmail() : "");
+            telephoneField.setText(user.getTelephone() != null ? user.getTelephone() : "");
+        } else {
+            System.err.println("Aucun utilisateur connecté.");
+            showError("Utilisateur non connecté. Veuillez remplir les champs manuellement.");
+        }
+    }*/
 
     private void populateUserFields() {
         Utilisateur user = serviceReservation.getUserById(userId);
@@ -151,6 +164,9 @@ public class AjouterReservationController {
 
         // Create reservation
         Reservation reservation = new Reservation(nom, prenom, email, telephone, nombrePlaces, trajet, userId, prixTotal);
+        /*int currentUserId = UserSession.getCurrentUser() != null ? UserSession.getCurrentUser().getId() : -1;
+Reservation reservation = new Reservation(nom, prenom, email, telephone, nombrePlaces, trajet, currentUserId, prixTotal);
+*/
         try {
             // Add reservation
             serviceReservation.ajouter(reservation);

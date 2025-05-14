@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="765.0" prefWidth="1021.0" styleClass="bg" stylesheets="@accueilcsstra.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.accueiltrajetcontrolleur">
+<AnchorPane prefHeight="765.0" prefWidth="1021.0" styleClass="bg" stylesheets="@accueilcsstra.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.accueiltrajetcontrolleur">
    <children>
       <VBox layoutX="0.0" layoutY="150.0" prefHeight="615.0" prefWidth="1021.0" styleClass="viewport">
          <children>

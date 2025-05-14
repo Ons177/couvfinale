@@ -1,4 +1,4 @@
-package Controllers;
+package controllers;
 
 import entities.Trajet;
 import javafx.fxml.FXML;

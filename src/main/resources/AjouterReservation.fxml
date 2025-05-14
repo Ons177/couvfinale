@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" spacing="20" styleClass="reservation-container" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AjouterReservationController">
+<VBox alignment="CENTER" spacing="20" styleClass="reservation-container" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AjouterReservationController">
     <Label styleClass="title-label" text="Ajouter une Réservation" />
     <Label fx:id="trajetLabel" styleClass="trajet-label" />
     <Label fx:id="errorLabel" styleClass="error-label" visible="false" />

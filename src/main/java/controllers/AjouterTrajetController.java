@@ -1,4 +1,4 @@
-package Controllers;
+package controllers;
 
 import entities.Trajet;
 import javafx.collections.FXCollections;
@@ -20,7 +20,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.List;
 
-public class ModifierTrajetController {
+public class AjouterTrajetController {
 
     @FXML
     private TextField depart_id;
@@ -53,9 +53,13 @@ public class ModifierTrajetController {
 
     private ServiceTrajet serviceTrajet = new ServiceTrajet();
     private Trajet trajetToModify;
+    private boolean isModificationMode = false;
 
     public void setTrajetData(Trajet trajet) {
         this.trajetToModify = trajet;
+        this.isModificationMode = true;
+
+        // Pre-fill fields with trajet data
         if (trajet != null) {
             depart_id.setText(trajet.getVilleDepart());
             destination_id.setText(trajet.getVilleArrivee());
@@ -73,12 +77,12 @@ public class ModifierTrajetController {
     @FXML
     private void initialize() {
         bagage_id.setItems(FXCollections.observableArrayList("Autorisé", "Non autorisé"));
-        System.out.println("ModifierTrajetController initialized");
+        System.out.println("AjouterTrajetController initialized");
     }
 
     @FXML
-    private void modifierTrajet(ActionEvent event) {
-        System.out.println("Attempting to update trajet...");
+    private void ajoutertrajet(ActionEvent event) {
+        System.out.println("Attempting to " + (isModificationMode ? "update" : "save") + " trajet...");
 
         // Reset error states
         clearErrorStyles();
@@ -126,7 +130,7 @@ public class ModifierTrajetController {
 
         // Validate date_depart
         if (dateDepart == null) {
-            dateErrorLabel.setText("La date de départ est requise.");
+            dateErrorLabel.setText("La date de départ est requritus.");
             dateErrorLabel.setVisible(true);
             dateErrorLabel.setManaged(true);
             date_id.getStyleClass().add("error");
@@ -208,58 +212,82 @@ public class ModifierTrajetController {
 
         // Stop if validation failed
         if (hasError) {
-            System.out.println("Trajet update aborted due to validation errors");
+            System.out.println("Trajet " + (isModificationMode ? "update" : "save") + " aborted due to validation errors");
             return;
         }
 
-        // Update the trajet
         try {
-            if (trajetToModify == null) {
-                bagageErrorLabel.setText("Erreur: Aucun trajet sélectionné pour modification.");
-                bagageErrorLabel.setVisible(true);
-                bagageErrorLabel.setManaged(true);
-                System.out.println("Error: trajetToModify is null");
-                return;
-            }
+            if (isModificationMode && trajetToModify != null) {
+                // Update existing trajet
+                trajetToModify.setPrix(prix);
+                trajetToModify.setDateDepart(dateDepart);
+                trajetToModify.setHeureDepart(heureDepart);
+                trajetToModify.setVilleDepart(villeDepart);
+                trajetToModify.setVilleArrivee(villeArrivee);
+                trajetToModify.setNbrPlaces(nbrPlaces);
+                trajetToModify.setBagage(bagage);
 
-            trajetToModify.setVilleDepart(villeDepart);
-            trajetToModify.setVilleArrivee(villeArrivee);
-            trajetToModify.setDateDepart(dateDepart);
-            trajetToModify.setHeureDepart(heureDepart);
-            trajetToModify.setPrix(prix);
-            trajetToModify.setNbrPlaces(nbrPlaces);
-            trajetToModify.setBagage(bagage);
+                System.out.println("Updating trajet: " + trajetToModify);
+                serviceTrajet.modifier(trajetToModify);
 
-            System.out.println("Updating trajet: " + trajetToModify);
-            serviceTrajet.modifier(trajetToModify);
+                // Verify update
+                List<Trajet> trajets = serviceTrajet.recuperer();
+                LocalTime finalHeureDepart = heureDepart;
+                float finalPrix = prix;
+                int finalNbrPlaces = nbrPlaces;
+                boolean updated = trajets.stream().anyMatch(t ->
+                        t.getIdTrajet() == trajetToModify.getIdTrajet() &&
+                                t.getVilleDepart().equals(villeDepart) &&
+                                t.getVilleArrivee().equals(villeArrivee) &&
+                                t.getDateDepart().equals(dateDepart) &&
+                                t.getHeureDepart().equals(finalHeureDepart) &&
+                                t.getPrix() == finalPrix &&
+                                t.getNbrPlaces() == finalNbrPlaces &&
+                                t.getBagage().equals(bagage));
 
-            // Verify update
-            List<Trajet> trajets = serviceTrajet.recuperer();
-            int finalNbrPlaces = nbrPlaces;
-            LocalTime finalHeureDepart = heureDepart;
-            float finalPrix = prix;
-            boolean updated = trajets.stream().anyMatch(t ->
-                    t.getIdTrajet() == trajetToModify.getIdTrajet() &&
-                            t.getVilleDepart().equals(villeDepart) &&
-                            t.getVilleArrivee().equals(villeArrivee) &&
-                            t.getDateDepart().equals(dateDepart) &&
-                            t.getHeureDepart().equals(finalHeureDepart) &&
-                            t.getPrix() == finalPrix &&
-                            t.getNbrPlaces() == finalNbrPlaces &&
-                            t.getBagage().equals(bagage));
-
-            if (updated) {
-                showAlert(Alert.AlertType.INFORMATION, "Succès", "Trajet mis à jour avec succès !");
-                Stage stage = (Stage) depart_id.getScene().getWindow();
-                stage.close();
+                if (updated) {
+                    showAlert(Alert.AlertType.INFORMATION, "Succès", "Trajet mis à jour avec succès !");
+                    Stage stage = (Stage) depart_id.getScene().getWindow();
+                    stage.close();
+                } else {
+                    bagageErrorLabel.setText("Erreur: Le trajet n'a pas été mis à jour.");
+                    bagageErrorLabel.setVisible(true);
+                    bagageErrorLabel.setManaged(true);
+                    System.out.println("Trajet not found in database after update attempt");
+                }
             } else {
-                bagageErrorLabel.setText("Erreur: Le trajet n'a pas été mis à jour.");
-                bagageErrorLabel.setVisible(true);
-                bagageErrorLabel.setManaged(true);
-                System.out.println("Trajet not found in database after update attempt");
+                // Create new trajet
+                Trajet trajet = new Trajet(prix, dateDepart, heureDepart, villeDepart, villeArrivee, nbrPlaces, bagage);
+                System.out.println("Saving trajet: " + trajet);
+                serviceTrajet.ajouter(trajet);
+
+                // Verify save
+                List<Trajet> trajets = serviceTrajet.recuperer();
+                LocalTime finalHeureDepart1 = heureDepart;
+                float finalPrix1 = prix;
+                int finalNbrPlaces1 = nbrPlaces;
+                boolean saved = trajets.stream().anyMatch(t ->
+                        t.getVilleDepart().equals(villeDepart) &&
+                                t.getVilleArrivee().equals(villeArrivee) &&
+                                t.getDateDepart().equals(dateDepart) &&
+                                t.getHeureDepart().equals(finalHeureDepart1) &&
+                                t.getPrix() == finalPrix1 &&
+                                t.getNbrPlaces() == finalNbrPlaces1 &&
+                                t.getBagage().equals(bagage));
+
+                if (saved) {
+                    showAlert(Alert.AlertType.INFORMATION, "Succès", "Trajet ajouté avec succès !");
+                    Stage stage = (Stage) depart_id.getScene().getWindow();
+                    stage.close();
+                } else {
+                    bagageErrorLabel.setText("Erreur: Le trajet n'a pas été enregistré.");
+                    bagageErrorLabel.setVisible(true);
+                    bagageErrorLabel.setManaged(true);
+                    System.out.println("Trajet not found in database after save attempt");
+                }
             }
         } catch (SQLException e) {
-            bagageErrorLabel.setText("Erreur lors de la mise à jour: " + e.getMessage());
+            bagageErrorLabel.setText("Erreur lors de l'enregistrement: " + e.getMessage());
             bagageErrorLabel.setVisible(true);
             bagageErrorLabel.setManaged(true);
             System.out.println("SQLException: " + e.getMessage());
@@ -274,20 +302,21 @@ public class ModifierTrajetController {
     }
 
     @FXML
-    private void annulerModification(ActionEvent event) {
+    private void annulertrajet(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AfficherTrajet.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/accueiltrajets.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setTitle("Liste des trajets");
             stage.show();
         } catch (IOException e) {
-            System.out.println("Error returning to home: " + e.getMessage());
-            showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible de modifier: " + e.getMessage());
+            System.out.println("Error returning to trajet list: " + e.getMessage());
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible de retourner à la liste des trajets: " + e.getMessage());
         }
     }
 
-    /*@FXML
+
+    @FXML
     private void retourAccueil(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/accueiltrajets.fxml"));
@@ -299,7 +328,7 @@ public class ModifierTrajetController {
             System.out.println("Error returning to home: " + e.getMessage());
             showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible de retourner à l'accueil: " + e.getMessage());
         }
-    }*/
+    }
 
     private void clearErrorStyles() {
         depart_id.getStyleClass().remove("error");

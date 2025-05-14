@@ -10,6 +10,7 @@ public class Reservation {
     private String telephone;
     private int nombrePlaces;
     private Trajet trajet;
+    /*private Utilisateur utilisateur;*/
     private int id_utilisateur;
     private float prixTotal;
 
