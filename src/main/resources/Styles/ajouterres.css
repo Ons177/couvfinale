@@ -1,0 +1,84 @@
+/* Style général de la fenêtre */
+.root {
+    -fx-background-color: #f4f6f8;
+    -fx-padding: 40px;
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+/* Titre principal */
+.label-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #c1e2ff;
+    -fx-padding: 0 0 20px 0;
+}
+.title-banner {
+    -fx-background-color: linear-gradient(to right, #6992ac, #95b5d6); /* Bleu moyen et lumineux */
+    -fx-padding: 30px;
+    -fx-alignment: center;
+    -fx-background-radius: 20px; /* Arrondit les coins */
+
+}
+
+/* Labels des champs */
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #2d4051;
+    -fx-padding: 10px 0 5px 0;
+    -fx-font-weight: bold;
+
+}
+
+/* Champs de date */
+.date-picker {
+    -fx-pref-width: 250px;
+    -fx-padding: 5px;
+    -fx-background-radius: 5px;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 5px;
+}
+
+/* Bouton principal */
+.button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 4, 0.2, 0, 2);
+}
+
+/* Bouton de retour */
+.button-return {
+    -fx-background-color: #ecf0f1;
+    -fx-text-fill: #2c3e50;
+    -fx-font-weight: normal;
+    -fx-background-radius: 8px;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+}
+
+/* Bouton hover */
+.button:hover {
+    -fx-background-color: #2980b9;
+}
+
+.button-return:hover {
+    -fx-background-color: #d0d7de;
+}
+.vboxcotainer {
+    -fx-background-color: #638ba3;
+    -fx-background-radius: 15px;
+    -fx-padding: 10px;
+}
+.text-field, .text-area, .date-picker, .spinner {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #dfe6e9;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 12px;
+    -fx-font-size: 16px;
+    -fx-pref-width: 350;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 8, 0, 0, 5);
+}

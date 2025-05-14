@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="484.0" prefWidth="326.0" stylesheets="@Styles/itemanoncestyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Anonceitemcontrolleur">
+   <children>
+      <VBox layoutX="98.0" layoutY="36.0" prefHeight="407.0" prefWidth="48.0" styleClass="card">
+         <children>
+            <Label fx:id="titrelabel" prefHeight="42.0" prefWidth="148.0" styleClass="titreAnnonce" text="titre d'anonce" />
+            <ImageView fx:id="imageAnonce" fitHeight="100.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true" styleClass="imageView" />
+            <Label fx:id="prixlabel" prefHeight="30.0" prefWidth="98.0" styleClass="prixLabel" text="Prix par jour" />
+            <Label fx:id="datelabel" prefHeight="30.0" prefWidth="129.0" styleClass="dateLabel" text="date de disponibilité" />
+            <Label fx:id="emplacementlabel" prefHeight="30.0" prefWidth="98.0" styleClass="dateLabel" text="emplacement" />
+            <Button mnemonicParsing="false" onAction="#Consulterit" prefHeight="41.0" prefWidth="138.0" text="Consulter" />
+            <Button mnemonicParsing="false" onAction="#resererveranonce" prefHeight="41.0" prefWidth="137.0" text="Reserver Voiture" />
+         </children></VBox>
+       
+   </children>
+</AnchorPane>

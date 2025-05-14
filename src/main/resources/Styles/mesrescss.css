@@ -1,0 +1,28 @@
+.bg {
+    -fx-background-color: linear-gradient(to bottom, rgba(68, 137, 209, 0.99), #043873);
+}
+
+
+.dash__container-card {
+    -fx-spacing: 2; /* Réduire l'espace à 2px, presque imperceptible */
+    -fx-alignment: top-left; /* Align items to the top-left (start) */
+    -fx-background-color: #fff;
+    -fx-background-radius: 30px;
+    -fx-border-radius: 30px;
+}
+
+.product-card-scrollPane {
+    -fx-background-color: transparent;
+    -fx-background-radius: 30px;
+    -fx-border-radius: 30px;
+}
+
+.product-card-scrollPane > .viewport {
+    -fx-background-color: transparent;
+    -fx-background-radius: 30px;
+}
+
+.product-card-scrollPane > .scroll-bar:vertical,
+.product-card-scrollPane > .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}

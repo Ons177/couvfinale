@@ -1,0 +1,92 @@
+.root {
+    -fx-background-color: #f4f4f9;  /* Couleur de fond douce */
+    -fx-padding: 20px;
+}
+
+/* Style pour les labels */
+.label {
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial";
+    -fx-text-fill: #333;
+    -fx-padding: 5px;
+}
+
+/* Style spécifique pour le titre d'annonce */
+.titreAnnonce {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4CAF50; /* Couleur verte pour le titre */
+    -fx-padding: 10px;
+}
+
+/* Style pour les images */
+.imageView {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    -fx-border-radius: 8px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 5, 0, 0, 2);
+}
+
+.button {
+    -fx-font-size: 12px;  /* Taille réduite des boutons */
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+    -fx-padding: 8px 12px;  /* Réduction du padding */
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, #000000, 8, 0, 2, 2);
+}
+
+/* Bouton Supprimer (rouge) */
+.button-supprimer {
+    -fx-background-color: #F44336; /* Rouge */
+    -fx-text-fill: white;
+}
+
+/* Bouton Supprimer (au survol) */
+.button-supprimer:hover {
+    -fx-background-color: #D32F2F; /* Rouge plus foncé */
+}
+
+/* Bouton Modifier (orange) */
+.button-modifier {
+    -fx-background-color: #FF9800; /* Orange */
+    -fx-text-fill: white;
+}
+
+/* Bouton Modifier (au survol) */
+.button-modifier:hover {
+    -fx-background-color: #F57C00; /* Orange plus foncé */
+}
+
+/* Bouton Consulter (gris) */
+.button-consulter {
+    -fx-background-color: #9E9E9E; /* Gris */
+    -fx-text-fill: white;
+}
+
+/* Bouton Consulter (au survol) */
+.button-consulter:hover {
+    -fx-background-color: #757575; /* Gris plus foncé */
+}
+
+
+/* Style pour les labels de prix et date */
+.prixLabel, .dateLabel {
+    -fx-font-size: 16px;
+    -fx-text-fill: #555;
+}
+
+.card {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 8, 0.1, 0, 2);
+    -fx-padding: 15;
+    -fx-spacing: 10;
+    -fx-alignment: top-center;
+    -fx-pref-width: 280;
+    -fx-pref-height: 200;
+    -fx-cursor: hand;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 10;
+}

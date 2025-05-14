@@ -1,0 +1,56 @@
+/* Carte HBox */
+.card-hbox {
+    -fx-background-color: #ffffff;
+    -fx-padding: 15px;
+    -fx-spacing: 20px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-border-color: #000000; /* Ajouter une bordure noire */
+    -fx-border-width: 2; /* Ajuster l'épaisseur de la bordure si nécessaire */
+    -fx-border-insets: 0; /* Assurer qu'il n'y a pas de décalage */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 10, 0, 0, 4);
+}
+
+.label-info {
+    -fx-font-size: 13px;
+    -fx-text-fill: #555555;
+}
+
+/* Bouton Modifier (Bleu) */
+.button-modifier {
+    -fx-background-color: #007acc;
+    -fx-text-fill: white;
+    -fx-background-radius: 5px;
+    -fx-padding: 6px 12px;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+}
+.button-modifier:hover {
+    -fx-background-color: #005fa3;
+}
+
+/* Bouton Supprimer (Rouge) */
+.button-supprimer {
+    -fx-background-color: #cc0000;
+    -fx-text-fill: white;
+    -fx-background-radius: 5px;
+    -fx-padding: 6px 12px;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+}
+.button-supprimer:hover {
+    -fx-background-color: #990000;
+}
+
+/* Bouton Voir Détails (Transparent, souligné) */
+.button-details {
+    -fx-background-color: transparent;
+    -fx-text-fill: #007acc;
+    -fx-underline: true;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+    -fx-padding: 6px 12px;
+}
+.button-details:hover {
+    -fx-text-fill: #005fa3;
+}

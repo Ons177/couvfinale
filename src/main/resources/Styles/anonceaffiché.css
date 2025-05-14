@@ -1,0 +1,59 @@
+.details-page {
+    -fx-background-color: #F5F9FF; /* Very light blue background */
+    -fx-padding: 20;
+}
+
+.vboxcotainer {
+    -fx-background-color: #E3F2FD; /* Light blue card background */
+    -fx-border-color: #BBDEFB; /* Light blue border */
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 15;
+    -fx-spacing: 10;
+}
+
+.detail-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #01579B; /* Dark blue text */
+    -fx-padding: 5;
+}
+
+.annonce-image {
+    -fx-border-color: #BBDEFB; /* Light blue border */
+    -fx-border-width: 2;
+    -fx-border-radius: 8;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0, 0, 2);
+}
+
+.page-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #054F99; /* Dark blue, matching FXML */
+    -fx-alignment: center;
+    -fx-padding: 10;
+    -fx-background-color: #E3F2FD; /* Light blue background */
+    -fx-background-radius: 6;
+}
+
+Button {
+    -fx-background-color: #0288D1; /* Medium blue */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 6;
+    -fx-padding: 10;
+    -fx-cursor: hand;
+}
+
+Button:hover {
+    -fx-background-color: #0277BD; /* Slightly darker blue */
+}
+
+Label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #054F99; /* Dark blue for general labels */
+}
+
+ImageView {
+    -fx-border-radius: 8;
+}
