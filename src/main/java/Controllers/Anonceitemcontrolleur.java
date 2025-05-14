@@ -8,10 +8,15 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 
 import java.io.IOException;
+import java.util.List;
 
 public class Anonceitemcontrolleur {
+
+    @FXML
+    private HBox taguser;
 
     @FXML
     private Label datelabel;
@@ -52,10 +57,23 @@ public class Anonceitemcontrolleur {
                 System.out.println("Erreur chargement image : " + e.getMessage());
             }
         }
+        setData(anonce);
+
     }
 
 
+    public void setData(Anonce a) {
+        // ... autres données (titre, image, etc.)
 
+        List<String> tags = anonce.genererTags(a);
+
+        taguser.getChildren().clear();
+        for (String tag : tags) {
+            Label tagLabel = new Label(tag);
+            tagLabel.getStyleClass().add("tag-label");
+            taguser.getChildren().add(tagLabel);
+        }
+    }
 
 
  @FXML

@@ -10,10 +10,12 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
 import services.anonceservice;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 public class useranonceitemcontrolleur {
 
@@ -33,6 +35,22 @@ public class useranonceitemcontrolleur {
 
     @FXML
     private Label titreanonceuserid;
+    @FXML
+    private HBox tagsHBox;
+
+    public void setData(Anonce a) {
+        // ... autres données (titre, image, etc.)
+
+        List<String> tags = anonce.genererTags(a);
+
+        tagsHBox.getChildren().clear();
+        for (String tag : tags) {
+            Label tagLabel = new Label(tag);
+            tagLabel.getStyleClass().add("tag-label");
+            tagsHBox.getChildren().add(tagLabel);
+        }
+    }
+
 
     public void setAnonce(Anonce anonce) {
         this.anonce = anonce;
@@ -44,6 +62,7 @@ public class useranonceitemcontrolleur {
         if (anonce.getPhotoVehicule() != null && !anonce.getPhotoVehicule().isEmpty()) {
             imageanonceuserid.setImage(new Image(anonce.getPhotoVehicule(), true));
         }
+        setData(anonce);
     }
 
 

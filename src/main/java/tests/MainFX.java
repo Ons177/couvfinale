@@ -22,7 +22,7 @@ public class MainFX extends Application {
         // Charger l'utilisateur et le mettre dans la session
         UserService userService = new UserService();
         System.out.println("Tentative de chargement de l'utilisateur avec l'ID 52...");
-        Utilisateur utilisateur = userService.getUserById(55);
+        Utilisateur utilisateur = userService.getUserById(53);
 
         if (utilisateur != null) {
             System.out.println("Utilisateur trouvé : " + utilisateur);

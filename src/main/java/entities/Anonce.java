@@ -1,5 +1,9 @@
 package entities;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Anonce {
         private int idAnonce;
@@ -45,8 +49,32 @@ public class Anonce {
             this.longitude = longitude;
 
         }
+    public List<String> genererTags(Anonce a) {
+        List<String> tags = new ArrayList<>();
+        String texte = (a.getTitre() + " " + a.getDescription()).toLowerCase();
 
-        // Getters et Setters
+        Map<String, List<String>> motsClesParTag = new LinkedHashMap<>();
+        motsClesParTag.put("Familiale", List.of("familial", "familiale", "7 places", "grande famille"));
+        motsClesParTag.put("4x4", List.of("4x4", "suv", "tout terrain"));
+        motsClesParTag.put("Économique", List.of("économique", "essence", "faible consommation"));
+        motsClesParTag.put("Luxe", List.of("luxe", "premium", "haut de gamme", "confort"));
+
+        for (Map.Entry<String, List<String>> entry : motsClesParTag.entrySet()) {
+            String tag = entry.getKey();
+            for (String motCle : entry.getValue()) {
+                if (texte.contains(motCle)) {
+                    tags.add(tag);
+                    break; // évite les doublons si plusieurs mots-clés sont présents
+                }
+            }
+        }
+
+        return tags;
+    }
+
+
+
+    // Getters et Setters
         public int getIdAnonce() {
             return idAnonce;
         }
