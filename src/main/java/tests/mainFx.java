@@ -1,7 +1,7 @@
 package tests;
 
 import services.UserService;
-import Controllers.UserSession;
+import controllers.UserSession;
 import entities.Utilisateur;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

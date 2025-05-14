@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainContainer" prefHeight="622.0" prefWidth="1084.0" stylesheets="/css/Css.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AddPosts">
+<AnchorPane fx:id="mainContainer" prefHeight="622.0" prefWidth="1084.0" stylesheets="/css/Css.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddPosts">
     <children>
         <VBox  fx:id="rootContainer" prefHeight="622.0" prefWidth="1084.0" style="-fx-padding: 10;" styleClass="dash__container-card">
             <children>

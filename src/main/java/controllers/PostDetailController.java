@@ -1,4 +1,4 @@
-package Controllers;
+package controllers;
 import services.FrenchProfanityAPI;
 import services.UserService;
 import services.ServiceCommentaire;

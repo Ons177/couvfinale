@@ -1,4 +1,4 @@
-package Controllers;
+package controllers;
 
 import services.ServicePost;
 import entities.Post;

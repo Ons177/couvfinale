@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fx:id="scrollPane" fitToWidth="true" hbarPolicy="NEVER" prefHeight="653.0" prefWidth="1046.0" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;" styleClass="title-container" translateX="15.0" translateY="9.0" vbarPolicy="AS_NEEDED" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PostDetailController">
+<ScrollPane fx:id="scrollPane" fitToWidth="true" hbarPolicy="NEVER" prefHeight="653.0" prefWidth="1046.0" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;" styleClass="title-container" translateX="15.0" translateY="9.0" vbarPolicy="AS_NEEDED" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PostDetailController">
     <content>
         <VBox fx:id="rootContainer" alignment="TOP_CENTER" prefHeight="622.0" prefWidth="1084.0" style="-fx-background-color: white;  -fx-padding: 10;" styleClass="dash__container-card">
             <children>

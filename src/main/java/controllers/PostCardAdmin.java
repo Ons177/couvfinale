@@ -1,6 +1,5 @@
-package Controllers;
-
-import services.ServicePost;
+package controllers;
+import services.UserService;
 import services.ServiceCommentaire;
 import entities.Commentaire;
 import entities.Post;
@@ -8,18 +7,18 @@ import entities.Utilisateur;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -31,9 +30,9 @@ import java.io.InputStream;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Optional;
+import java.util.List;
 
-public class PostCardController {
+public class PostCardAdmin {
     @FXML
     private VBox postCard;
 
@@ -50,19 +49,7 @@ public class PostCardController {
     private Label descriptionLabel;
 
     @FXML
-    private ImageView qrCodeImage;
-
-    @FXML
-    private Button loveButton;
-
-    @FXML
     private Button commentButton;
-
-    @FXML
-    private Button editButton;
-
-    @FXML
-    private Button deleteButton;
 
     @FXML
     private VBox commentSection;
@@ -75,11 +62,16 @@ public class PostCardController {
 
     @FXML
     private VBox commentsContainer;
+
+    @FXML
+    private Button viewCommentsButton;
     private Utilisateur currentuser = UserSession.getCurrentUser();
     private Post post;
     private ServiceCommentaire serviceCommentaire = new ServiceCommentaire();
-    private ServicePost servicePost = new ServicePost();
+
+
     private final String DEFAULT_IMAGE_PATH = "/Assets/default.png";
+    private boolean commentsVisible = false;
 
     @FXML
     public void initialize() {
@@ -110,19 +102,10 @@ public class PostCardController {
         commentSection.setVisible(false);
         commentSection.setManaged(false);
 
-        // S'assurer que le container de commentaires est initialement caché
+        // S'assurer que le container de commentaires est initialement vide
         if (commentsContainer != null) {
-            commentsContainer.setVisible(false);
-            commentsContainer.setManaged(false);
+            commentsContainer.getChildren().clear();
         }
-
-        // Vérifier si l'utilisateur actuel est le propriétaire du post
-        // Si oui, afficher les boutons d'édition et de suppression, sinon les cacher
-        boolean isOwner = (post.getUser_id() == currentuser.getId_utilisateur());
-        editButton.setVisible(isOwner);
-        editButton.setManaged(isOwner);
-        deleteButton.setVisible(isOwner);
-        deleteButton.setManaged(isOwner);
     }
 
     private void loadPostImage() {
@@ -178,15 +161,6 @@ public class PostCardController {
     }
 
     @FXML
-    public void handleLoveButton() {
-        // Implémentation pour le bouton "Love"
-        // Vous pourriez ajouter un "like" à la base de données ici
-        System.out.println("Post " + post.getPost_id() + " loved by user " + currentuser.getId_utilisateur());
-        // Changement visuel du bouton pour indiquer qu'il a été cliqué
-        loveButton.setStyle("-fx-background-color: #ff6b6b;");
-    }
-
-    @FXML
     public void handleCommentButton() {
         // Afficher/masquer la section commentaire
         boolean isVisible = commentSection.isVisible();
@@ -198,143 +172,45 @@ public class PostCardController {
             commentArea.requestFocus();
             commentArea.clear(); // Effacer tout texte précédent
 
-            // Si le container de commentaires existe, le cacher
-            if (commentsContainer != null) {
-                commentsContainer.setVisible(false);
-                commentsContainer.setManaged(false);
-            }
+            // Charger les commentaires existants
+            loadComments();
         }
     }
 
-    @FXML
-    public void handleEditButton() {
+    // Charger les commentaires depuis la base de données
+    private void loadComments() {
         try {
-            // Trouver le Pane content_area dans le SideNavBar
-            Pane contentArea = findContentArea();
+            List<Commentaire> comments = serviceCommentaire.getCommentairesByPostId(post.getPost_id());
 
-            if (contentArea != null) {
-                // Charger le fichier FXML pour EditPost (utilise le même FXML que AddPosts)
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/AddPosts.fxml"));
-                Parent root = loader.load();
+            // Vider le container de commentaires
+            commentsContainer.getChildren().clear();
 
-                // Obtenir le contrôleur de AddPosts et configurer pour l'édition
-                AddPosts editController = loader.getController();
-
-                // Passer le post existant pour préremplir les champs
-                editController.setPostForEdit(post);
-
-                // Configurer pour le mode édition
-                editController.configureForEditMode();
-
-                // Définir un gestionnaire pour rediriger vers la liste après la mise à jour
-                editController.setOnPostUpdated(() -> {
-                    try {
-                        // Charger la vue ListPosts
-                        FXMLLoader listLoader = new FXMLLoader(getClass().getResource("/FXML/ListPosts.fxml"));
-                        Parent listView = listLoader.load();
-
-                        // Remplacer le contenu actuel par la liste des posts
-                        contentArea.getChildren().clear();
-                        contentArea.getChildren().add(listView);
-
-                        // Ajuster l'ancrage pour remplir tout l'espace disponible
-                        AnchorPane.setTopAnchor(listView, 0.0);
-                        AnchorPane.setRightAnchor(listView, 0.0);
-                        AnchorPane.setBottomAnchor(listView, 0.0);
-                        AnchorPane.setLeftAnchor(listView, 0.0);
-
-                        // Initialiser le contrôleur de la liste
-                        ListPosts listController = listLoader.getController();
-                        // Si nécessaire, vous pouvez appeler manuellement loadPosts pour assurer que la liste est à jour
-                        listController.initialize();
-                    } catch (IOException e) {
-                        System.err.println("Erreur lors du chargement de la liste des posts: " + e.getMessage());
-                        e.printStackTrace();
-                    }
-                });
-
-                // Effacer le contenu actuel et ajouter la vue d'édition
-                contentArea.getChildren().clear();
-                contentArea.getChildren().add(root);
-
-                // Ajuster l'ancrage pour remplir tout l'espace disponible
-                AnchorPane.setTopAnchor(root, 0.0);
-                AnchorPane.setRightAnchor(root, 0.0);
-                AnchorPane.setBottomAnchor(root, 0.0);
-                AnchorPane.setLeftAnchor(root, 0.0);
-            } else {
-                System.err.println("Impossible de trouver le content_area dans le SideNavBar");
+            // Ajouter chaque commentaire au container
+            for (Commentaire comment : comments) {
+                displayComment(comment);
             }
-        } catch (IOException e) {
-            System.err.println("Erreur lors de l'ouverture de la vue d'édition: " + e.getMessage());
+
+            // Définir la visibilité des commentaires selon l'état actuel
+            commentsContainer.setVisible(commentsVisible);
+            commentsContainer.setManaged(commentsVisible);
+
+        } catch (SQLException e) {
+            System.err.println("Erreur lors du chargement des commentaires: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
     @FXML
-    public void handleDeleteButton() {
-        // Demander confirmation avant suppression
-        Alert confirmDialog = new Alert(Alert.AlertType.CONFIRMATION);
-        confirmDialog.setTitle("Confirmation de suppression");
-        confirmDialog.setHeaderText("Suppression de l'article");
-        confirmDialog.setContentText("Êtes-vous sûr de vouloir supprimer cet article ?");
+    public void handleViewComments() {
+        // Inverser l'état de visibilité des commentaires
+        commentsVisible = !commentsVisible;
 
-        Optional<ButtonType> result = confirmDialog.showAndWait();
-        if (result.isPresent() && result.get() == ButtonType.OK) {
-            try {
-                // Supprimer le post de la base de données
-                // Passer l'objet post au lieu de seulement l'ID
-                servicePost.supprimer(post);
+        // Mettre à jour le texte du bouton
+        viewCommentsButton.setText(commentsVisible ? "Hide Comments" : "View All Comments");
 
-                // Afficher un message de confirmation
-                Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
-                successAlert.setTitle("Suppression réussie");
-                successAlert.setHeaderText(null);
-                successAlert.setContentText("L'article a été supprimé avec succès.");
-                successAlert.showAndWait();
-
-                // Rafraîchir la liste des posts
-                refreshPostsList();
-
-            } catch (SQLException e) {
-                System.err.println("Erreur lors de la suppression du post: " + e.getMessage());
-                e.printStackTrace();
-
-                // Afficher un message d'erreur
-                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-                errorAlert.setTitle("Erreur");
-                errorAlert.setHeaderText(null);
-                errorAlert.setContentText("Une erreur s'est produite lors de la suppression de l'article.");
-                errorAlert.showAndWait();
-            }
-        }
-    }
-    private void refreshPostsList() {
-        try {
-            // Trouver le Pane content_area dans le SideNavBar
-            Pane contentArea = findContentArea();
-
-            if (contentArea != null) {
-                // Charger la vue ListPosts
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/ListPosts.fxml"));
-                Parent root = loader.load();
-
-                // Ajuster la taille pour correspondre au content_area
-                AnchorPane.setTopAnchor(root, 0.0);
-                AnchorPane.setRightAnchor(root, 0.0);
-                AnchorPane.setBottomAnchor(root, 0.0);
-                AnchorPane.setLeftAnchor(root, 0.0);
-
-                // Effacer et ajouter le nouveau contenu
-                contentArea.getChildren().clear();
-                contentArea.getChildren().add(root);
-            } else {
-                System.err.println("Impossible de trouver le content_area dans le SideNavBar");
-            }
-        } catch (IOException e) {
-            System.err.println("Erreur lors du rafraîchissement de la liste des posts: " + e.getMessage());
-            e.printStackTrace();
-        }
+        // Afficher ou masquer les commentaires
+        commentsContainer.setVisible(commentsVisible);
+        commentsContainer.setManaged(commentsVisible);
     }
 
     // Méthode pour gérer le clic sur la carte de publication
@@ -358,11 +234,11 @@ public class PostCardController {
 
             if (contentArea != null) {
                 // Charger le fichier FXML pour PostDetail
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/PostDetail.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/Admin/PostDetailAdmin.fxml"));
                 Parent root = loader.load();
 
                 // Obtenir le contrôleur de PostDetail et lui passer l'objet Post
-                PostDetailController detailController = loader.getController();
+                PostDetailControllerAdmin detailController = loader.getController();
                 detailController.setPost(post);
 
                 // Effacer le contenu actuel et ajouter la vue détaillée
@@ -396,20 +272,9 @@ public class PostCardController {
         return null;
     }
 
-    // Méthode pour afficher un commentaire dans l'UI
+    // Méthode pour afficher un commentaire dans l'UI avec un bouton de suppression
     private void displayComment(Commentaire comment) {
-        // S'assurer que le container de commentaires existe
-        if (commentsContainer == null) {
-            // Si commentsContainer n'est pas défini dans le FXML, créer un nouveau
-            commentsContainer = new VBox(5);
-            commentsContainer.setPadding(new Insets(5));
-
-            // Ajouter le container à la section de commentaire
-            if (commentSection != null && !commentSection.getChildren().contains(commentsContainer)) {
-                commentSection.getChildren().add(commentsContainer);
-            }
-        }
-
+        String nom = "";
         // Création d'un conteneur pour le commentaire
         HBox commentBox = new HBox(10);
         commentBox.setPadding(new Insets(5));
@@ -417,11 +282,21 @@ public class PostCardController {
 
         // Informations du commentaire
         VBox commentInfo = new VBox(3);
+        HBox.setHgrow(commentInfo, Priority.ALWAYS);
+
+            UserService userservice=new UserService();
+            Utilisateur user = userservice.getUserById(comment.getUser_id());
+            nom = user.getNom();
+
 
         // Vous pourriez ajouter un nom d'utilisateur réel ici si disponible
-        Label userLabel = new Label("User " + comment.getUser_id());
+        Label userLabel = new Label("User " + nom );
         userLabel.setFont(Font.font("System", 12));
         userLabel.setTextFill(Color.BLUE);
+
+        // Le contenu du commentaire
+        Label contentLabel = new Label(comment.getComment_contenu());
+        contentLabel.setWrapText(true);
 
         // Formater la date du commentaire
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
@@ -429,20 +304,70 @@ public class PostCardController {
         dateCommentLabel.setFont(Font.font("System", 10));
         dateCommentLabel.setTextFill(Color.GRAY);
 
-        // Le contenu du commentaire
-        Label contentLabel = new Label(comment.getComment_contenu());
-        contentLabel.setWrapText(true);
-
         // Ajouter tous les éléments au conteneur de commentaire
         commentInfo.getChildren().addAll(userLabel, contentLabel, dateCommentLabel);
-        commentBox.getChildren().add(commentInfo);
+
+        // Créer un bouton de suppression
+        Button deleteButton = new Button("X");
+        deleteButton.setStyle("-fx-background-color: #ff6b6b; -fx-text-fill: white; -fx-font-weight: bold;");
+        deleteButton.setPrefSize(24, 24);
+        deleteButton.setMinSize(24, 24);
+        deleteButton.setMaxSize(24, 24);
+
+        // Ajouter une action pour supprimer le commentaire
+        deleteButton.setOnAction(e -> deleteComment(comment, commentBox));
+
+        // Créer un conteneur pour aligner le bouton verticalement
+        VBox deleteButtonContainer = new VBox(deleteButton);
+        deleteButtonContainer.setAlignment(Pos.TOP_RIGHT);
+
+        // Ajouter les éléments au conteneur de commentaire
+        commentBox.getChildren().addAll(commentInfo, deleteButtonContainer);
+
+        // Ajouter l'ID du commentaire comme propriété utilisateur du HBox pour faciliter la suppression
+        commentBox.setUserData(comment.getCommentaire_id());
 
         // Ajouter le commentaire au conteneur de commentaires
         commentsContainer.getChildren().add(commentBox);
+    }
 
-        // Ne pas afficher le container de commentaires comme demandé
-        commentsContainer.setVisible(false);
-        commentsContainer.setManaged(false);
+    // Méthode pour supprimer un commentaire
+    private void deleteComment(Commentaire comment, HBox commentBox) {
+        try {
+            // Demander confirmation avant de supprimer
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation de suppression");
+            alert.setHeaderText("Supprimer le commentaire");
+            alert.setContentText("Êtes-vous sûr de vouloir supprimer ce commentaire ?");
+
+            alert.showAndWait().ifPresent(response -> {
+                if (response == javafx.scene.control.ButtonType.OK) {
+                    try {
+                        // Supprimer le commentaire de la base de données
+                        serviceCommentaire.supprimer(comment.getCommentaire_id());
+
+                        // Supprimer le commentaire de l'interface utilisateur
+                        commentsContainer.getChildren().remove(commentBox);
+
+                        // Afficher un message de succès
+                        System.out.println("Commentaire supprimé avec succès !");
+                    } catch (SQLException ex) {
+                        System.err.println("Erreur lors de la suppression du commentaire: " + ex.getMessage());
+                        ex.printStackTrace();
+
+                        // Afficher une alerte d'erreur
+                        Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                        errorAlert.setTitle("Erreur");
+                        errorAlert.setHeaderText("Erreur de suppression");
+                        errorAlert.setContentText("Impossible de supprimer le commentaire: " + ex.getMessage());
+                        errorAlert.showAndWait();
+                    }
+                }
+            });
+        } catch (Exception e) {
+            System.err.println("Erreur lors de la suppression du commentaire: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -461,25 +386,32 @@ public class PostCardController {
 
                 serviceCommentaire.ajouter(newComment);
 
+                // Récupérer l'ID généré du commentaire
+                int commentId = serviceCommentaire.getLastInsertedId();
+                newComment.setCommentaire_id(commentId);
+
                 // Vider le champ de texte
                 commentArea.clear();
 
-                // Ajouter le commentaire au container, mais ne pas l'afficher
+                // Ajouter le commentaire au container
                 displayComment(newComment);
 
-                // Cacher la section de commentaire après l'envoi
-                commentSection.setVisible(false);
-                commentSection.setManaged(false);
-
-                // S'assurer que le container de commentaires est caché
-                if (commentsContainer != null) {
-                    commentsContainer.setVisible(false);
-                    commentsContainer.setManaged(false);
-                }
+                // Assurer que les commentaires sont visibles après l'ajout d'un nouveau
+                commentsVisible = true;
+                commentsContainer.setVisible(true);
+                commentsContainer.setManaged(true);
+                viewCommentsButton.setText("Hide Comments");
 
             } catch (SQLException e) {
                 System.err.println("Erreur lors de l'ajout du commentaire: " + e.getMessage());
                 e.printStackTrace();
+
+                // Afficher une alerte d'erreur
+                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                errorAlert.setTitle("Erreur");
+                errorAlert.setHeaderText("Erreur d'ajout");
+                errorAlert.setContentText("Impossible d'ajouter le commentaire: " + e.getMessage());
+                errorAlert.showAndWait();
             }
         }
     }

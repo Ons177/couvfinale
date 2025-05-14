@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="postCard" prefHeight="377.0" prefWidth="320.0" styleClass="post-card" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PostCardAdmin">
+<VBox fx:id="postCard" prefHeight="377.0" prefWidth="320.0" styleClass="post-card" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PostCardAdmin">
     <children>
         <ImageView fx:id="postImage" fitHeight="154.0" fitWidth="254.0" pickOnBounds="true" preserveRatio="true" translateX="35.0" translateY="20.0" />
         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="post-content" translateY="15.0">
