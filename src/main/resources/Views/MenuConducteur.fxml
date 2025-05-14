@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,10 +13,18 @@
    <children>
       <VBox prefHeight="650.0" prefWidth="263.0" styleClass="bg" stylesheets="@style.css">
          <children>
-            <Button fx:id="btnMonProfil" mnemonicParsing="false" onAction="#ouvrirProfil" prefHeight="42.0" prefWidth="270.0" styleClass="btn-mon-compte" stylesheets="@style.css" text="Mon Profil" />
+            <Button fx:id="btnMonProfil" mnemonicParsing="false" onAction="#ouvrirProfil" prefHeight="42.0" prefWidth="270.0" styleClass="btn-mon-compte" stylesheets="@style.css" text="Mon Profil">
+               <graphic>
+                  <ImageView fitHeight="56.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/profil.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Separator prefWidth="200.0" styleClass="bg" />
             <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="274.0" styleClass="btn-mon-compte" stylesheets="@style.css" text="Publier un Trajet" />
             <Button mnemonicParsing="false" prefHeight="48.0" prefWidth="266.0" styleClass="btn-mon-compte" text="Consulter les Trajets" />
-            <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="273.0" styleClass="btn-mon-compte" text="Publier un evenement " onAction="#acceuilConducteur" />
+            <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="273.0" styleClass="btn-mon-compte" text="Publier un evenement " onAction="#acceuilConducteur"/>
             <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="270.0" styleClass="btn-mon-compte" text="Consulter les evenements" />
             <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="268.0" styleClass="btn-mon-compte" text="Consulter les reservations d'evenements" />
             <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="265.0" styleClass="btn-mon-compte" text="Publier une annonce" />
@@ -23,11 +32,11 @@
             <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="269.0" styleClass="btn-mon-compte" text="Consulter les reservations d'annonce" />
             <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="263.0" styleClass="btn-mon-compte" text="Posts et Commentaires" />
             <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="267.0" styleClass="btn-mon-compte" text="Réclamations" />
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="264.0" styleClass="bg" text="Se deconnecter" onAction="#seDeconnecter">
+            <Button mnemonicParsing="false" onAction="#seDeconnecter" prefHeight="48.0" prefWidth="263.0" styleClass="bg" text="Se deconnecter">
                <graphic>
                   <ImageView fitHeight="42.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/1828427.png" />
+                        <Image url="@../Images/deconn.png" />
                      </image>
                   </ImageView>
                </graphic>

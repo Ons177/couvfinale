@@ -71,6 +71,4 @@ public class MenuAdminController {
             e.printStackTrace();
         }
     }
-
 }
-

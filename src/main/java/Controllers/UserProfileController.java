@@ -96,17 +96,45 @@ public class UserProfileController {
     }
 
     @FXML
-    private void onLogoutButtonClick(ActionEvent event) {
+    private void handleback(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/Login.fxml"));
+            // Récupérer l'utilisateur actuellement connecté (à adapter selon ta logique)
+            Utilisateur utilisateur = UserSession.getCurrentUser(); // Exemple si tu as une classe de session
+
+            String role = utilisateur.getRole(); // suppose que getRole() retourne "conducteur", "passager", ou "admin"
+            String fxmlFile;
+
+            // Déterminer le fichier FXML selon le rôle
+            switch (role.toLowerCase()) {
+                case "conducteur":
+                    fxmlFile = "/Views/MenuConducteur.fxml";
+                    break;
+                case "passager":
+                    fxmlFile = "/Views/MenuPassager.fxml";
+                    break;
+
+                default:
+                    // Par défaut, revenir à la page de login
+                    fxmlFile = "/Views/Login.fxml";
+                    break;
+            }
+
+            // Charger le fichier FXML approprié
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
             Parent root = loader.load();
+
+            // Afficher la nouvelle scène
+            Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
+            stage.setScene(scene);
+            stage.setTitle("Dashboard - " + role);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+
 
     @FXML
     private void onModifyButtonClick() {
@@ -268,5 +296,3 @@ public class UserProfileController {
         alert.showAndWait();
     }
 }
-
-

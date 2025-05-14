@@ -49,7 +49,6 @@
             <version>20240303</version>
         </dependency>
 
-        <!-- Jakarta Mail (JavaMail API) -->
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>

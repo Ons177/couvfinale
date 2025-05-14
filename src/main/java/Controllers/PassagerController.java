@@ -69,6 +69,7 @@ public class PassagerController {
             e.printStackTrace();
         }
     }
+
     @FXML
     public void acceuilClient(ActionEvent actionEvent) {
         try {
@@ -89,6 +90,4 @@ public class PassagerController {
             e.printStackTrace();
         }
     }
-
 }
-

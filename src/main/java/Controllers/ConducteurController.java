@@ -27,7 +27,6 @@ public class ConducteurController {
         }
     }
 
-
     @FXML
     private void ouvrirProfil(ActionEvent event) {
         try {
@@ -36,10 +35,10 @@ public class ConducteurController {
             Parent root = loader.load();
 
             // Récupération du contrôleur de UserProfile
-            UserProfileController controller = loader.getController();
+            UserProfileController controllers = loader.getController();
 
             // Passer l'utilisateur connecté au UserProfileController
-            controller.setUser(UserSession.getCurrentUser());
+            controllers.setUser(UserSession.getCurrentUser());
 
             // Affichage du profil utilisateur après le menu dans une nouvelle fenêtre
             Stage stage = new Stage();
@@ -88,5 +87,5 @@ public class ConducteurController {
             e.printStackTrace();
         }
     }
-
 }
+
