@@ -18,8 +18,8 @@ public class MainFXReclamation extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/application/AcceuilReclamation.fxml"));
-            //FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/application/AccueilReponseAdmin.fxml"));
+            //FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/application/AcceuilReclamation.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/application/AccueilReponseAdmin.fxml"));
             Parent root = fxmlLoader.load();
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);

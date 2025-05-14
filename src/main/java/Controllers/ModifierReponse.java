@@ -1,7 +1,6 @@
 package Controllers;
 
 import entities.Reclamation;
-import entities.feedbackreponserec;
 import entities.Reponse;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,11 +9,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import services.*;
-import services.ServiceFeedbackRepRec;
+import services.ServiceReponse;
+import services.FrenchProfanityAPI;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -28,9 +26,6 @@ public class ModifierReponse {
 
     @FXML
     private Label DateRecDetail;
-
-    @FXML
-    private DatePicker DateReponse;
 
     @FXML
     private Label DescRecDetail;
@@ -52,19 +47,33 @@ public class ModifierReponse {
 
     @FXML
     private Label TypeRecDetail;
+
+    @FXML
+    private Label labelReaction;
+
+    @FXML
+    private Label labelDateReaction;
+
     private Reponse currentReponse;
     private Reclamation currentReclamation;
 
     public void setReclamationAndReponse(Reclamation rec, Reponse rep) {
         this.currentReclamation = rec;
         this.currentReponse = rep;
+
         TypeRecDetail.setText(rec.getTypeReclamation());
         DescRecDetail.setText(rec.getDescription());
         DateRecDetail.setText(rec.getDateCreation());
         PrioriteRecDetail.setText(rec.getPriorite());
         StatutRecDetail.setText(rec.getStatut());
+
         Contenu.setText(rep.getContenu());
-        //DateReponse.setValue(LocalDate.parse(rec.getDateCreation()));
+
+      /* if (rep.getReaction() != null) {
+            // Display the current reaction and date if they exist
+            labelReaction.setText(rep.getReaction());
+            labelDateReaction.setText(rep.getDateFeedbackrep());
+        }*/
     }
 
     @FXML
@@ -75,6 +84,7 @@ public class ModifierReponse {
             Scene scene = new Scene(root);
             Stage stage = (Stage) AnnulerModifReponse.getScene().getWindow();
             stage.setScene(scene);
+            stage.setTitle("Mes Réponses");
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -85,34 +95,36 @@ public class ModifierReponse {
     void OnModifierReponse(ActionEvent event) {
         if (currentReponse != null) {
             try {
-                // First delete existing feedback for this response
-                ServiceFeedbackRepRec feedbackService = new ServiceFeedbackRepRec();
-                feedbackService.supprimerReactionByReponseId(currentReponse.getIdReponse());
+                String contenu = Contenu.getText();
+               // String reaction = labelReaction.getText(); // You can use the reaction here, if needed, otherwise leave it empty
 
-                // Now modify the response content and date
-                currentReponse.setContenu(Contenu.getText());
+                // Check for profanity in the content
+                if (FrenchProfanityAPI.containsProfanity(contenu)) {
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("Avertissement");
+                    alert.setHeaderText("Contenu inapproprié détecté");
+                    alert.setContentText("Votre réponse contient des mots inappropriés. Veuillez les modifier.");
+                    alert.showAndWait();
+                    return;
+                }
+
+                // Update the response content and reset the reaction
+                currentReponse.setContenu(contenu);
                 currentReponse.setDateReponse(LocalDate.now().format(DateTimeFormatter.ISO_DATE));
-                try {
-                    String contenu = Contenu.getText();
-                    if (FrenchProfanityAPI.containsProfanity(contenu)) {
-                        Alert alert = new Alert(Alert.AlertType.WARNING);
-                        alert.setTitle("Avertissement");
-                        alert.setHeaderText("Contenu inapproprié détecté");
-                        alert.setContentText("Votre réponse contient des mots inappropriés. Veuillez les modifier.");
-                        alert.showAndWait();
-                        return;  // Exit the method if profanity is found
-                    }
+                currentReponse.setReaction(null); // Remove the reaction when modifying the response
+                currentReponse.setDateFeedbackrep(null); // Clear the feedback date
+
+                // Call the service to update the response
                 ServiceReponse service = new ServiceReponse();
                 service.modifier(currentReponse);
 
-                // Success message
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Succès");
                 alert.setHeaderText("Réponse modifiée");
                 alert.setContentText("Votre réponse a été modifiée avec succès.");
                 alert.showAndWait();
 
-                // Return to AfficherMesReponses
+                // Navigate back to the responses list
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/AfficherMesReponses.fxml"));
                 Parent root = loader.load();
                 Scene scene = new Scene(root);
@@ -120,17 +132,15 @@ public class ModifierReponse {
                 stage.setScene(scene);
                 stage.setTitle("Mes Réponses");
                 stage.show();
+
             } catch (Exception e) {
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erreur");
                 alert.setHeaderText("Erreur lors de la modification");
-                alert.setContentText("Une erreur est survenue lors de la modification de la réponse: " + e.getMessage());
+                alert.setContentText("Une erreur est survenue lors de la modification de la réponse : " + e.getMessage());
                 alert.showAndWait();
             }
-        } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
         }
-
-}}
+    }
+}

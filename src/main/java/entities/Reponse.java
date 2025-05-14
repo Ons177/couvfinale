@@ -1,12 +1,13 @@
 package entities;
 
-
 public class Reponse {
     private int idReponse;
     private int idReclamation;
     private int idUtilisateur;
     private String contenu;
     private String dateReponse;
+    private String reaction; // 👍 👎 😐
+    private String dateFeedbackrep;
     private Reclamation reclamation;
     private Reclamation currentReclamation;
 
@@ -25,47 +26,29 @@ public class Reponse {
         this.dateReponse = dateReponse;
     }
 
-    public int getIdReponse() {
-        return idReponse;
-    }
+    // Getters & Setters
+    public int getIdReponse() { return idReponse; }
+    public void setIdReponse(int idReponse) { this.idReponse = idReponse; }
 
-    public void setIdReponse(int idReponse) {
-        this.idReponse = idReponse;
-    }
+    public int getIdReclamation() { return idReclamation; }
+    public void setIdReclamation(int idReclamation) { this.idReclamation = idReclamation; }
 
-    public int getIdReclamation() {
-        return idReclamation;
-    }
+    public int getIdUtilisateur() { return idUtilisateur; }
+    public void setIdUtilisateur(int idUtilisateur) { this.idUtilisateur = idUtilisateur; }
 
-    public void setIdReclamation(int idReclamation) {
-        this.idReclamation = idReclamation;
-    }
+    public String getContenu() { return contenu; }
+    public void setContenu(String contenu) { this.contenu = contenu; }
 
-    public int getIdUtilisateur() {
-        return idUtilisateur;
-    }
+    public String getDateReponse() { return dateReponse; }
+    public void setDateReponse(String dateReponse) { this.dateReponse = dateReponse; }
 
-    public void setIdUtilisateur(int idUtilisateur) {
-        this.idUtilisateur = idUtilisateur;
-    }
+    public String getReaction() { return reaction; }
+    public void setReaction(String reaction) { this.reaction = reaction; }
 
-    public String getContenu() {
-        return contenu;
-    }
+    public String getDateFeedbackrep() { return dateFeedbackrep; }
+    public void setDateFeedbackrep(String dateFeedbackrep) { this.dateFeedbackrep = dateFeedbackrep; }
 
-    public void setContenu(String contenu) {
-        this.contenu = contenu;
-    }
-
-    public String getDateReponse() {
-        return dateReponse;
-    }
-
-    public void setDateReponse(String dateReponse) {
-        this.dateReponse = dateReponse;
-    }
-
-
+    public Reclamation getReclamation() { return this.currentReclamation; }
 
     @Override
     public String toString() {
@@ -75,10 +58,8 @@ public class Reponse {
                 ", idUtilisateur=" + idUtilisateur +
                 ", contenu='" + contenu + '\'' +
                 ", dateReponse='" + dateReponse + '\'' +
+                ", reaction='" + reaction + '\'' +
+                ", dateFeedbackrep='" + dateFeedbackrep + '\'' +
                 '}';
-    }
-
-    public Reclamation getReclamation() {
-        return this.currentReclamation;
     }
 }

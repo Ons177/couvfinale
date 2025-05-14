@@ -2,28 +2,24 @@ package Controllers;
 
 import entities.Reclamation;
 import entities.Reponse;
-import entities.feedbackreponserec;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
-import services.ServiceFeedbackRepRec;
 import services.ServiceReclamation;
 import services.ServiceReponse;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class DetailReclamationVoirRepondusAdmin {
+
     @FXML
     private Label NomUser;
 
@@ -56,114 +52,100 @@ public class DetailReclamationVoirRepondusAdmin {
 
     @FXML
     private Button SupprimerReponse;
-    private Reponse currentReponse;
 
     @FXML
     private Label TypeRecDetail;
-    private Reclamation currentReclamation;
+
     @FXML
     private Label labelReaction;
 
     @FXML
     private Label labelDateReaction;
 
+    private Reclamation currentReclamation;
+    private Reponse currentReponse;
+
     @FXML
     void OnAnnulerDetailReclamationVoirRepondusAdmin(ActionEvent event) {
         try {
-            // Load the AcceuilReclamation FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/AfficherMesReponses.fxml"));
             Parent root = loader.load();
-
-            // Create a new scene with the loaded FXML
             Scene scene = new Scene(root);
-
-            // Get the current stage
             Stage stage = (Stage) AnnulerDetailReclamationVoirRepondusAdmin.getScene().getWindow();
-
-            // Set the new scene
             stage.setScene(scene);
             stage.setTitle("Mes Réponses");
             stage.show();
         } catch (IOException e) {
-            System.err.println("Error loading AfficherMesReponses.fxml: " + e.getMessage());
+            System.err.println("Erreur lors du chargement de AfficherMesReponses.fxml: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
     @FXML
     void OnModifierReponse(ActionEvent event) {
-            try {
-                // Charger le fichier FXML de ModifierReponse
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/ModifierReponse.fxml"));
-                Parent root = loader.load();
-                ModifierReponse controller = loader.getController();
-                controller.setReclamationAndReponse(currentReclamation,currentReponse);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/ModifierReponse.fxml"));
+            Parent root = loader.load();
+            currentReponse.setReaction(null); // remove reaction
+            currentReponse.setDateFeedbackrep(null); // remove feedback date
 
 
-                // Obtenir la scène actuelle et changer pour la nouvelle scène
-                Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-                stage.setScene(new Scene(root));
-                stage.setTitle("Modifier Réponse");
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-                System.out.println("Erreur lors du chargement de la page ModifierReponse.fxml");
-            }
+            ModifierReponse controller = loader.getController();
+            controller.setReclamationAndReponse(currentReclamation, currentReponse);
+
+            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Modifier Réponse");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Erreur lors du chargement de la page ModifierReponse.fxml");
         }
-    @FXML
-    public void initialize(URL location, ResourceBundle resources) {
-        HBox.setHgrow(DescRecDetail, Priority.ALWAYS);
-        DescRecDetail.setMaxWidth(Double.MAX_VALUE);
     }
 
-        @FXML
-        void OnSupprimerReponse (ActionEvent event){
-            if (currentReponse == null || currentReclamation == null) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Erreur");
-                alert.setHeaderText("Action impossible");
-                alert.setContentText("Aucune réponse ou réclamation sélectionnée.");
-                alert.showAndWait();
-                return;
-            }
-
-            ServiceReponse serviceReponse = new ServiceReponse();
-            ServiceReclamation serviceReclamation = new ServiceReclamation();
-
-            try {
-                // Delete the response
-                serviceReponse.supprimer(currentReponse);
-
-                // Update the reclamation status to "en attente"
-                currentReclamation.setStatut("en attente");
-                serviceReclamation.modifier(currentReclamation);
-
-                // Confirmation alert
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Succès");
-                alert.setHeaderText(null);
-                alert.setContentText("La réponse a été supprimée et le statut de la réclamation est mis à jour.");
-                alert.showAndWait();
-                // After deletion, return to the list page
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/AfficherMesReponses.fxml"));
-                Parent root = loader.load();
-                Scene scene = new Scene(root);
-                Stage stage = (Stage) SupprimerReponse.getScene().getWindow();
-                stage.setScene(scene);
-                stage.setTitle("Mes Réponses");
-                stage.show();
-
-                // Redirect or update the UI if needed
-            } catch (Exception e) {
-                e.printStackTrace();
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Erreur");
-                alert.setHeaderText("Problème lors de la suppression");
-                alert.setContentText("Une erreur est survenue: " + e.getMessage());
-                alert.showAndWait();
-            }
+    @FXML
+    void OnSupprimerReponse(ActionEvent event) {
+        if (currentReponse == null || currentReclamation == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Action impossible");
+            alert.setContentText("Aucune réponse ou réclamation sélectionnée.");
+            alert.showAndWait();
+            return;
         }
 
+        ServiceReponse serviceReponse = new ServiceReponse();
+        ServiceReclamation serviceReclamation = new ServiceReclamation();
+
+        try {
+            serviceReponse.supprimer(currentReponse);
+
+            currentReclamation.setStatut("en attente");
+            serviceReclamation.modifier(currentReclamation);
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Succès");
+            alert.setHeaderText(null);
+            alert.setContentText("La réponse a été supprimée et le statut de la réclamation est mis à jour.");
+            alert.showAndWait();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/AfficherMesReponses.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) SupprimerReponse.getScene().getWindow();
+            stage.setScene(scene);
+            stage.setTitle("Mes Réponses");
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Problème lors de la suppression");
+            alert.setContentText("Une erreur est survenue: " + e.getMessage());
+            alert.showAndWait();
+        }
+    }
 
     public void setReclamationAndReponse(Reclamation rec, Reponse rep) {
         this.currentReclamation = rec;
@@ -177,25 +159,15 @@ public class DetailReclamationVoirRepondusAdmin {
 
         if (rep != null) {
             ContenuRep.setText(rep.getContenu());
-            DateRep.setText(rep.getDateReponse().toString());
+            DateRep.setText(rep.getDateReponse());
 
-            // Load reaction (feedback)
-            ServiceFeedbackRepRec serviceFeedback = new ServiceFeedbackRepRec();
-            try {
-                feedbackreponserec feedback = serviceFeedback.getFeedbackByReponseId(rep.getIdReponse());
-                if (feedback != null) {
-                    labelReaction.setText(feedback.getReaction());
-                    labelDateReaction.setText(feedback.getDateFeedbackrep());
-                } else {
-                    labelReaction.setText("Aucune réaction");
-                    labelDateReaction.setText("");
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-                labelReaction.setText("Erreur lors du chargement");
+            if (rep.getReaction() != null && !rep.getReaction().isEmpty()) {
+                labelReaction.setText(rep.getReaction());
+                labelDateReaction.setText(rep.getDateFeedbackrep());
+            } else {
+                labelReaction.setText("Aucune réaction");
                 labelDateReaction.setText("");
             }
-
         } else {
             ContenuRep.setText("Aucune réponse");
             DateRep.setText("");
@@ -204,5 +176,9 @@ public class DetailReclamationVoirRepondusAdmin {
         }
     }
 
-
+    @FXML
+    public void initialize(URL location, ResourceBundle resources) {
+        HBox.setHgrow(DescRecDetail, Priority.ALWAYS);
+        DescRecDetail.setMaxWidth(Double.MAX_VALUE);
+    }
 }
