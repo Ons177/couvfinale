@@ -1,0 +1,454 @@
+/* General styles */
+.root {
+    -fx-background-color: #f5f5f5;
+    -fx-font-family: "Montserrat", sans-serif;
+}
+
+/* Posts container */
+.posts-container {
+    -fx-background-color: white;
+}
+
+/* Title container */
+.title-container {
+    -fx-background-color: transparent;
+    -fx-border-width: 0 0 0 0;
+}
+
+.page-title {
+    -fx-text-fill: #134a78;
+}
+/* Scroll pane styles - MODIFIÉ: background blanc */
+.scroll-pane {
+    -fx-background-color: white;
+    -fx-background: white;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: white;
+}
+
+.flow-pane {
+    -fx-background-color: white;
+    -fx-alignment: center;
+}
+
+/* Post card styles */
+.post-card {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 0, 3);
+    -fx-cursor: hand;
+}
+
+.post-card:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 5);
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+    -fx-scale-z: 1.02;
+}
+
+.post-content {
+    -fx-background-color: white;
+    -fx-background-radius: 0 0 10 10;
+}
+
+/* MODIFIÉ: Texte en noir */
+.post-title {
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+}
+
+.post-date {
+    -fx-text-fill: #000000;
+    -fx-font-size: 12px;
+}
+
+/* AJOUTÉ: Style pour l'icône calendrier */
+.date-with-calendar {
+    -fx-content-display: left;
+    -fx-graphic-text-gap: 5;
+    -fx-alignment: center-left;
+}
+
+/* MODIFIÉ: Texte noir pour les descriptions */
+.post-description {
+    -fx-text-fill: #000000;
+    -fx-font-size: 14px;
+    -fx-line-spacing: 1.5;
+}
+
+/* Styles pour les boutons d'action sociale */
+.social-actions {
+    -fx-background-color: #f5f5f5;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+}
+
+.love-button, .comment-button {
+    -fx-background-color: white;
+    -fx-text-fill: #444;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 4px;
+    -fx-padding: 5px 10px;
+    -fx-cursor: hand;
+}
+
+.love-button:hover, .comment-button:hover {
+    -fx-background-color: #f0f0f0;
+}
+
+/* Styles pour la section de commentaires */
+.comment-section {
+    -fx-background-color: #f9f9f9;
+    -fx-border-color: #eee;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px;
+}
+
+/* MODIFIÉ: Style pour les boîtes de commentaires */
+.comment-box {
+    -fx-background-color: white;
+    -fx-border-color: #eee;
+    -fx-border-radius: 4px;
+    -fx-padding: 8px;
+    -fx-margin: 5px 0;
+}
+
+#commentField {
+    -fx-padding: 5px;
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 3px;
+}
+
+#sendCommentButton {
+    -fx-background-color: #1a73e8;
+    -fx-text-fill: white;
+    -fx-border-radius: 3px;
+    -fx-cursor: hand;
+}
+
+#sendCommentButton:hover {
+    -fx-background-color: #0f62d6;
+}
+
+/* MODIFIÉ: Styles pour la carte de post avec fond blanc */
+.post-card {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);
+    -fx-background-radius: 5px;
+}
+
+.send-arrow-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 50%;
+    -fx-padding: 5px;
+    -fx-border-color: transparent;
+}
+
+.send-arrow-button:hover {
+    -fx-background-color: #f0f0f0;
+    -fx-cursor: hand;
+}
+
+.send-arrow-button:pressed {
+    -fx-background-color: #e0e0e0;
+}
+
+/* Styles pour le bouton retour */
+.back-button {
+    -fx-background-color: #7f8c8d;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 6 12;
+    -fx-background-radius: 4;
+    -fx-cursor: hand;
+}
+
+.back-button:hover {
+    -fx-background-color: #6c7a7d;
+}
+
+/* MODIFIÉ: Styles pour les détails du post - texte noir */
+.post-title {
+    -fx-font-size: 22;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+    -fx-padding: 10 0;
+}
+
+.post-content {
+    -fx-font-size: 16;
+    -fx-text-fill: #000000;
+    -fx-line-spacing: 1.5;
+    -fx-padding: 10 0;
+}
+
+/* Styles pour les boutons d'action */
+.action-button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8 15;
+    -fx-background-radius: 4;
+    -fx-cursor: hand;
+}
+
+.action-button:hover {
+    -fx-background-color: #2980b9;
+}
+
+.submit-button {
+    -fx-background-color: #2ecc71;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8 15;
+    -fx-background-radius: 4;
+    -fx-cursor: hand;
+}
+
+.submit-button:hover {
+    -fx-background-color: #27ae60;
+}
+
+/* MODIFIÉ: Styles pour les commentaires - texte noir */
+.section-title {
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+    -fx-padding: 10 0;
+}
+
+.comments-container {
+    -fx-spacing: 10;
+    -fx-padding: 10 0;
+}
+
+/* MODIFIÉ: Style pour les boîtes de commentaires */
+.comment-box {
+    -fx-background-color: white;
+    -fx-padding: 10;
+    -fx-background-radius: 5;
+    -fx-border-color: #eeeeee;
+    -fx-border-radius: 5;
+    -fx-border-width: 1;
+    -fx-spacing: 5;
+}
+
+/* MODIFIÉ: Style pour aligner l'utilisateur et la date */
+.comment-user {
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+}
+
+/* MODIFIÉ: Style pour la date avec calendrier */
+.comment-date {
+    -fx-font-style: italic;
+    -fx-text-fill: #000000;
+    -fx-content-display: left;
+    -fx-graphic-text-gap: 5;
+    -fx-alignment: center-left;
+}
+
+/* MODIFIÉ: Style pour le contenu du commentaire en noir */
+.comment-content {
+    -fx-text-fill: #000000;
+    -fx-padding: 5 0 0 0;
+}
+
+/* MODIFIÉ: Personnalisation de la barre de défilement - fine et bleue */
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 6; /* MODIFIÉ: plus fine */
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #4285F4; /* Bleu */
+    -fx-background-radius: 3em;
+}
+
+.scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:vertical .increment-button,
+.scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0em;
+    -fx-padding: 0 10 0 0;
+}
+
+.scroll-bar:vertical .increment-arrow,
+.scroll-bar:vertical .decrement-arrow {
+    -fx-shape: " ";
+    -fx-padding: 0;
+}
+
+/* MODIFIÉ: Pour le ScrollPane transparent -> blanc */
+.scroll-pane {
+    -fx-background-color: white;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: white;
+}
+
+/* MODIFIÉ: Pour la classe custom-scroll - barre fine et bleue */
+.custom-scroll .scroll-bar:vertical .thumb {
+    -fx-background-color: #4285F4;
+    -fx-pref-width: 6;
+}
+
+/* Container pour aligner le nom d'utilisateur et la date */
+.user-date-container {
+    -fx-alignment: baseline-left;
+    -fx-spacing: 5;
+}
+
+/* Style pour le conteneur global en blanc */
+.main-container {
+    -fx-background-color: white;
+}
+/* Style pour le bouton "Ajouter Article" */
+.add-button {
+    -fx-background-color: #2d6da3;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-family: "Montserrat", sans-serif;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 15px;
+    -fx-background-radius: 20px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 4, 0, 0, 1);
+    -fx-transition: -fx-background-color 0.3s;
+}
+
+.add-button:hover {
+    -fx-background-color: #245580;
+}
+
+.add-button:pressed {
+    -fx-background-color: #1d4568;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 2, 0, 0, 0);
+}
+
+/* Styles communs pour les champs de formulaire */
+.text-field, .text-area, TextField, TextArea {
+    -fx-background-color: white;
+    -fx-border-color: #d1d1d1;
+    -fx-border-radius: 4px;
+    -fx-padding: 8px;
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial", sans-serif;
+}
+
+/* Style spécifique pour TextArea */
+.text-area, TextArea {
+    -fx-border-width: 1px;
+    -fx-background-radius: 4px;
+}
+
+.text-area .content {
+    -fx-background-color: white;
+    -fx-background-radius: 4px;
+}
+
+/* Style lors du focus */
+.text-field:focused, .text-area:focused, TextField:focused, TextArea:focused {
+    -fx-border-color: #2d6da3;
+    -fx-background-insets: 0;
+    -fx-border-width: 1px;
+}
+
+/* Style pour les libellés */
+.form-label {
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-text-fill: #205a89;
+}
+
+/* Style pour les messages d'erreur */
+.error-label {
+    -fx-text-fill: #e74c3c;
+    -fx-font-size: 12px;
+}
+
+/* Style pour les boutons du formulaire */
+.btn-primary {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 16px;
+    -fx-background-radius: 4px;
+    -fx-cursor: hand;
+}
+
+.btn-primary:hover {
+    -fx-background-color: #2980b9;
+}
+
+.btn-secondary {
+    -fx-background-color: #f2f2f2;
+    -fx-text-fill: #333333;
+    -fx-border-color: #d1d1d1;
+    -fx-border-width: 1px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-padding: 8px 16px;
+    -fx-cursor: hand;
+}
+
+.btn-secondary:hover {
+    -fx-background-color: #e6e6e6;
+}
+
+.btn-cancel {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+    -fx-padding: 8px 16px;
+    -fx-background-radius: 4px;
+    -fx-cursor: hand;
+}
+
+.btn-cancel:hover {
+    -fx-background-color: #c0392b;
+}
+
+/* Style pour le bouton "Ajouter l'article" */
+.btn-primary {
+    -fx-background-color: #2d6da3;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 16px;
+    -fx-background-radius: 4px;
+    -fx-cursor: hand;
+}
+
+.btn-primary:hover {
+    -fx-background-color: #205a89;
+}
+.circle-button {
+    -fx-background-radius: 50%;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-max-width: 40px;
+    -fx-max-height: 40px;
+    -fx-padding: 5px;
+    -fx-background-color: #f5f5f5;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 4, 0, 0, 0);
+}
+
+.circle-button:hover {
+    -fx-background-color: #e0e0e0;
+}
+
+.circle-button:pressed {
+    -fx-background-color: #d0d0d0;
+}
+
+/* Centrer l'image dans le bouton */
+.circle-button .image-view {
+    -fx-alignment: center;
+}

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainContainer" prefHeight="622.0" prefWidth="1084.0" stylesheets="@../../css/Css.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ListPostsAdmin">
+    <children>
+
+        <VBox prefHeight="622.0" prefWidth="1084.0" style="-fx-padding: 10;" styleClass="dash__container-card">
+            <children>
+                <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="1084.0" styleClass="title-container">
+                    <children>
+                        <Label styleClass="page-title" text="Divers articles">
+                            <font>
+                                <Font name="Montserrat SemiBold" size="24.0" />
+                            </font>
+                        </Label>
+                    </children>
+                    <padding>
+                        <Insets left="20.0" />
+                    </padding>
+                </HBox>
+                <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="562.0" prefWidth="1084.0" style="-fx-background-color: White;" styleClass="scroll-pane">
+                    <content>
+                        <FlowPane fx:id="postsFlowPane" hgap="20.0" prefWidth="1064.0" styleClass="flow-pane" vgap="20.0">
+                            <padding>
+                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                            </padding>
+                            <!-- Post cards will be loaded dynamically -->
+                        </FlowPane>
+                    </content>
+                </ScrollPane>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
