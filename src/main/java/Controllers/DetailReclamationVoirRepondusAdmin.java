@@ -11,13 +11,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 import services.ServiceFeedbackRepRec;
 import services.ServiceReclamation;
 import services.ServiceReponse;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 public class DetailReclamationVoirRepondusAdmin {
     @FXML
@@ -106,6 +110,11 @@ public class DetailReclamationVoirRepondusAdmin {
                 System.out.println("Erreur lors du chargement de la page ModifierReponse.fxml");
             }
         }
+    @FXML
+    public void initialize(URL location, ResourceBundle resources) {
+        HBox.setHgrow(DescRecDetail, Priority.ALWAYS);
+        DescRecDetail.setMaxWidth(Double.MAX_VALUE);
+    }
 
         @FXML
         void OnSupprimerReponse (ActionEvent event){

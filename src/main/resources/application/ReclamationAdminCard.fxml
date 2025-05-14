@@ -4,32 +4,57 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.geometry.Insets?>
 
-<!-- Import Circle for the dot -->
-<!-- For shadow effect -->
-
-<AnchorPane prefHeight="220" prefWidth="300" style="-fx-background-color: #fff; -fx-background-radius: 16; -fx-border-radius: 16; -fx-border-color: #e0e0e0; -fx-effect: dropshadow(gaussian, #b0b0b0, 8, 0.2, 0, 2);" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="Controllers.ReclamationAdminCardController">
+<AnchorPane prefHeight="220" prefWidth="300" style="-fx-background-color: white; -fx-background-radius: 20; -fx-border-radius: 20;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="Controllers.ReclamationAdminCardController">
+    <effect>
+        <DropShadow color="#00000022" radius="10" spread="0.05" />
+    </effect>
     <children>
-        <!-- Add a Circle for the priority dot in the top-right corner -->
-        <Circle fx:id="priorityDot" fill="red" layoutX="280.0" layoutY="18.0" radius="8" stroke="#fff" strokeWidth="2">
-            <effect>
-                <DropShadow color="#b0b0b0" offsetX="1" offsetY="1" radius="4" />
-            </effect>
-        </Circle>
+        <!-- Left accent bar with priority color -->
+        <Rectangle fx:id="priorityBar" width="8" height="220" arcWidth="10" arcHeight="10" fill="#4CAF50" />
 
-        <VBox alignment="TOP_LEFT" spacing="8" layoutX="20" layoutY="18" prefWidth="260" >
-            <children>
-                <Label text="Type" style="-fx-font-size: 12px; -fx-text-fill: #888;" />
-                <Label fx:id="typeLabel" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #222;" />
-                <Label text="Date" style="-fx-font-size: 12px; -fx-text-fill: #888;" />
-                <Label fx:id="dateLabel" style="-fx-font-size: 14px; -fx-text-fill: #555;" />
-                <Label text="Description" style="-fx-font-size: 12px; -fx-text-fill: #888;" />
-                <Label fx:id="descLabel" wrapText="true" prefWidth="240" style="-fx-font-size: 15px; -fx-text-fill: #333;" />
-            </children>
+        <!-- Card content -->
+        <VBox spacing="12" layoutX="24" layoutY="20" prefWidth="260">
+            <!-- Header with type and priority dot -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label fx:id="typeLabel" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2D3748;" />
+                <Circle fx:id="priorityDot" radius="6" fill="#4CAF50">
+                    <effect>
+                        <DropShadow color="#00000033" radius="3" />
+                    </effect>
+                </Circle>
+            </HBox>
+
+            <!-- Date with icon-like prefix -->
+            <HBox alignment="CENTER_LEFT" spacing="8">
+                <Label text="📅" style="-fx-font-size: 14px;" />
+                <Label fx:id="dateLabel" style="-fx-font-size: 14px; -fx-text-fill: #718096;" />
+            </HBox>
+
+            <!-- Description with icon-like prefix -->
+            <VBox spacing="6">
+                <Label text="Description" style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #4A5568;" />
+                <Label fx:id="descLabel" wrapText="true" prefWidth="250" style="-fx-font-size: 14px; -fx-text-fill: #4A5568;" />
+            </VBox>
+
+            <!-- Action button -->
+            <Button fx:id="voirReclamationBtn" text="Voir détails" prefWidth="140" prefHeight="36"
+                    style="-fx-background-color: #3182CE; -fx-text-fill: white; -fx-background-radius: 18; -fx-font-weight: bold; -fx-font-size: 13px;">
+                <effect>
+                    <DropShadow color="#00000033" radius="4" spread="0.05" />
+                </effect>
+                <VBox.margin>
+                    <Insets top="10" />
+                </VBox.margin>
+            </Button>
         </VBox>
-        <Button fx:id="voirReclamationBtn" text="Afficher réclamation" layoutX="80" layoutY="180" prefWidth="170" prefHeight="32"
-                style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-background-radius: 16; -fx-font-weight: bold; -fx-effect: dropshadow(gaussian, #b0b0b0, 4, 0.2, 0, 1);" />
+
+        <!-- Priority label in top-right corner -->
+        <Label fx:id="priorityLabel" layoutX="220" layoutY="20" style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #4CAF50; -fx-background-color: #E6F4EA; -fx-background-radius: 12; -fx-padding: 4 10;" text="HAUTE" />
     </children>
 </AnchorPane>

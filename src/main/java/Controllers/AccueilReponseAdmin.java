@@ -1,12 +1,16 @@
 package Controllers;
 
 import entities.Reclamation;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
@@ -15,13 +19,20 @@ import services.ServiceReclamation;
 import java.io.IOException;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class AccueilReponseAdmin {
 
     @FXML
     private Button AffichRepAccueil;
+
     @FXML
     private FlowPane cardsContainer;
+
+    @FXML
+    private ComboBox<String> filtrerComboBox;
+
+    private List<Reclamation> allReclamations;
 
     @FXML
     void OnAffichRepAccueil(ActionEvent event) {
@@ -39,36 +50,59 @@ public class AccueilReponseAdmin {
         }
     }
 
-    @FXML
-    public void initialize() {
-        ServiceReclamation service = new ServiceReclamation();
-        try {
-            List<Reclamation> all = service.recuperer();
 
-            // Sort the list by priority: Haute (0), Moyenne (1), Basse (2)
-            all.sort(Comparator.comparingInt(r -> getPriorityValue(r.getPriorite())));
+   @FXML
+   public void initialize() {
+       ServiceReclamation service = new ServiceReclamation();
+       ObservableList<String> filterOptions = FXCollections.observableArrayList("Service", "Prix", "Trajet", "Autre");
+       filtrerComboBox.setItems(filterOptions);
 
-            for (Reclamation rec : all) {
-                if ("en attente".equals(rec.getStatut())) {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/ReclamationAdminCard.fxml"));
-                    AnchorPane card = loader.load();
-                    ReclamationAdminCardController cardController = loader.getController();
-                    cardController.setData(rec);
-                    cardController.voirReclamationBtn.setOnAction(e -> openDetail(rec));
-                    cardsContainer.getChildren().add(card);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+       try {
+           allReclamations = service.recuperer();
+           allReclamations.sort(Comparator.comparingInt(r -> getPriorityValue(r.getPriorite())));
+           displayReclamations(allReclamations);
 
+           filtrerComboBox.setOnAction(event -> {
+               String selectedType = filtrerComboBox.getValue();
+               if (selectedType != null) {
+                   filterReclamations(allReclamations, selectedType);
+               }
+           });
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
+   }
     private int getPriorityValue(String priority) {
         switch (priority.toLowerCase()) {
             case "haute": return 0;
             case "moyenne": return 1;
             case "basse": return 2;
             default: return 3; // unknown priorities go last
+        }
+    }
+
+    private void filterReclamations(List<Reclamation> reclamations, String type) {
+        List<Reclamation> filteredReclamations = reclamations.stream()
+                .filter(r -> r.getTypeReclamation().equalsIgnoreCase(type))
+                .collect(Collectors.toList());
+        displayReclamations(filteredReclamations);
+    }
+
+    private void displayReclamations(List<Reclamation> reclamations) {
+        cardsContainer.getChildren().clear();
+        for (Reclamation rec : reclamations) {
+            if ("en attente".equals(rec.getStatut())) {
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/ReclamationAdminCard.fxml"));
+                    AnchorPane card = loader.load();
+                    ReclamationAdminCardController cardController = loader.getController();
+                    cardController.setData(rec);
+                    cardController.voirReclamationBtn.setOnAction(e -> openDetail(rec));
+                    cardsContainer.getChildren().add(card);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 

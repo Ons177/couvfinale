@@ -12,6 +12,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
+import services.FrenchProfanityAPI;
 import services.ServiceReclamation;
 
 import java.io.IOException;
@@ -77,6 +78,17 @@ public class ModifierReclamation {
                 currentReclamation.setDescription(DescriptionReclamation.getText());
                 currentReclamation.setDateCreation(LocalDate.now().format(DateTimeFormatter.ISO_DATE));
                 currentReclamation.setPriorite(PrioriteReclamation.getValue());
+                try {
+                    // Step 1: Check for profanity
+                    String description = DescriptionReclamation.getText();
+                    if (FrenchProfanityAPI.containsProfanity(description)) {
+                        Alert alert = new Alert(Alert.AlertType.WARNING);
+                        alert.setTitle("Avertissement");
+                        alert.setHeaderText("Contenu inapproprié détecté");
+                        alert.setContentText("Votre réclamation contient des mots inappropriés. Veuillez les modifier.");
+                        alert.showAndWait();
+                        return;  // Exit the method if profanity is found
+                    }
                 ServiceReclamation service = new ServiceReclamation();
                 service.modifier(currentReclamation);
                 // Show success message
@@ -101,6 +113,7 @@ public class ModifierReclamation {
                 alert.setContentText("Une erreur est survenue lors de la modification de la réclamation: " + e.getMessage());
                 alert.showAndWait();
             }
-        }
-    }
-}
+        } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }}}

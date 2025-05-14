@@ -10,12 +10,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import services.ServiceFeedbackRepRec;
-import services.ServiceReclamation;
-import services.ServiceReponse;
+import services.*;
 import services.ServiceFeedbackRepRec;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -93,6 +92,16 @@ public class ModifierReponse {
                 // Now modify the response content and date
                 currentReponse.setContenu(Contenu.getText());
                 currentReponse.setDateReponse(LocalDate.now().format(DateTimeFormatter.ISO_DATE));
+                try {
+                    String contenu = Contenu.getText();
+                    if (FrenchProfanityAPI.containsProfanity(contenu)) {
+                        Alert alert = new Alert(Alert.AlertType.WARNING);
+                        alert.setTitle("Avertissement");
+                        alert.setHeaderText("Contenu inapproprié détecté");
+                        alert.setContentText("Votre réponse contient des mots inappropriés. Veuillez les modifier.");
+                        alert.showAndWait();
+                        return;  // Exit the method if profanity is found
+                    }
                 ServiceReponse service = new ServiceReponse();
                 service.modifier(currentReponse);
 
@@ -119,7 +128,9 @@ public class ModifierReponse {
                 alert.setContentText("Une erreur est survenue lors de la modification de la réponse: " + e.getMessage());
                 alert.showAndWait();
             }
+        } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
-    }
 
-}
+}}
