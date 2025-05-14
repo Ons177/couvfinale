@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,17 +13,25 @@
    <children>
       <VBox layoutX="-3.0" layoutY="-6.0" prefHeight="706.0" prefWidth="266.0" styleClass="bg" stylesheets="@style.css">
          <children>
-            <Button fx:id="monProfilButton" mnemonicParsing="false" prefHeight="65.0" prefWidth="246.0" styleClass="btn-mon-compte" text="Mon Profile" />
+            <Button fx:id="monProfilButton" mnemonicParsing="false" prefHeight="65.0" prefWidth="246.0" styleClass="btn-mon-compte" text="Mon Profil">
+               <graphic>
+                  <ImageView fitHeight="57.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/profil.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Separator prefWidth="200.0" styleClass="bg" />
             <Button mnemonicParsing="false" prefHeight="66.0" prefWidth="242.0" styleClass="btn-mon-compte" text="Trajets et Reservations" />
             <Button mnemonicParsing="false" prefHeight="71.0" prefWidth="247.0" styleClass="btn-mon-compte" text="Locations et Réservations" />
             <Button mnemonicParsing="false" prefHeight="72.0" prefWidth="246.0" styleClass="btn-mon-compte" text="Evenements et Reservations" onAction="#acceuilAdmin" />
             <Button mnemonicParsing="false" prefHeight="77.0" prefWidth="249.0" styleClass="btn-mon-compte" text="Posts et Commentaires" />
             <Button mnemonicParsing="false" prefHeight="72.0" prefWidth="248.0" styleClass="btn-mon-compte" text="Voir Réclamations et Répondre" />
-            <Button mnemonicParsing="false" prefHeight="47.0" prefWidth="295.0" styleClass="bg" text="Se deconnecter" onAction="#seDeconnecter">
+            <Button mnemonicParsing="false" onAction="#seDeconnecter" prefHeight="42.0" prefWidth="266.0" styleClass="bg" text="Se deconnecter">
                <graphic>
                   <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/1828427.png" />
+                        <Image url="@../Images/deconn.png" />
                      </image>
                   </ImageView>
                </graphic>

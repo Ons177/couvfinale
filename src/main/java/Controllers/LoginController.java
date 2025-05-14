@@ -4,12 +4,10 @@ import entities.Utilisateur;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import services.UserService;
 import entities.MailService;
@@ -24,8 +22,8 @@ import java.util.Map;
 
 public class LoginController {
 
-    private Map<String, LocalDateTime> lockTimes = new HashMap<>();
-    private Map<String, Integer> failedAttempts = new HashMap<>();
+    private final Map<String, LocalDateTime> lockTimes = new HashMap<>();
+    private final Map<String, Integer> failedAttempts = new HashMap<>();
 
     @FXML private TextField emailField;
     @FXML private PasswordField passwordField;
@@ -47,23 +45,24 @@ public class LoginController {
         String email = emailField.getText().trim();
         String password = passwordField.getText().trim();
 
-        // Vérifie si le compte est bloqué
+        if (email.isEmpty() || password.isEmpty()) {
+            showTemporaryError("Veuillez remplir tous les champs.");
+            return;
+        }
+
+        // Vérification blocage
         if (lockTimes.containsKey(email)) {
             LocalDateTime lockTime = lockTimes.get(email);
-            java.time.Duration elapsed = java.time.Duration.between(lockTime, LocalDateTime.now());
+            long minutesPassed = java.time.Duration.between(lockTime, LocalDateTime.now()).toMinutes();
 
-            if (elapsed.toMinutes() < 2) {
+            if (minutesPassed < 2) {
                 showTemporaryError("Compte bloqué pour 2 minutes.");
 
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Compte bloqué");
-                alert.setHeaderText(null);
-                alert.setContentText("Votre compte est temporairement bloqué suite à plusieurs tentatives échouées. Réessayez dans quelques instants.");
-                alert.showAndWait();
+                showAlert("Compte bloqué", "Votre compte est temporairement bloqué. Réessayez dans quelques instants.");
                 return;
             } else {
                 lockTimes.remove(email);
-                failedAttempts.put(email, 0); // réinitialise les tentatives
+                failedAttempts.put(email, 0);
             }
         }
 
@@ -75,26 +74,19 @@ public class LoginController {
 
             if (attempts >= 3) {
                 lockTimes.put(email, LocalDateTime.now());
-
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Compte bloqué");
-                alert.setHeaderText(null);
-                alert.setContentText("Vous avez dépassé les 3 tentatives. Votre compte est bloqué pour 2 minutes.");
-                alert.showAndWait();
-
+                showAlert("Compte bloqué", "Vous avez dépassé les 3 tentatives. Votre compte est bloqué pour 2 minutes.");
                 showTemporaryError("Compte bloqué pour 2 minutes.");
             } else {
                 showTemporaryError("Identifiants incorrects. Tentative " + attempts + "/3.");
             }
-
             return;
         }
 
-        // Compte trouvé et non bloqué
+        // Authentification réussie
         failedAttempts.remove(email);
         lockTimes.remove(email);
 
-        if ("CONDUCTEUR".equals(user.getRole()) && !user.isApproved()) {
+        if ("CONDUCTEUR".equalsIgnoreCase(user.getRole()) && !user.isApproved()) {
             showTemporaryError("Votre compte conducteur n'est pas encore approuvé.");
             return;
         }
@@ -107,21 +99,21 @@ public class LoginController {
                 break;
             case "CONDUCTEUR":
             case "PASSAGER":
-                loadUserProfile(user);
+                loadUserMenu(user);
                 break;
             default:
                 showTemporaryError("Rôle utilisateur non reconnu.");
         }
     }
-    private void loadUserProfile(Utilisateur user) {
-        String fxmlFile;
 
+    private void loadUserMenu(Utilisateur user) {
+        String fxmlPath;
         switch (user.getRole().toUpperCase()) {
             case "CONDUCTEUR":
-                fxmlFile = "/Views/MenuConducteur.fxml";
+                fxmlPath = "/Views/MenuConducteur.fxml";
                 break;
             case "PASSAGER":
-                fxmlFile = "/Views/MenuPassager.fxml";
+                fxmlPath = "/Views/MenuPassager.fxml";
                 break;
             default:
                 showTemporaryError("Rôle utilisateur non reconnu.");
@@ -129,33 +121,25 @@ public class LoginController {
         }
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Parent root = loader.load();
-
-            // Enregistre l’utilisateur connecté dans la session
-            UserSession.setCurrentUser(user);
-
             Stage stage = (Stage) emailField.getScene().getWindow();
             stage.setScene(new Scene(root));
+            stage.setMaximized(true);
             stage.show();
-
         } catch (IOException e) {
+            showAlert("Erreur", "Erreur lors du chargement de l'interface.");
             e.printStackTrace();
-            showTemporaryError("Erreur lors du chargement de l'interface.");
         }
     }
-
-
 
     private void loadAdminDashboard() {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/Views/MenuAdmin.fxml"));
             Stage stage = (Stage) emailField.getScene().getWindow();
-            Scene newScene = new Scene(root);
-            stage.setScene(newScene);
+            stage.setScene(new Scene(root));
+            stage.setMaximized(true);
             stage.show();
-
-            Platform.runLater(() -> stage.setMaximized(true));
         } catch (IOException e) {
             showAlert("Erreur", "Impossible de charger le menu admin.");
             e.printStackTrace();
@@ -170,48 +154,19 @@ public class LoginController {
         pause.play();
     }
 
-   /* private void loadAdminDashboard() {
-        try {
-            // Charger la nouvelle scène
-            Parent root = FXMLLoader.load(getClass().getResource("/Views/AdminDashboard.fxml"));
-
-            // Obtenir l'instance du Stage actuel
-            Stage stage = (Stage) emailField.getScene().getWindow();
-
-            // Changer la scène
-            Scene newScene = new Scene(root);
-            stage.setScene(newScene);
-
-            // Afficher la fenêtre
-            stage.show();
-
-            // Maximiser la fenêtre après que la scène a été complètement chargée
-            Platform.runLater(() -> {
-                stage.setMaximized(true);  // Maximiser la fenêtre après que la scène soit affichée
-            });
-        } catch (IOException e) {
-            showAlert("Erreur", "Impossible de charger le tableau de bord admin.");
-            e.printStackTrace();
-        }
-    }
-*/
-
-
     @FXML
     private void handleSignup() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/Signup.fxml"));
             Parent root = loader.load();
-
-            Stage newStage = new Stage();
-            newStage.setScene(new Scene(root));
-            newStage.setTitle("Inscription - SmartRides");
-            newStage.setMaximized(true);
-            newStage.show();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Inscription - SmartRide");
+            stage.setMaximized(true);
+            stage.show();
 
             Stage currentStage = (Stage) emailField.getScene().getWindow();
             currentStage.close();
-
         } catch (IOException e) {
             showAlert("Erreur", "Impossible de charger l'écran d'inscription.");
             e.printStackTrace();
@@ -239,20 +194,35 @@ public class LoginController {
         }
 
         String password = user.getMdp();
-
-        String subject = "Récupération de mot de passe - Smart Ride";
-        String message = "Bonjour " + user.getPrenom() + ",\n\n"
-                + "Voici votre mot de passe : " + password + "\n\n"
-                + "Merci d'utiliser notre service.\n"
-                + "Cordialement,\nL'équipe Smart Ride.";
+        String subject = "🔒 Récupération de mot de passe - Smart Ride";
+        String logoUrl = "https://i.imgur.com/Qb6xSRv.png";
+        String htmlMessage = "<html><body style='font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px;'>"
+                + "<div style='max-width: 600px; margin: auto; background-color: #ffffff; border-radius: 10px; overflow: hidden; box-shadow: 0 0 10px rgba(0,0,0,0.1);'>"
+                + "<div style='background-color: #007BFF; padding: 20px; text-align: center;'>"
+                + "<img src='" + logoUrl + "' alt='Smart Ride' style='width: 120px;'/></div>"
+                + "<div style='padding: 30px;'>"
+                + "<h2 style='color: #333;'>Bonjour " + user.getPrenom() + ",</h2>"
+                + "<p style='font-size: 16px;'>Vous avez demandé à récupérer votre mot de passe. Voici vos informations :</p>"
+                + "<div style='background-color: #f0f0f0; padding: 20px; border-radius: 6px;'>"
+                + "<p><strong>Email :</strong> " + user.getEmail() + "</p>"
+                + "<p><strong>Mot de passe :</strong> " + password + "</p>"
+                + "</div>"
+                + "<p style='margin-top: 20px; font-size: 14px; color: #555;'>Pour votre sécurité, pensez à le modifier rapidement.</p>"
+                + "<p style='margin-top: 30px;'>🚗 L’équipe Smart Ride</p>"
+                + "</div></div></body></html>";
 
         final String fromEmail = "smartrides11@gmail.com";
-        final String appPassword = "akpc enam yncv sjjt";
+        final String appPassword = "akpc enam yncv sjjt"; // à stocker ailleurs en prod
 
-        MailService.send(email, subject, message, fromEmail, appPassword);
-
-        showAlert("Succès", "Un e-mail vous a été envoyé avec votre mot de passe.");
+        try {
+            MailService.send(email, subject, htmlMessage, fromEmail, appPassword, true);
+            showAlert("Succès", "Un e-mail vous a été envoyé avec votre mot de passe.");
+        } catch (Exception e) {
+            showAlert("Erreur", "Une erreur est survenue lors de l'envoi de l'e-mail. Veuillez réessayer.");
+        }
     }
+
+
 
     @FXML
     private void handleCancelResetPassword() {
@@ -268,4 +238,3 @@ public class LoginController {
         alert.showAndWait();
     }
 }
-

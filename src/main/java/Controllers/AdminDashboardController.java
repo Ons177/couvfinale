@@ -134,10 +134,10 @@ public class AdminDashboardController {
     }
 
     @FXML
-    private void handleLogout(ActionEvent event) {
+    private void handleback(ActionEvent event) {
         try {
             // Charger la page de connexion
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/Login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/MenuAdmin.fxml"));
             Parent root = loader.load();
 
             // Obtenir la fenêtre actuelle

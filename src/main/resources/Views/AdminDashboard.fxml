@@ -19,8 +19,18 @@
             <padding>
                 <Insets bottom="10" left="10" right="10" top="10" />
             </padding>
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleback" prefHeight="17.0" prefWidth="157.0" styleClass="bg" text="Retour">
 
-            <Text style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-translate-y: 5;" text="Tableau de bord Admin" wrappingWidth="275.1234884262085" />
+                <graphic>
+                    <ImageView fitHeight="35.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../Images/back.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+
+            <Text style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-translate-y: 5;" text="Tableau de bord Admin" textAlignment="CENTER" wrappingWidth="498.3235011100769" />
         </HBox>
     </top>
 
@@ -30,7 +40,7 @@
             <padding>
                 <Insets bottom="20" left="20" right="20" top="20" />
             </padding>
-         <Button mnemonicParsing="false" onAction="#adduser" styleClass="bg" text="Ajouter un utilisateur" />
+            <Button mnemonicParsing="false" onAction="#adduser" styleClass="bg" text="Ajouter un utilisateur" />
 
             <Button fx:id="btnAfficherUtilisateurs" onAction="#handleAfficherUtilisateurs" styleClass="btn-mon-compte" text="Voir Tous les Utilisateurs" />
 

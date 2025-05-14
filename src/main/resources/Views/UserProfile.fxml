@@ -7,6 +7,8 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
@@ -21,6 +23,18 @@
             <padding>
                 <Insets left="10" top="10" />
             </padding>
+            <children>
+                <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleback" styleClass="bg" text="Retour">
+
+                    <graphic>
+                        <ImageView fitHeight="37.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../Images/back.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
 
         </HBox>
     </top>
