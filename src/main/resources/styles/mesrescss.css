@@ -1,0 +1,110 @@
+/* Root styles for the AnchorPane */
+AnchorPane {
+    -fx-background-color: #F0F4FA; /* Light blue-gray for a fresh canvas */
+}
+
+/* Viewport VBox styling */
+.viewport {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #60A5FA; /* Bright blue border */
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 10px; /* Reduced padding to maximize content area */
+    -fx-spacing: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 6, 0, 0, 2);
+}
+
+/* ScrollPane styling */
+.scroll-bar.product-card-scrollPane {
+    -fx-background-color: transparent;
+    -fx-padding: 0; /* Remove padding to maximize width */
+    -fx-pref-width: 1138px; /* Full width of parent VBox */
+    -fx-pref-height: 598px; /* Maximize height within viewport (618 - padding) */
+}
+
+/* ScrollBar styling */
+.scroll-bar .thumb {
+    -fx-background-color: #60A5FA; /* Bright blue thumb */
+    -fx-background-radius: 4px;
+}
+
+.scroll-bar .track {
+    -fx-background-color: #E6EDFF; /* Light blue track */
+    -fx-background-radius: 4px;
+}
+
+.scroll-bar .increment-button, .scroll-bar .decrement-button {
+    -fx-background-color: #1E40AF; /* Sapphire blue buttons */
+    -fx-padding: 5px;
+}
+
+.scroll-bar .increment-arrow, .scroll-bar .decrement-arrow {
+    -fx-background-color: #FFFFFF; /* White arrows */
+}
+
+/* VBox container for reservation cards */
+.dash__container-card {
+    -fx-alignment: TOP_LEFT; /* Items start from top-left */
+    -fx-padding: 15px; /* Balanced padding for clean display */
+    -fx-spacing: 20px; /* Space between vertically stacked items */
+    -fx-background-color: #F8FAFF; /* Very light blue for card container */
+    -fx-border-radius: 8px;
+    -fx-pref-width: 1118px; /* Maximize width (1138 - 2*10px viewport padding) */
+    -fx-min-height: 800px; /* Ensure enough height for multiple items */
+}
+
+/* Reservation card styling (assumed to be HBox or similar) */
+.reservation-card {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #60A5FA; /* Bright blue border */
+    -fx-border-width: 1px;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-padding: 15px;
+    -fx-pref-width: 1080px; /* Wide enough to fit content comfortably */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 1);
+    -fx-alignment: CENTER_LEFT; /* Content aligned left within HBox */
+}
+
+/* Label styling for the title */
+Label {
+    -fx-font-family: "Playfair Display";
+    -fx-font-size: 26px;
+    -fx-font-weight: 700; /* Bold for elegance */
+    -fx-text-fill: #1E40AF; /* Sapphire blue */
+    -fx-alignment: center;
+    -fx-padding: 10px 0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 4, 0, 0, 1);
+}
+
+/* Button styling */
+Button {
+    -fx-background-color: #1E40AF; /* Sapphire blue button */
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: "Playfair Display";
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-background-radius: 6px;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+    -fx-border-color: #60A5FA; /* Bright blue border */
+    -fx-border-width: 1px;
+    -fx-border-radius: 6px;
+    -fx-graphic-text-gap: 10px; /* Space between text and icon */
+}
+
+Button:hover {
+    -fx-background-color: #3B82F6; /* Lighter blue on hover */
+    -fx-text-fill: #FFFFFF;
+}
+
+Button:pressed {
+    -fx-background-color: #1D4ED8; /* Slightly darker blue */
+}
+
+/* ImageView styling */
+ImageView {
+    -fx-smooth: true; /* Crisp images */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 1);
+}

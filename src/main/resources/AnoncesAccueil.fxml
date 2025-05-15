@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="977.0" prefWidth="1203.0" styleClass="bg" stylesheets="@styles/styleaccueil.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AnonceAcceuilcontrolleur">
+   <children>
+      <VBox prefHeight="978.0" prefWidth="295.0" styleClass="title-banner">
+         <children>
+            <ImageView fitHeight="254.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true" translateY="-260.0">
+               <image>
+                  <Image url="@images/488989254_687319873646160_5662447976588802784_n-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <VBox fx:id="vboxmenuann" prefHeight="200.0" prefWidth="100.0" translateY="-200.0" />
+         </children>
+      </VBox>
+      <VBox fx:id="vbowflowid" layoutX="301.0" layoutY="77.0" prefHeight="909.0" prefWidth="1199.0" styleClass="dash__container-card">
+         <children>
+            <ScrollPane fitToWidth="true" prefHeight="758.0" prefWidth="1183.0" styleClass="product-card-scrollPane">
+               <content>
+                  <FlowPane fx:id="flowid" alignment="CENTER" prefHeight="755.0" prefWidth="1198.0" prefWrapLength="800.0" styleClass="dash__container-card" />
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+      <Button layoutX="1351.0" layoutY="14.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="156.0" styleClass="btn-mon-compte" text="Menu principal" onAction="#retourmenu" />
+      <Button layoutX="1192.0" layoutY="14.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="156.0" styleClass="btn-mon-compte" text="Se deconnecter" onAction="#deconn" />
+      <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="1348.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/icons8-account-50.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="1187.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/icons8-enter-50.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="rechercheana" layoutX="444.0" layoutY="14.0" prefHeight="58.0" prefWidth="624.0" styleClass="champRecherche" />
+      <Button layoutX="988.0" layoutY="17.0" mnemonicParsing="false" onAction="#rechercheann" prefHeight="52.0" prefWidth="66.0" styleClass="btn-mon-compte" />
+      <ImageView fitHeight="33.0" fitWidth="43.0" layoutX="1004.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/icons8-search-more-48.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

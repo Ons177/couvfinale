@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane prefHeight="889.0" prefWidth="1592.0" styleClass="bg" stylesheets="@styles/csslesrescond.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.voirreservationsconducteur">
+    <children>
+        <VBox layoutY="26.0" prefHeight="800.0" prefWidth="1606.0" styleClass="viewport">
+            <children>
+                <Label alignment="CENTER" prefHeight="59.0" prefWidth="1010.0" text="Toutes les demandes de réservation reçues pour vos annonces de location" textAlignment="CENTER" textFill="#f6f8ff" translateX="350.0" underline="true">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                </Label>
+            <WebView fx:id="webviewcanlenderan" prefHeight="764.0" prefWidth="1614.0" style="max-width: 600px; margin: auto; transform: scale(0.8); transform-origin: top left;" VBox.vgrow="ALWAYS" />
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

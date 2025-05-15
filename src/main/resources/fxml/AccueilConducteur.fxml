@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.AccueilConducteurController"
+            styleClass="main-background"
+            stylesheets="/css/style.css">
+
+    <!-- Top Bar with Ajouter Événement & Voir Réservations -->
+    <top>
+        <HBox alignment="TOP_RIGHT" style="-fx-padding: 20 20 0 0;" spacing="10">
+            <Button text="Ajouter Événement" styleClass="add-button" onAction="#allerAjouterEvenement"/>
+            <Button text="Voir Réservations" styleClass="reservation-button" onAction="#allerConsulterReservation"/>
+            <Button text="Menu"  styleClass="logout-button" onAction="#allermenuconducteur"/>
+        </HBox>
+    </top>
+
+
+    <!-- Left Sidebar -->
+    <left>
+        <VBox styleClass="sidebar" prefWidth="300" alignment="CENTER" spacing="20">
+            <VBox styleClass="sidebar-welcome" alignment="CENTER" spacing="15">
+                <ImageView fitWidth="180" fitHeight="180" preserveRatio="true">
+                    <image>
+                        <Image url="@/images/smartrides.jpg"/>
+                    </image>
+                </ImageView>
+                <Label wrapText="true" maxWidth="220"
+                       text="Bienvenue Conducteur ! Ajoutez et gérez vos événements facilement."
+                       styleClass="sidebar-desc"/>
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- Main Content -->
+    <center>
+        <VBox style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 30;" alignment="TOP_CENTER" spacing="20">
+
+            <!-- Ici plus de bouton global Afficher -->
+            <!-- Juste la liste dynamique -->
+            <ScrollPane fitToWidth="true" styleClass="scroll-pane">
+                <FlowPane fx:id="eventsList" hgap="20" vgap="20" styleClass="events-flow">
+                    <!-- Events will be added here dynamically -->
+                </FlowPane>
+            </ScrollPane>
+        </VBox>
+    </center>
+
+</BorderPane>

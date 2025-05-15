@@ -1,0 +1,46 @@
+/* AnchorPane background styling */
+.bg {
+    -fx-background-color: #F0F4FA; /* Light blue-gray for a fresh canvas */
+}
+
+/* Viewport VBox styling */
+.viewport {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #60A5FA; /* Bright blue border */
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 20px;
+    -fx-spacing: 15px;
+    -fx-pref-width: 1592px; /* Match AnchorPane width */
+    -fx-pref-height: 889px; /* Match AnchorPane height */
+    -fx-alignment: TOP_CENTER; /* Center content vertically */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 6, 0, 0, 2);
+}
+
+/* Label styling for the title */
+Label {
+    -fx-font-family: "Playfair Display";
+    -fx-font-size: 26px;
+    -fx-font-weight: 700; /* Bold for elegance */
+    -fx-text-fill: #1E40AF; /* Sapphire blue, overriding FXML #f6f8ff */
+    -fx-alignment: CENTER;
+    -fx-padding: 10px 0;
+    -fx-pref-width: 1200px; /* Wide enough for long text */
+    -fx-wrap-text: true; /* Wrap long text */
+    -fx-translate-x: 0; /* Override FXML translateX */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 4, 0, 0, 1);
+}
+
+/* WebView styling for calendar */
+WebView {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #60A5FA; /* Blue border for consistency */
+    -fx-border-width: 1px;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-padding: 10px;
+    -fx-pref-width: 600px; /* Match inline max-width */
+    -fx-pref-height: 700px; /* Fit within VBox */
+    -fx-alignment: CENTER; /* Center within VBox */
+}

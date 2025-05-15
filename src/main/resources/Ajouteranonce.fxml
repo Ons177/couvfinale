@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane prefHeight="1217.0" prefWidth="1008.0" styleClass="form-container" stylesheets="@styles/ajouterAnonceCSS.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ajouteranoncecontrolleur">
+   <children>
+      <VBox layoutX="140.0" layoutY="-1.0" prefHeight="1217.0" prefWidth="666.0" styleClass="vbox">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="form-label" text="Ajouter votre anonce" translateX="20.0" translateY="-50.0" wrappingWidth="307.15936279296875">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <fill>
+                  <RadialGradient centerX="0.5221238938053098" centerY="0.22727269837350556" radius="0.5">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.4895906448364258" green="0.6750253438949585" blue="0.7263157963752747" opacity="0.9300000071525574" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </fill>
+            </Text>
+            <Label prefHeight="27.0" prefWidth="310.0" text="Le véhicule que vous souhaitez louer" />
+            <ComboBox fx:id="comboVehicule" prefHeight="33.0" prefWidth="150.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Titre ">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
+            <TextField fx:id="idta" promptText="titre de ton anonce" styleClass="form-input" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Description">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
+            <TextArea fx:id="iddesa" prefHeight="79.0" prefWidth="303.0" promptText="decrire votre anonce" styleClass="text-area" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="date disponibilité">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
+            <DatePicker fx:id="iddatea" styleClass="date-picker" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="prix par jour">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
+            <TextField fx:id="idprixja" prefHeight="26.0" prefWidth="56.0" promptText="00.000000" styleClass="text-field" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="adresse">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
+            <TextField fx:id="idadressa" prefHeight="26.0" prefWidth="251.0" promptText="ton adresse" styleClass="text-field" />
+            <WebView fx:id="webviewid" prefHeight="177.0" prefWidth="605.0" />
+            <HBox prefHeight="200.0" prefWidth="583.0">
+               <children>
+                  <ImageView fx:id="imageViewAn" fitHeight="200.0" fitWidth="280.0" pickOnBounds="true" preserveRatio="true" />
+                  <HBox prefHeight="51.0" prefWidth="388.0">
+                     <children>
+                        <AnchorPane prefHeight="200.0" prefWidth="323.0">
+                           <children>
+                              <Button layoutX="56.0" layoutY="100.0" mnemonicParsing="false" onAction="#TelechargerImageAnonce" prefHeight="36.0" prefWidth="135.0" styleClass="choisir-image-button" text="Choisir Image" />
+                              <Text fill="#847d7d" layoutX="49.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*Telecharger une image pour ton anonce" wrappingWidth="224.18309020996094">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Text>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="253.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/icons8-upload-to-the-cloud-48.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <Button mnemonicParsing="false" onAction="#ajouteranonce" prefHeight="42.0" prefWidth="638.0" styleClass="ajouter-button" text="ajouter anonce">
+               <graphic>
+                  <ImageView fitHeight="33.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons8-done-48.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

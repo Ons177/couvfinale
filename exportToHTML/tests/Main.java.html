@@ -1,0 +1,82 @@
+<html>
+<head>
+<title>Main.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #7a7e85;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Main.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">tests</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">sql</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">utils</span><span class="s2">.</span><span class="s1">MyDatabase</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">entities</span><span class="s2">.</span><span class="s1">Utilisateur</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">sql</span><span class="s2">.</span><span class="s1">SQLException</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">entities</span><span class="s2">.</span><span class="s1">Vehicule</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">services</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">sql</span><span class="s2">.</span><span class="s1">Date</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">List</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">Main </span><span class="s2">{</span>
+    <span class="s0">public static void </span><span class="s1">main</span><span class="s2">(</span><span class="s1">String</span><span class="s2">[] </span><span class="s1">args</span><span class="s2">) {</span>
+
+       <span class="s1">ServiceVehicule servicevehicule </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ServiceVehicule</span><span class="s2">();</span>
+       <span class="s1">ServiceUtilisateur serviceutilisateur </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ServiceUtilisateur</span><span class="s2">();</span>
+       <span class="s0">try </span><span class="s2">{</span>
+           <span class="s1">Utilisateur user </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Utilisateur</span><span class="s2">(</span><span class="s3">&quot;Smati&quot;</span><span class="s2">, </span><span class="s3">&quot;Ons&quot;</span><span class="s2">, </span><span class="s3">&quot;onssmati@gmail.com&quot;</span><span class="s2">, </span><span class="s3">&quot;onsons&quot;</span><span class="s2">, </span><span class="s3">&quot;28648236&quot;</span><span class="s2">, </span><span class="s3">&quot;conducteur&quot;</span><span class="s2">, </span><span class="s1">Date</span><span class="s2">.</span><span class="s1">valueOf</span><span class="s2">(</span><span class="s3">&quot;2003-09-17&quot;</span><span class="s2">));</span>
+           <span class="s1">serviceutilisateur</span><span class="s2">.</span><span class="s1">ajouter</span><span class="s2">(</span><span class="s1">user</span><span class="s2">);</span>
+           <span class="s1">Utilisateur user2 </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Utilisateur</span><span class="s2">(</span><span class="s3">&quot;Dridi&quot;</span><span class="s2">, </span><span class="s3">&quot;Ahmed&quot;</span><span class="s2">, </span><span class="s3">&quot;ahmedd@gmail.com&quot;</span><span class="s2">, </span><span class="s3">&quot;96841230&quot;</span><span class="s2">, </span><span class="s3">&quot;ahmed7895&quot;</span><span class="s2">, </span><span class="s3">&quot;passager&quot;</span><span class="s2">, </span><span class="s1">Date</span><span class="s2">.</span><span class="s1">valueOf</span><span class="s2">(</span><span class="s3">&quot;1997-10-02&quot;</span><span class="s2">));</span>
+           <span class="s1">serviceutilisateur</span><span class="s2">.</span><span class="s1">ajouter</span><span class="s2">(</span><span class="s1">user2</span><span class="s2">);</span>
+           <span class="s4">// Récupérer tous les utilisateurs et afficher</span>
+           <span class="s1">List</span><span class="s2">&lt;</span><span class="s1">Utilisateur</span><span class="s2">&gt; </span><span class="s1">utilisateurs </span><span class="s2">= </span><span class="s1">serviceutilisateur</span><span class="s2">.</span><span class="s1">recuperer</span><span class="s2">();</span>
+           <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Liste des utilisateurs après ajout :&quot;</span><span class="s2">);</span>
+           <span class="s0">for </span><span class="s2">(</span><span class="s1">Utilisateur u </span><span class="s2">: </span><span class="s1">utilisateurs</span><span class="s2">) {</span>
+               <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">u</span><span class="s2">);</span>
+           <span class="s2">}</span>
+
+           <span class="s4">// Modifier un utilisateur existant (par exemple, le premier utilisateur)</span>
+           <span class="s0">if </span><span class="s2">(</span><span class="s1">utilisateurs</span><span class="s2">.</span><span class="s1">size</span><span class="s2">() &gt; </span><span class="s5">0</span><span class="s2">) {</span>
+               <span class="s1">Utilisateur userModif </span><span class="s2">= </span><span class="s1">utilisateurs</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s5">0</span><span class="s2">);  </span><span class="s4">// Prendre le premier utilisateur</span>
+               <span class="s1">userModif</span><span class="s2">.</span><span class="s1">setMdp</span><span class="s2">(</span><span class="s3">&quot;UpdatedPassword&quot;</span><span class="s2">);  </span><span class="s4">// Modifier le mot de passe</span>
+               <span class="s1">serviceutilisateur</span><span class="s2">.</span><span class="s1">modifier</span><span class="s2">(</span><span class="s1">userModif</span><span class="s2">);  </span><span class="s4">// Appliquer les modifications</span>
+               <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Utilisateur après modification : &quot; </span><span class="s2">+ </span><span class="s1">userModif</span><span class="s2">);</span>
+           <span class="s2">}</span>
+
+           <span class="s4">// Supprimer un utilisateur (par exemple, le dernier utilisateur)</span>
+           <span class="s0">if </span><span class="s2">(</span><span class="s1">utilisateurs</span><span class="s2">.</span><span class="s1">size</span><span class="s2">() &gt; </span><span class="s5">0</span><span class="s2">) {</span>
+               <span class="s1">Utilisateur userSupp </span><span class="s2">= </span><span class="s1">utilisateurs</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s1">utilisateurs</span><span class="s2">.</span><span class="s1">size</span><span class="s2">() - </span><span class="s5">1</span><span class="s2">);  </span><span class="s4">// Dernier utilisateur</span>
+               <span class="s1">serviceutilisateur</span><span class="s2">.</span><span class="s1">supprimer</span><span class="s2">(</span><span class="s1">userSupp</span><span class="s2">);  </span><span class="s4">// Supprimer l'utilisateur</span>
+               <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Utilisateur supprimé : &quot; </span><span class="s2">+ </span><span class="s1">userSupp</span><span class="s2">);</span>
+           <span class="s2">}</span>
+
+           <span class="s4">// Récupérer à nouveau tous les utilisateurs après modification et suppression</span>
+           <span class="s1">utilisateurs </span><span class="s2">= </span><span class="s1">serviceutilisateur</span><span class="s2">.</span><span class="s1">recuperer</span><span class="s2">();</span>
+           <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Liste des utilisateurs après modification et suppression :&quot;</span><span class="s2">);</span>
+           <span class="s0">for </span><span class="s2">(</span><span class="s1">Utilisateur u </span><span class="s2">: </span><span class="s1">utilisateurs</span><span class="s2">) {</span>
+               <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">u</span><span class="s2">);</span>
+           <span class="s2">}</span>
+
+       <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">Exception e</span><span class="s2">) {</span>
+           <span class="s1">e</span><span class="s2">.</span><span class="s1">getMessage</span><span class="s2">();</span>
+       <span class="s2">}</span>
+    <span class="s2">}</span>
+
+
+
+
+       <span class="s2">}</span>
+
+
+</pre>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="600" prefWidth="1000" styleClass="bg" stylesheets="@style.css"
+            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.LoginController">
+
+    <left>
+        <!-- Partie gauche -->
+        <VBox alignment="CENTER" prefWidth="450.0" spacing="30"
+              style="-fx-background-color: linear-gradient(to bottom right, #0d47a1, #1976d2);">
+            <padding>
+                <Insets top="50" bottom="50" left="20" right="20"/>
+            </padding>
+
+            <Text text="Bienvenue sur SmartRides" wrappingWidth="400.0"
+                  style="-fx-font-size: 36px; -fx-fill: white; -fx-font-weight: bold; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 4, 0.5, 2, 2);"
+                  textAlignment="CENTER"/>
+
+            <Text text="Rejoignez notre communauté de covoiturage intelligent. Accédez à des trajets, événements, annonces et bien plus encore !"
+                  wrappingWidth="360.0"
+                  style="-fx-font-size: 18px; -fx-fill: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 2, 0.4, 1, 1);"
+                  textAlignment="CENTER"/>
+
+            <ImageView fitHeight="220.0" fitWidth="280.0" preserveRatio="true" pickOnBounds="true">
+                <image>
+                    <Image url="@../images/smartrides1.jpg"/>
+                </image>
+            </ImageView>
+        </VBox>
+    </left>
+    <center>
+        <VBox alignment="CENTER" maxWidth="380" prefHeight="360.0" prefWidth="380.0" spacing="12"
+              style="-fx-background-color: rgba(255,255,255,0.97); -fx-background-radius: 12;">
+            <padding>
+                <Insets top="15" bottom="15" left="20" right="20"/>
+            </padding>
+
+            <Text style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-fill: #0d47a1;" text="SmartRides"/>
+
+            <Label fx:id="errorLabel" style="-fx-text-fill: red; -fx-font-size: 12px;" text="" visible="false"/>
+
+            <!-- Formulaire de connexion -->
+            <VBox fx:id="loginForm" spacing="6">
+                <Label style="-fx-text-fill: #0d47a1; -fx-font-size: 12px;" text="Email"/>
+                <TextField fx:id="emailField" promptText="Entrez votre email"/>
+
+                <Label style="-fx-text-fill: #0d47a1; -fx-font-size: 12px;" text="Mot de passe"/>
+                <PasswordField fx:id="passwordField" promptText="Entrez votre mot de passe"/>
+
+                <Button fx:id="forgotPasswordButton" onAction="#handleForgotPassword"
+                        style="-fx-background-color: transparent; -fx-text-fill: #0d47a1; -fx-underline: true; -fx-font-size: 11px; -fx-alignment: CENTER_LEFT;"
+                        text="Mot de passe oublié ?"/>
+            </VBox>
+
+            <!-- Formulaire de réinitialisation -->
+            <VBox fx:id="resetPasswordForm" spacing="6" visible="false">
+                <Label style="-fx-text-fill: #0d47a1; -fx-font-size: 12px;" text="Entrez votre email"/>
+                <TextField fx:id="resetEmailField" promptText="Entrez votre email Gmail"/>
+
+                <Button fx:id="sendResetLinkButton" onAction="#handleSendResetLink"
+                        style="-fx-background-color: #0d47a1; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 12px;"
+                        text="Envoyer le lien de réinitialisation"/>
+
+                <Button onAction="#handleCancelResetPassword"
+                        style="-fx-background-color: transparent; -fx-text-fill: #0d47a1; -fx-underline: true; -fx-font-size: 11px;"
+                        text="Annuler"/>
+            </VBox>
+
+            <HBox alignment="CENTER" spacing="10">
+                <Button onAction="#handleLogin"
+                        style="-fx-background-color: #0d47a1; -fx-text-fill: white; -fx-font-weight: bold;"
+                        text="Se connecter"/>
+                <Button onAction="#handleSignup"
+                        style="-fx-background-color: transparent; -fx-text-fill: #0d47a1; -fx-underline: true;"
+                        text="Je n'ai pas de compte"/>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

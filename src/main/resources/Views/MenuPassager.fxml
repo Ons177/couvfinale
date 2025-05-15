@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="688.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PassagerController">
+   <children>
+      <VBox prefHeight="628.0" prefWidth="266.0" styleClass="bg" stylesheets="@style.css">
+         <children>
+            <Button fx:id="btnMonProfil" mnemonicParsing="false" onAction="#ouvrirProfil" prefHeight="43.0" prefWidth="270.0" styleClass="btn-mon-compte" text="Mon Profil">
+               <graphic>
+                  <ImageView fitHeight="55.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/profil.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Separator prefWidth="200.0" styleClass="bg" />
+            <Button mnemonicParsing="false" onAction="#cherchertrajet" prefHeight="45.0" prefWidth="267.0" styleClass="btn-mon-compte" text="Chercher un trajet" />
+            <Button mnemonicParsing="false" onAction="#voirrestrajet" prefHeight="44.0" prefWidth="274.0" styleClass="btn-mon-compte" text="Consulter vos réservations de trajets" />
+            <Button mnemonicParsing="false" onAction="#voirtouslesann" prefHeight="40.0" prefWidth="278.0" styleClass="btn-mon-compte" text="Voir les annonces" />
+            <Button mnemonicParsing="false" onAction="#acceuilClient" prefHeight="44.0" prefWidth="281.0" styleClass="btn-mon-compte" text="Reserver un evenement" />
+            <Button mnemonicParsing="false" onAction="#postcomm" prefHeight="42.0" prefWidth="267.0" styleClass="btn-mon-compte" text="Voir les posts et commenter" />
+            <Button mnemonicParsing="false" onAction="#acceuilClient1" prefHeight="46.0" prefWidth="269.0" styleClass="btn-mon-compte" text="Réclamations" />
+            <Button mnemonicParsing="false" onAction="#seDeconnecter" prefHeight="39.0" prefWidth="273.0" styleClass="bg" text="Se déconnecter">
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/deconn.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+         </children>
+      </VBox>
+      <ImageView fitHeight="628.0" fitWidth="457.0" layoutX="265.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/3e11a236-ed27-493a-9688-150cac4d2206.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

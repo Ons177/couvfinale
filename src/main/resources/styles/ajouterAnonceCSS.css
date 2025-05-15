@@ -1,0 +1,89 @@
+/* Style général du conteneur principal */
+.vbox {
+    -fx-background-color: #f9f9f9;
+    -fx-padding: 30;
+    -fx-spacing: 15;
+    -fx-alignment: center;
+}
+
+/* Titre principal de la page */
+.form-label {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-fill: #1a3c74;
+    -fx-text-alignment: center;
+}
+
+/* Labels secondaires */
+.label {
+    -fx-font-size: 18px;
+    -fx-fill: #333333;
+}
+
+/* Champs de texte */
+.form-input, .text-field {
+    -fx-background-color: white;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8 12;
+    -fx-font-size: 14px;
+    -fx-pref-width: 300;
+}
+
+/* Style au focus */
+.form-input:focused, .text-field:focused {
+    -fx-border-color: #19a7ce;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(three-pass-box, rgba(25,167,206,0.2), 5, 0.0, 0, 1);
+}
+
+/* Zone de texte (TextArea) */
+.text-area {
+    -fx-background-color: white;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8 12;
+    -fx-font-size: 14px;
+}
+
+/* Focus sur textarea */
+.text-area:focused {
+    -fx-border-color: #19a7ce;
+    -fx-border-width: 2;
+}
+
+/* DatePicker */
+.date-picker {
+    -fx-pref-width: 300;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-border-color: #cccccc;
+    -fx-font-size: 14px;
+}
+
+.date-picker:focused {
+    -fx-border-color: #19a7ce;
+    -fx-border-width: 2;
+}
+
+/* Bouton pour choisir l'image */
+.choisir-image-button {
+    -fx-background-color: #687173;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+
+.choisir-image-button:hover {
+    -fx-background-color: #1485a5;
+}
+.ajouter-button {
+    -fx-background-color: #19a7ce;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}

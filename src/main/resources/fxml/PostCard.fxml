@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+        <?import javafx.geometry.Insets?>
+        <?import javafx.scene.control.Button?>
+        <?import javafx.scene.control.Label?>
+        <?import javafx.scene.control.TextArea?>
+        <?import javafx.scene.image.Image?>
+        <?import javafx.scene.image.ImageView?>
+        <?import javafx.scene.layout.HBox?>
+        <?import javafx.scene.layout.VBox?>
+        <?import javafx.scene.text.Font?>
+
+<VBox fx:id="postCard" prefHeight="377.0" prefWidth="320.0" styleClass="post-card" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PostCardController">
+    <children>
+        <ImageView fx:id="postImage" fitHeight="154.0" fitWidth="254.0" pickOnBounds="true" preserveRatio="true" translateX="50.0" translateY="20.0" />
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="post-content" translateY="15.0">
+            <children>
+                <Label fx:id="titleLabel" styleClass="post-title" text="Post Title">
+                    <font>
+                        <Font name="Montserrat SemiBold" size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="dateLabel" styleClass="post-date" text="01/01/2024">
+                    <VBox.margin>
+                        <Insets top="5.0" />
+                    </VBox.margin>
+                </Label>
+                <Label fx:id="descriptionLabel" prefHeight="65.0" prefWidth="233.0" styleClass="post-description" text="jidszj" textAlignment="CENTER" wrapText="true">
+                    <VBox.margin>
+                        <Insets top="15.0" />
+                    </VBox.margin>
+                    <padding>
+                        <Insets left="10.0" right="10.0" />
+                    </padding>
+                </Label>
+
+                <!-- Social actions section -->
+                <HBox alignment="CENTER" spacing="20.0">
+                    <VBox.margin>
+                        <Insets top="15.0" />
+                    </VBox.margin>
+                    <children>
+                        <Button fx:id="loveButton" onAction="#handleLoveButton" styleClass="love-button">
+                            <graphic>
+                                <ImageView fitHeight="16.0" fitWidth="16.0">
+                                    <Image url="@../images/comme.png" />
+                                </ImageView>
+                            </graphic>
+                            <HBox.margin>
+                                <Insets />
+                            </HBox.margin>
+                        </Button>
+                        <Button fx:id="commentButton" onAction="#handleCommentButton" styleClass="add-button" text="Commenter" />
+                    </children>
+                </HBox>
+
+                <!-- Actions section (Modifier/Supprimer) -->
+                <HBox alignment="CENTER" spacing="40.0">
+                    <VBox.margin>
+                        <Insets top="15.0" />
+                    </VBox.margin>
+                    <children>
+                        <Button fx:id="editButton" onAction="#handleEditButton" styleClass="circle-button">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0">
+                                    <Image url="@../images/editer.png" />
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button fx:id="deleteButton" onAction="#handleDeleteButton" styleClass="circle-button">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0">
+                                    <Image url="@../images/supprimer.png" />
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                </HBox>
+
+                <!-- Comment section (initially hidden) -->
+                <VBox fx:id="commentSection" managed="false" styleClass="comment-section" visible="false">
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                    <children>
+                        <HBox alignment="CENTER" spacing="5.0">
+                            <children>
+                                <TextArea fx:id="commentArea" editable="true" prefHeight="60.0" promptText="Voir les commentaires..." wrapText="true" HBox.hgrow="ALWAYS" />
+                                <Button fx:id="sendCommentButton" onAction="#handleSendComment" styleClass="send-arrow-button">
+                                    <graphic>
+                                        <ImageView fitHeight="16.0" fitWidth="16.0">
+                                            <Image url="@../images/arrow.png" />
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                            </children>
+                        </HBox>
+                        <VBox fx:id="commentsContainer" managed="false" visible="false">
+                            <!-- Container for displayed comments -->
+                        </VBox>
+                    </children>
+                    <padding>
+                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                    </padding>
+                </VBox>
+            </children>
+            <padding>
+                <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
+            </padding>
+        </VBox>
+    </children>
+</VBox>

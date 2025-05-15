@@ -1,0 +1,98 @@
+.root {
+    -fx-background-color: #f9f9f9;
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+
+.label {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+    -fx-wrap-text: true;
+    -fx-alignment: center;
+    -fx-padding: 20px;
+}
+.title-banner {
+    -fx-background-color: #2c3e50;
+    -fx-padding: 20px;
+    -fx-alignment: center;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 2);
+}
+.title {
+    -fx-font-family: "Poppins", "Segoe UI", sans-serif;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-letter-spacing: 1px;
+    -fx-alignment: center;
+}
+
+
+
+.button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #2980b9;
+}
+
+.scroll-annonces {
+    -fx-pref-width: 1000px;
+    -fx-max-width: 1000px;
+    -fx-min-width: 900px;
+}
+
+.flowpane {
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+    -fx-alignment: center;
+    -fx-padding: 20;
+
+    -fx-pref-width: 950px;
+    -fx-max-width: 1000px;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    -fx-background-color: #2c3e50;
+    -fx-padding: 20px;
+    -fx-spacing: 20px;
+}
+
+.profile-section {
+    -fx-padding: 20px;
+    -fx-background-color: #34495e;
+    -fx-background-radius: 10px;
+}
+
+.profile-name {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.nav-menu {
+    -fx-padding: 10px;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-background-radius: 5px;
+    -fx-min-width: 160px;
+}
+
+.nav-button:hover {
+    -fx-background-color: #34495e;
+    -fx-cursor: hand;
+}

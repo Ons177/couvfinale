@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainContainer" prefHeight="622.0" prefWidth="1084.0" stylesheets="/css/Css.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddPosts">
+    <children>
+        <VBox  fx:id="rootContainer" prefHeight="622.0" prefWidth="1084.0" style="-fx-padding: 10;" styleClass="dash__container-card">
+            <children>
+                <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="1084.0" styleClass="title-container">
+                    <children>
+                        <Button fx:id="retourBtn" onAction="#retourToListPosts" styleClass="btn-back">
+                            <graphic>
+                                <ImageView fitHeight="24.0" fitWidth="24.0" preserveRatio="true">
+                                    <image>
+                                        <Image url="/images/en-arriere.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <HBox.margin>
+                                <Insets right="15.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Label styleClass="page-title" text="Ajouter Article " textFill="#205a89">
+                            <font>
+                                <Font name="Montserrat SemiBold" size="24.0" />
+                            </font>
+                        </Label>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Region layoutX="244.0" layoutY="10.0" /> <!-- Espacement flexible -->
+
+                    </children>
+                    <padding>
+                        <Insets left="20.0" />
+                    </padding>
+                </HBox>
+                <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="562.0" prefWidth="1084.0" styleClass="title-container" stylesheets="/css/Css.css">
+                    <content>
+                        <VBox prefHeight="549.0" prefWidth="1050.0" spacing="20.0" style="-fx-padding: 20;" styleClass="title-container">
+                            <children>
+                                <GridPane hgap="15.0" styleClass="title-container" vgap="15.0">
+                                    <columnConstraints>
+                                        <javafx.scene.layout.ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="150.0" />
+                                        <javafx.scene.layout.ColumnConstraints hgrow="ALWAYS" minWidth="200.0" prefWidth="800.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <javafx.scene.layout.RowConstraints minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                                        <javafx.scene.layout.RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <javafx.scene.layout.RowConstraints minHeight="150.0" prefHeight="200.0" vgrow="SOMETIMES" />
+                                        <javafx.scene.layout.RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <javafx.scene.layout.RowConstraints minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <!-- Titre -->
+                                        <Label styleClass="form-label" text="Titre:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                        <TextField fx:id="titreField" promptText="Entrez le titre de l'article" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                        <!-- Message d'erreur pour le titre -->
+                                        <Label fx:id="titreErrorLabel" styleClass="error-label" text="Erreur de titre" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                                        <!-- Contenu -->
+                                        <Label styleClass="form-label" text="Contenu:" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                                            <GridPane.margin>
+                                                <Insets top="10.0" />
+                                            </GridPane.margin>
+                                        </Label>
+                                        <TextArea fx:id="contenuArea" prefHeight="200.0" promptText="Entrez le contenu de l'article" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                        <!-- Message d'erreur pour le contenu -->
+                                        <Label fx:id="contenuErrorLabel" styleClass="error-label" text="Erreur de contenu" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                                        <!-- Upload image et bouton ajouter -->
+                                        <HBox alignment="CENTER_LEFT" spacing="15.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                            <children>
+                                                <Button fx:id="uploadImageBtn" styleClass="btn-secondary" text="Upload Image" />
+                                                <Label fx:id="imageNameLabel" text="Aucune image sélectionnée" />
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </GridPane>
+
+                                <!-- Bouton d'ajout en bas -->
+                                <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                                    <children>
+                                        <Button fx:id="annulerBtn" styleClass="btn-cancel" text="Annuler" />
+                                        <Button fx:id="ajouterBtn" styleClass="add-button" text="Ajouter l'article" />
+                                    </children>
+                                    <padding>
+                                        <Insets top="20.0" />
+                                    </padding>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </content>
+                </ScrollPane>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

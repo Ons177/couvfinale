@@ -1,0 +1,81 @@
+
+.bg {
+    -fx-background-color: linear-gradient(to bottom, rgba(68, 137, 209, 0.99), #043873);
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+}
+
+/* Style de la zone d'affichage (AnchorPane interne) */
+.annonces-container {
+    -fx-background-color: #f5f7fa; /* Blanc cassé pour contraster avec le fond bleu clair */
+    -fx-background-radius: 10; /* Coins arrondis pour un look soigné */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 8, 0, 0, 3); /* Ombre subtile */
+}
+
+.title {
+    -fx-font-family: "Poppins", "Segoe UI", sans-serif;
+    -fx-font-size: 32px;
+    -fx-font-weight: 800;
+    -fx-text-fill: linear-gradient(to right, #ffffff, #cce8ff);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 3, 0.2, 0, 2);
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+    -fx-padding: 10 0 10 0;
+    -fx-background-insets: 0;
+    -fx-underline: false;
+}
+
+
+.retour-button {
+
+        -fx-background-color: white;
+        -fx-border-color: #8ebcf2;
+        -fx-border-radius: 5;
+        -fx-text-fill: #134a78;
+        -fx-cursor: hand;
+
+}
+.retour-button:hover {
+    -fx-background-color: #0097a7;
+}
+
+/* Corriger les coins du ScrollPane */
+.scroll-annonces > .viewport {
+    -fx-background-color: transparent;
+    -fx-background-radius: 30;
+}
+
+/* Facultatif : rendre les scrollbars invisibles ou harmonisées */
+.scroll-annonces > .scroll-bar:vertical,
+.scroll-annonces > .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+
+.dash__container-card {
+    -fx-background-color: #fff;
+    -fx-background-radius: 30px;
+    -fx-border-radius: 30px;
+}
+
+.product-card-scrollPane {
+    -fx-background-color: transparent;
+    -fx-background-radius: 30px;
+    -fx-border-radius: 30px;
+}
+
+.welcometext {
+    -fx-font-size: 24px;
+    -fx-font-family: "Segoe UI Semibold", "Helvetica Neue", sans-serif;
+    -fx-text-fill: #143c67; /* même couleur que le logo */
+    -fx-font-weight: bold;
+    -fx-padding: 10px 20px 10px 0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 2, 0.3, 1, 1);
+}
+
+
+
+
+
+
+

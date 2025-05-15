@@ -1,0 +1,59 @@
+.card-vbox {
+    -fx-background-color: #E3F2FD; /* Light blue background */
+    -fx-border-color: #BBDEFB; /* Slightly darker blue border */
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 2);
+}
+
+.label-info {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #01579B; /* Dark blue text */
+    -fx-alignment: center;
+    -fx-background-color: #F5F9FF; /* Very light blue background for labels */
+    -fx-background-radius: 5;
+    -fx-padding: 5;
+}
+
+.button-accepter {
+    -fx-background-color: #0288D1; /* Medium blue */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 8;
+    -fx-padding: 8 16;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 0, 1);
+}
+
+.button-accepter:hover {
+    -fx-background-color: #0277BD; /* Slightly darker blue on hover */
+}
+
+.button-refuser {
+    -fx-background-color: #D81B60; /* Red for refuse, to contrast with blue theme */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 8;
+    -fx-padding: 8 16;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 0, 1);
+}
+
+.button-refuser:hover {
+    -fx-background-color: #C2185B; /* Darker red on hover */
+}
+
+.button-details {
+    -fx-background-color: transparent;
+    -fx-text-fill: #007acc;
+    -fx-underline: true;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+    -fx-padding: 6px 12px;
+}
+.button-details:hover {
+    -fx-background-color: #29B6F6; /* Slightly darker blue on hover */
+}

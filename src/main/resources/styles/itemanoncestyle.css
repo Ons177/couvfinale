@@ -1,0 +1,220 @@
+/* AnchorPane styling */
+AnchorPane {
+    -fx-background-color: #F0F4FA; /* Light blue-gray background */
+    -fx-alignment: CENTER; /* Center the VBox */
+}
+
+/* VBox card styling */
+.card {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #60A5FA; /* Bright blue border */
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 15px;
+    -fx-spacing: 10px;
+    -fx-pref-width: 310px; /* Match FXML */
+    -fx-max-width: 310px; /* Prevent overflow */
+    -fx-alignment: TOP_CENTER; /* Center content */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 6, 0, 0, 2);
+}
+
+/* Title label styling */
+.titreAnnonce {
+    -fx-font-family: "Playfair Display";
+    -fx-font-size: 16px;
+    -fx-font-weight: 700; /* Bold for emphasis */
+    -fx-text-fill: #1E40AF; /* Sapphire blue */
+    -fx-alignment: CENTER_LEFT;
+    -fx-pref-width: 280px; /* Fit within VBox */
+    -fx-max-width: 280px;
+    -fx-wrap-text: true; /* Prevent truncation */
+    -fx-padding: 5px 0;
+}
+
+/* ImageView styling */
+.imageView {
+    -fx-border-color: #60A5FA; /* Blue border */
+    -fx-border-width: 1px;
+    -fx-border-radius: 6px;
+    -fx-fit-width: 280px; /* Fit within VBox */
+    -fx-fit-height: 150px;
+    -fx-preserve-ratio: true;
+    -fx-smooth: true; /* Crisp images */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 1);
+}
+
+/* Price and location label styling */
+.prixLabel {
+    -fx-font-family: "Lora"; /* Artistic serif */
+    -fx-font-size: 14px;
+    -fx-text-fill: #1E40AF; /* Sapphire blue */
+    -fx-font-weight: 400;
+    -fx-alignment: CENTER_LEFT;
+    -fx-pref-width: 280px; /* Constrain to VBox */
+    -fx-max-width: 280px;
+    -fx-wrap-text: true; /* Prevent truncation */
+    -fx-padding: 5px 0;
+}
+
+/* Date label styling */
+.dateLabel {
+    -fx-font-family: "Lora";
+    -fx-font-size: 14px;
+    -fx-text-fill: #1E40AF;
+    -fx-font-weight: 400;
+    -fx-alignment: CENTER_LEFT;
+    -fx-pref-width: 280px;
+    -fx-max-width: 280px;
+    -fx-wrap-text: true;
+    -fx-padding: 5px 0;
+}
+
+/* Tags HBox styling */
+#tagsHBox, .tagsHBox {
+    -fx-pref-width: 300px;
+    -fx-max-width: 280px;
+    -fx-spacing: 6px; /* Reduced spacing between tags */
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 5px 0;
+    -fx-layout-x: 0;
+    -fx-layout-y: 0;
+}
+
+#tagsHBox Label, .tagsHBox Label {
+    -fx-font-family: "Lora";
+    -fx-font-size: 14px; /* Increased from 12px for better readability */
+    -fx-text-fill: #FFFFFF; /* White text for contrast */
+    -fx-background-color: #10B981; /* Vibrant green background */
+    -fx-background-radius: 20px; /* Rounded shape */
+    -fx-padding: 6px 12px; /* Increased padding for larger appearance */
+    -fx-max-width: 100px; /* Increased from 80px to fit larger text */
+    -fx-wrap-text: true;
+    -fx-border-radius: 20px; /* Rounded borders */
+    -fx-border-color: #10B981; /* Matching green border */
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 3, 0, 0, 1); /* Subtle shadow */
+    -fx-cursor: hand; /* Hand cursor on hover */
+}
+
+/* Hover effect for tags */
+#tagsHBox Label:hover, .tagsHBox Label:hover {
+    -fx-background-color: #34D399; /* Lighter green on hover */
+    -fx-border-color: #34D399; /* Matching border */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 2); /* Stronger shadow */
+}
+
+/* Button styling for Consulter */
+.button-consulter {
+    -fx-background-color: #1E40AF; /* Sapphire blue */
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: "Playfair Display";
+    -fx-font-size: 12px;
+    -fx-font-weight: 600;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px 16px;
+    -fx-cursor: hand;
+    -fx-border-color: #60A5FA;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-pref-width: 100px;
+    -fx-min-width: 100px;
+    -fx-layout-x: 0;
+}
+
+/* Button styling for Reserver */
+.button-reserver {
+    -fx-background-color: #10B981; /* Green to match tags */
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: "Playfair Display";
+    -fx-font-size: 12px;
+    -fx-font-weight: 600;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px 16px;
+    -fx-cursor: hand;
+    -fx-border-color: #34D399;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-pref-width: 100px;
+    -fx-min-width: 100px;
+    -fx-layout-x: 0;
+}
+
+/* Button styling for Modifier */
+.button-modifier {
+    -fx-background-color: #1E40AF;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: "Playfair Display";
+    -fx-font-size: 12px;
+    -fx-font-weight: 600;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px 16px;
+    -fx-cursor: hand;
+    -fx-border-color: #60A5FA;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-pref-width: 100px;
+    -fx-min-width: 100px;
+    -fx-layout-x: 0;
+}
+
+/* Button styling for Supprimer */
+.button-supprimer {
+    -fx-background-color: #DC2626; /* Red for delete */
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: "Playfair Display";
+    -fx-font-size: 12px;
+    -fx-font-weight: 600;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px 16px;
+    -fx-cursor: hand;
+    -fx-border-color: #F87171;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-pref-width: 100px;
+    -fx-min-width: 100px;
+    -fx-layout-x: 0;
+}
+
+/* Button hover and pressed states */
+.button-consulter:hover, .button-modifier:hover {
+    -fx-background-color: #3B82F6; /* Lighter blue */
+}
+
+.button-reserver:hover {
+    -fx-background-color: #34D399; /* Lighter green */
+}
+
+.button-supprimer:hover {
+    -fx-background-color: #F87171; /* Lighter red */
+}
+
+.button-consulter:pressed, .button-modifier:pressed {
+    -fx-background-color: #1D4ED8; /* Darker blue */
+}
+
+.button-reserver:pressed {
+    -fx-background-color: #059669; /* Darker green */
+}
+
+.button-supprimer:pressed {
+    -fx-background-color: #B91C1C; /* Darker red */
+}
+
+/* Icon ImageView styling */
+ImageView {
+    -fx-smooth: true; /* Crisp icons */
+    -fx-fit-width: 20px;
+    -fx-fit-height: 20px;
+    -fx-preserve-ratio: true;
+    -fx-layout-x: 0; /* Override FXML positioning */
+    -fx-layout-y: 0;
+}
+
+/* AnchorPane for buttons */
+AnchorPane {
+    -fx-pref-width: 280px; /* Fit within VBox */
+    -fx-max-width: 280px;
+    -fx-alignment: CENTER; /* Center buttons */
+    -fx-padding: 5px 0;
+}

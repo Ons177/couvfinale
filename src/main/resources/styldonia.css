@@ -1,0 +1,355 @@
+.bg {
+    -fx-background-color: linear-gradient(to bottom, rgba(68, 137, 209, 0.99), #043873);
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+}
+
+/* Main viewport */
+.viewport {
+    -fx-background-color: transparent;
+}
+
+/* FlowPane container for cards */
+.dash__container-card {
+    -fx-background-color: #e0e7ff;
+    -fx-background-radius: 30px;
+    -fx-border-radius: 30px;
+    -fx-padding: 20;
+    -fx-hgap: 30;
+    -fx-vgap: 30;
+}
+
+/* ScrollPane styling */
+.product-card-scrollPane {
+    -fx-background-color: transparent;
+    -fx-background-radius: 30px;
+    -fx-border-radius: 30px;
+}
+
+.product-card-scrollPane > .viewport {
+    -fx-background-color: transparent;
+    -fx-background-radius: 30px;
+}
+
+.product-card-scrollPane > .scroll-bar:vertical,
+.product-card-scrollPane > .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+    -fx-background-radius: 8;
+}
+
+.product-card-scrollPane > .scroll-bar:vertical > .thumb,
+.product-card-scrollPane > .scroll-bar:horizontal > .thumb {
+    -fx-background-color: #60a5fa;
+    -fx-background-radius: 8;
+}
+
+/* Top navigation buttons */
+.btn-mon-compte {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: #143c67;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.btn-mon-compte:hover {
+    -fx-underline: true;
+    -fx-text-fill: #0f2e4d;
+}
+
+/* Action buttons (publier un trajet, voir les trajets, etc.) */
+.button {
+    -fx-background-color: #245580;
+    -fx-text-fill: #fff;
+    -fx-font-size: 16px;
+    -fx-padding: 12px 25px;
+    -fx-background-radius: 8;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 8, 0, 0, 4);
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #0095b6;
+}
+
+/* Card styling */
+.trajet-card {
+    -fx-background-color: white;
+    -fx-background-radius: 16;
+    -fx-padding: 15;
+    -fx-pref-width: 300;
+    -fx-max-width: 300;
+    -fx-pref-height: 500;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);
+    -fx-transition: all 0.3s ease;
+}
+
+.trajet-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 15, 0, 0, 3);
+    -fx-scale-y: 1.02;
+    -fx-scale-x: 1.02;
+}
+
+/* Info labels inside cards */
+.info-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #64748b;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* Card title */
+.trajet-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e40af;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* ScrollPane inside cards */
+.card-scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+.card-scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.card-scroll-pane > .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-background-radius: 8;
+}
+
+.card-scroll-pane > .scroll-bar:vertical > .thumb {
+    -fx-background-color: #94a3b8;
+    -fx-background-radius: 8;
+}
+
+/* Buttons inside cards */
+.card-button {
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-padding: 8 16;
+    -fx-cursor: hand;
+}
+
+.card-button:hover {
+    -fx-opacity: 0.9;
+}
+
+.reserver-button {
+    -fx-background-color: #2ecc71;
+}
+
+.consulter-map-button {
+    -fx-background-color: #3498db;
+}
+.big-title {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-padding: 10 0 20 0;
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.4), 4, 0.2, 0, 2);
+}
+
+.green-button {
+    -fx-background-color: #28a745;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-padding: 8 16;
+}
+
+.red-button {
+    -fx-background-color: #dc3545;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-padding: 8 16;
+}
+/* Titre plus grand et plus stylé */
+.big-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e3a8a; /* Bleu foncé classe */
+    -fx-padding: 10 0 20 0;
+}
+
+/* Bouton vert pour valider */
+.green-button {
+    -fx-background-color: #22c55e; /* Vert clair */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 10 20 10 20;
+}
+
+.green-button:hover {
+    -fx-background-color: #16a34a; /* Vert foncé au survol */
+}
+
+/* Bouton rouge pour annuler */
+.red-button {
+    -fx-background-color: #ef4444; /* Rouge clair */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 10 20 10 20;
+}
+
+.red-button:hover {
+    -fx-background-color: #b91c1c; /* Rouge foncé au survol */
+}
+.big-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e3a8a;
+    -fx-padding: 10 0 20 0;
+}
+
+.info-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #374151;
+}
+
+.text-field, .combo-box {
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #cbd5e1;
+    -fx-padding: 6 10;
+    -fx-background-color: white;
+}
+
+.green-button {
+    -fx-background-color: #22c55e;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 10 20;
+}
+.green-button:hover {
+    -fx-background-color: #16a34a;
+}
+
+.red-button {
+    -fx-background-color: #ef4444;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 10 20;
+}
+.red-button:hover {
+    -fx-background-color: #b91c1c;
+}
+/* Nouveau fond */
+.other-background {
+    -fx-background-color: linear-gradient(to bottom, #f0f4f8, #d9e2ec);
+}
+
+/* Nouveau titre vert */
+.green-title-label {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2e7d32; /* vert foncé */
+}
+
+/* Bouton vert "Enregistrer" */
+.green-button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-padding: 10px 20px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+}
+
+/* Bouton rouge "Annuler" */
+.red-button {
+    -fx-background-color: #f44336;
+    -fx-text-fill: white;
+    -fx-padding: 10px 20px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+}
+/* Fond bleu clair pastel */
+.custom-background {
+    -fx-background-color: linear-gradient(to bottom, rgba(68, 137, 209, 0.99), #043873);
+}
+
+/* Titre stylé et gras */
+.custom-title {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1a237e; /* Bleu foncé élégant */
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+/* Bouton vert */
+.button-green {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 8;
+}
+
+/* Bouton rouge */
+.button-red {
+    -fx-background-color: #f44336;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 8;
+}
+/* Arrière-plan bleu Facebook */
+.fb-background {
+    -fx-background-color: linear-gradient(to bottom, rgba(68, 137, 209, 0.99), #043873);
+}
+
+/* Titre principal */
+.title-label {
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+/* Message d'état vide */
+.empty-state-text {
+    -fx-font-size: 18px;
+    -fx-text-fill: white;
+    -fx-font-style: italic;
+}
+
+/* Bouton Retour */
+.button-retour {
+    -fx-background-color: white;
+    -fx-text-fill: #1877f2;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: white;
+    -fx-border-width: 2px;
+}
+
+/* Effet hover sur bouton */
+.button-retour:hover {
+    -fx-background-color: #1565c0;
+    -fx-text-fill: white;
+}
+
+/* ScrollPane custom */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-padding: 10;
+}
+
+/* Style pour la FlowPane contenant les trajets */
+.trajet-flow {
+    -fx-padding: 10;
+}

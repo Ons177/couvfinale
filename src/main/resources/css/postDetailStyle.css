@@ -1,0 +1,429 @@
+/* General styles */
+.root {
+    -fx-background-color: #f5f5f5;
+    -fx-font-family: "Montserrat", sans-serif;
+}
+
+/* Main ScrollPane styling */
+.scroll-pane {
+    -fx-background-color: white;
+    -fx-background: white;
+    -fx-border-color: transparent;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: white;
+}
+
+/* Customize the vertical scrollbar */
+.scroll-pane .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 6; /* Thin scrollbar */
+}
+
+.scroll-pane .scroll-bar:vertical .thumb {
+    -fx-background-color: #8ebcf2; /* Blue thumb */
+    -fx-background-radius: 3em;
+}
+
+.scroll-pane .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-pane .scroll-bar:vertical .increment-button,
+.scroll-pane .scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+}
+
+.scroll-pane .scroll-bar:vertical .increment-arrow,
+.scroll-pane .scroll-bar:vertical .decrement-arrow {
+    -fx-shape: " ";
+    -fx-padding: 0;
+}
+
+/* Customize the horizontal scrollbar (although it's disabled in your FXML) */
+.scroll-pane .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+    -fx-pref-height: 6; /* Thin scrollbar */
+}
+
+.scroll-pane .scroll-bar:horizontal .thumb {
+    -fx-background-color: #8ebcf2; /* Blue thumb */
+    -fx-background-radius: 3em;
+}
+
+.scroll-pane .scroll-bar:horizontal .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-pane .scroll-bar:horizontal .increment-button,
+.scroll-pane .scroll-bar:horizontal .decrement-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+}
+
+.scroll-pane .scroll-bar:horizontal .increment-arrow,
+.scroll-pane .scroll-bar:horizontal .decrement-arrow {
+    -fx-shape: " ";
+    -fx-padding: 0;
+}
+
+/* Post detail styles */
+.post-detail {
+    -fx-background-color: white;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 4);
+}
+
+/* Title container */
+.title-container {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+
+.page-title {
+    -fx-text-fill: #134a78;
+}
+
+/* Post card styles */
+.post-card {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 0, 3);
+    -fx-cursor: hand;
+}
+
+.post-title {
+    -fx-text-fill: #134a78;
+    -fx-font-weight: bold;
+    -fx-font-size: 22;
+    -fx-padding: 10 0;
+}
+
+.post-date {
+    -fx-text-fill: #6c757d;
+    -fx-font-size: 12px;
+    -fx-font-style: italic;
+}
+
+.date-with-calendar {
+    -fx-content-display: left;
+    -fx-graphic-text-gap: 5;
+    -fx-alignment: center-left;
+}
+
+.post-content {
+    -fx-background-color: #f8f9fa;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+
+.post-text {
+    -fx-text-fill: #212529;
+    -fx-font-size: 14px;
+    -fx-line-spacing: 1.5;
+}
+
+/* Comments section */
+.comments-header {
+    -fx-font-weight: bold;
+    -fx-font-size: 16;
+    -fx-text-fill: #134a78;
+}
+
+.comments-container {
+    -fx-spacing: 10;
+    -fx-padding: 10 0;
+}
+
+.comment-box {
+    -fx-background-color:white;
+    -fx-background-radius: 8;
+    -fx-padding: 10;
+    -fx-border-color: #e1ebfa;
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 3, 0, 0, 1);
+}
+
+.comment-user {
+    -fx-font-weight: bold;
+    -fx-text-fill: #134a78;
+    -fx-font-size: 13px;
+}
+
+.comment-content {
+    -fx-text-fill: #495057;
+    -fx-font-size: 14px;
+    -fx-wrap-text: true;
+    -fx-padding: 5 0;
+}
+
+.comment-date {
+    -fx-text-fill: #868e96;
+    -fx-font-size: 11px;
+    -fx-font-style: italic;
+}
+
+/* Comment input area styling */
+.text-area {
+    -fx-background-color: -fx-text-box-border, -fx-background;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-background-radius: 8;
+    -fx-border-color: #ced4da;
+    -fx-border-radius: 8;
+}
+
+.text-area:focused {
+    -fx-background-color: -fx-focus-color, -fx-background;
+    -fx-border-color: #8ebcf2;
+}
+
+/* Back button style */
+.back-button {
+    -fx-background-color: white;
+    -fx-border-color: #8ebcf2;
+    -fx-border-radius: 5;
+    -fx-text-fill: #134a78;
+    -fx-cursor: hand;
+}
+
+.back-button:hover {
+    -fx-background-color: #f0f7ff;
+}
+
+/* Love and comment buttons */
+.love-button, .comment-button {
+    -fx-background-color: #e9ecef;
+    -fx-background-radius: 5;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+}
+
+.love-button {
+    -fx-text-fill: #dc3545;
+}
+
+.love-button:hover {
+    -fx-background-color: #ffebee;
+}
+
+.comment-button {
+    -fx-text-fill: #134a78;
+}
+
+.comment-button:hover {
+    -fx-background-color: #e1ebfa;
+}
+
+/* Send comment button */
+.send-comment-button {
+    -fx-background-color: #134a78;
+    -fx-text-fill: white;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}
+
+.send-comment-button:hover {
+    -fx-background-color: #0d3c64;
+}
+
+/* Custom class for the main container */
+.main-container {
+    -fx-background-color: white;
+}
+/* General styles */
+.custom-scroll .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-padding: 0 0 0 5;
+}
+
+.custom-scroll .scroll-bar:vertical .thumb {
+    -fx-background-color: #bfbfbf;
+    -fx-background-radius: 5em;
+}
+
+.post-detail {
+    -fx-background-color: white;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-border-color: #e0e0e0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 5);
+}
+
+/* Header elements */
+.post-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+.post-date {
+    -fx-font-size: 14px;
+    -fx-font-style: italic;
+    -fx-text-fill: #666666;
+}
+
+/* Post content */
+.post-content {
+    -fx-background-color: #f9f9f9;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #eeeeee;
+}
+
+.post-text {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+    -fx-wrap-text: true;
+}
+
+/* Button styles */
+.back-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #555555;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 5;
+    -fx-cursor: hand;
+}
+
+.back-button:hover {
+    -fx-background-color: #f5f5f5;
+}
+
+.love-button, .comment-button {
+    -fx-background-color: #f0f0f0;
+    -fx-text-fill: #333333;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+    -fx-padding: 8 15;
+}
+
+.love-button:hover {
+    -fx-background-color: #ffe8e8;
+}
+
+.comment-button:hover {
+    -fx-background-color: #e8f4ff;
+}
+
+.send-comment-button {
+    -fx-background-color: #4e7ae0;
+    -fx-text-fill: white;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+    -fx-padding: 8 15;
+}
+
+.send-comment-button:hover {
+    -fx-background-color: #3a5db3;
+}
+
+/* Comment section styles */
+.comments-header {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+.comments-container {
+    -fx-background-color: #f9f9f9;
+    -fx-background-radius: 10;
+    -fx-border-color: #eeeeee;
+    -fx-border-radius: 10;
+    -fx-padding: 10;
+}
+
+.comment-box {
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-border-color: #e8e8e8;
+    -fx-border-radius: 5;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2);
+    -fx-padding: 8;
+}
+
+.comment-user {
+    -fx-font-weight: bold;
+    -fx-text-fill: #444444;
+}
+
+.comment-date {
+    -fx-font-size: 11px;
+    -fx-text-fill: #888888;
+}
+
+.comment-content {
+    -fx-text-fill: #333333;
+    -fx-wrap-text: true;
+}
+
+/* Circular button styles */
+.delete-button {
+    -fx-background-color: #ffe1e1;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 3, 0, 0, 1);
+    -fx-cursor: hand;
+}
+
+.delete-button:hover {
+    -fx-background-color: #ffbaba;
+}
+
+.edit-button {
+    -fx-background-color: #e1f5ff;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 3, 0, 0, 1);
+    -fx-cursor: hand;
+}
+
+.edit-button:hover {
+    -fx-background-color: #c4e8ff;
+}
+
+/* Save button for editing comments */
+.save-button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-cursor: hand;
+    -fx-padding: 5 10;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 3, 0, 0, 1);
+}
+
+.save-button:hover {
+    -fx-background-color: #45a049;
+}
+
+/* Delete confirmation dialog */
+.delete-dialog {
+    -fx-background-color: white;
+}
+
+.delete-dialog .button {
+    -fx-padding: 5 15;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+}
+
+.delete-dialog .button:default {
+    -fx-background-color: #ff6b6b;
+    -fx-text-fill: white;
+}
+
+.delete-dialog .button:default:hover {
+    -fx-background-color: #ff5252;
+}

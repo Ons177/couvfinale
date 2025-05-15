@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane styleClass="main-background" stylesheets="/css/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AcceuilController">
+
+    <!-- Top Bar with Client Button -->
+    <top>
+        <HBox alignment="TOP_RIGHT" style="-fx-padding: 20 20 0 0;">
+            <Button fx:id="MenuPassager" onAction="#MenuPassager" styleClass="add-button" text="Menu" />
+            <Button onAction="#seDeconnecter" styleClass="logout-button" text="Déconnexion" />
+        </HBox>
+    </top>
+
+    <!-- Left Sidebar -->
+    <left>
+        <VBox alignment="CENTER" prefWidth="300" spacing="20" styleClass="sidebar">
+            <VBox alignment="CENTER" spacing="15" styleClass="sidebar-welcome">
+                <ImageView fitHeight="180" fitWidth="180" preserveRatio="true">
+                    <image>
+                        <Image url="@/images/smartrides.jpg" />
+                    </image>
+                </ImageView>
+                <Label maxWidth="220" styleClass="sidebar-desc" text="Voir les événements en un clic, ou créez le vôtre dès maintenant !" wrapText="true" />
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- Main Content -->
+    <center>
+        <VBox alignment="TOP_CENTER" spacing="20" style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 30;">
+
+            <!-- Barre de recherche -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="🔍 Rechercher:" />
+                <TextField fx:id="searchField" prefWidth="300" promptText="Titre de l'événement..." />
+            </HBox>
+
+            <!-- Liste des événements -->
+            <ScrollPane fitToWidth="true" styleClass="scroll-pane">
+                <FlowPane fx:id="eventsList" hgap="20" styleClass="events-flow" vgap="20">
+                    <!-- Events will be added here dynamically -->
+                </FlowPane>
+            </ScrollPane>
+        </VBox>
+    </center>
+
+</BorderPane>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox maxWidth="1314.0" prefHeight="121.0" prefWidth="1500.0" spacing="10" styleClass="card-hbox" stylesheets="@styles/resitem.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ResanonceItemController">
+   <children>
+      <Label fx:id="titresitem" prefHeight="32.0" prefWidth="226.0" styleClass="label-info" text="titre d'anonce" />
+      <Label fx:id="dritemres" prefHeight="34.0" prefWidth="224.0" styleClass="label-info" text="date de reservation" />
+      <Label fx:id="ddresitem" prefHeight="36.0" prefWidth="184.0" styleClass="label-info" text="date de debut de reservation" />
+      <Label fx:id="dfresitem" prefHeight="34.0" prefWidth="196.0" styleClass="label-info" text="date fin de reservation" />
+      <Label fx:id="stresitem" prefHeight="34.0" prefWidth="192.0" styleClass="label-info" text="Statut" />
+      <Button mnemonicParsing="false" onAction="#modifierresc" prefHeight="37.0" prefWidth="132.0" styleClass="button-modifier" text="Modifier" />
+      <Button mnemonicParsing="false" onAction="#supprimerresc" prefHeight="38.0" prefWidth="130.0" styleClass="button-supprimer" text="Annuler" />
+      <Button mnemonicParsing="false" onAction="#voirdetailsanoncesp" prefHeight="37.0" prefWidth="157.0" styleClass="button-details" text="Voir details" />
+   </children>
+</HBox>

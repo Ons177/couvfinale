@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controllers.ConsulterEvenementController"
+      spacing="20"
+      style="-fx-padding: 20; -fx-border-color: red; -fx-border-width: 3;"
+      stylesheets="@/css/style.css">
+
+    <Label fx:id="titleLabel"
+           text="📅 Détails de l'Événement"
+           alignment="CENTER"
+           style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+    <VBox fx:id="eventDetails" spacing="15"
+          style="-fx-background-color: #f0f0f0; -fx-padding: 20; -fx-background-radius: 5;">
+
+        <Label fx:id="eventTitle"
+               style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+
+        <Label fx:id="eventDate"
+               style="-fx-font-size: 16px;" />
+
+        <Label fx:id="eventLocation"
+               style="-fx-font-size: 16px;" />
+
+        <Label fx:id="eventDescription"
+               style="-fx-font-size: 16px;"
+               wrapText="true" />
+    </VBox>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Retour"
+                onAction="#retourAccueil"
+                styleClass="button" />
+    </HBox>
+
+</VBox>
